@@ -16,7 +16,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
-Plug 'sinetoami/lightline-hunks'
 
 call plug#end()
 
