@@ -9,13 +9,15 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'unblevable/quick-scope'
 
 call plug#end()
 
@@ -34,14 +36,23 @@ set tabstop=2
 set shiftwidth=2
 set hidden
 set noshowmode
+set termguicolors
 
 " Git Gutter Settings
 set updatetime=100
 
-"function! GitStatus()
-  "let [a,m,r] = GitGutterGetHunkSummary()
-  "return printf('+%d ~%d -%d', a, m, r)
-"endfunction
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+augroup END
+
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
 
 " Theme and customisation
 colorscheme gruvbox
@@ -80,7 +91,7 @@ function! Gitchanges()
   return join(ret, ' ')
 endfunction
 
-highlight LineNr ctermfg=white
+highlight LineNr guifg=#ffffff
 
 " Extreme movementkeys
 nnoremap H 0
@@ -97,21 +108,33 @@ nnoremap <leader>l :wincmd l<CR>
 " Launch fzf
 nnoremap <leader>f :Files<CR>
 
-" Project searching with ripgrep and set Ripgrep search from project root
-if executable('rg')
-  let g:rg_derive_root="true"
-endif
-nnoremap <leader>ps :Rg<SPACE>
+" Rip grep and fzf functionality
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
 
-"ctags -R -f ./.git/tags .
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0) "\   fzf#vim#with_preview(), <bang>0)
+
+nnoremap <leader>ps :RG<SPACE>
+
 set tags=./tags;/
 nnoremap <leader>ct :!ctags -R .
 
 " COC codebase searching
-nmap <leader> gd <Plug>(coc-definition)
-nmap <leader> gy <Plug>(coc-type-definition)
-nmap <leader> gi <Plug>(coc-implementation)
-nmap <leader> gr <Plug>(coc-references)
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rf <Plug>(coc-refactor)
+
+" Git keybinds
+nmap <leader>g :G<CR>
+nmap <leader>gc :Gcommit<CR>
 
 " Insertmode movement and Commandline movement
 inoremap <C-h> <Left>
@@ -122,6 +145,14 @@ cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" Spellcheking
+map  <F6> :setlocal spell! spelllang=nl<CR>
+map  <F7> :set spelllang=en_us<CR>
 
 " Return to the same line you left off at
 augroup line_return
@@ -134,9 +165,9 @@ augroup END
 
 " Javascript linting
 let g:ale_fixers = {
-      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \   'javascript': ['eslint'],
-      \}
+      "\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      "\   'javascript': ['eslint'],
+\}
 " Fix files automatically on save
 let g:ale_fix_on_save = 1
 
@@ -156,15 +187,15 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-" use <c-space>for trigger completion
+"use <c-space>for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Nerdtree
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
