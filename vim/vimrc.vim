@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
@@ -18,27 +18,34 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'unblevable/quick-scope'
+Plug 'lumiliet/vim-twig', { 'for': ['html'] }
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
 
 call plug#end()
 
 let mapleader=" "
+let $RTP=split(&runtimepath, ',')[0]
+let $RC="$HOME/.vim/vimrc"
 
 " Basic vim setup
 syntax on
 set mouse=a
 set relativenumber
 set clipboard=unnamedplus
-set smarttab
-set autoindent
-set cindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set hidden
 set noshowmode
 set termguicolors
 set updatetime=50
+set nowrap
 
+" Indentation
+set autoindent
+set smarttab
+set smartindent
 
 " REMAPPINGS HERE
 " Extreme movementkeys
@@ -66,6 +73,10 @@ nnoremap <leader>l :wincmd l<CR>
 " Paste remapping to blackhole register for better pasting
 vnoremap <leader>p "_dP
 
+" Black hole register settings
+vnoremap <leader>d "_d
+vnoremap <leader>dd "_d
+
 " Better tabbing
 vnoremap < <gv
 vnoremap > >gv
@@ -84,7 +95,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>ps :RG<SPACE>
 
 " Git keybinds "
-nmap <leader>g :G<CR>
+nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 " Accept incomming changes:
 nmap <leader>gj: diffget //3<CR>
@@ -98,7 +109,7 @@ nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>rpw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " use <c-space> (control + space) for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -115,10 +126,6 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Javascript shortkeys
-inoremap <leader>csl <esc>Iconsole.log(<esc>A)
-inoremap <leader>cst <esc>Iconsole.table(<esc>A)
 
 " Nerdtree and Nerdcommenter mappings
 nmap <C-n> :NERDTreeToggle<CR>
@@ -253,3 +260,7 @@ augroup THE_PRIMEAGEN
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
+
+" Clear vim registers
+command! RegisterWipe for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+ugroup END

@@ -14,3 +14,15 @@ Current functionalities implemented in my zsh configuration
 ### Automatic git add and push
 
 ## TMUX
+
+## Brew packages
+fd
+fzf
+git
+git-gui
+grep
+neovim
+nvm
+ripgrep
+tmux
+vim

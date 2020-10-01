@@ -1,4 +1,16 @@
-  # Set Spaceship ZSH as a prompt
+# Set Spaceship ZSH as a prompt
+
+  # VARIABLES
+  export NOTES_DIR="$HOME/documents/notes"
+
+  # ~/.zshrc
+  autoload -Uz compinit
+  if [ "$(whoami)" = "YOUR_NON_ADMIN_USER" ]; then
+    compinit -i # Ignore insecure directories
+  else
+    compinit
+  fi
+
   autoload -U promptinit; promptinit
   prompt spaceship
 
@@ -6,8 +18,6 @@
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
-  # VARIABLES
-  export NOTES_DIR="$HOME/documents/notes"
 
   # Custom cd
   chpwd() ls
@@ -89,6 +99,11 @@
 
   }
 
+  # Renames files to lower case for current directory
+  rfl() {
+    for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
+  }
+
 
 	# FZF ripgrep
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -107,20 +122,23 @@
 	_comp_options+=(globdots)
 	# Line above enables dotfiles to be found
 
+  # Fzf and gitbranches implementation
+  gcb() {
+    git checkout $(git branch -a | fzf| awk '{$1=$1};1')
+  }
+
+
 	ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=160'
 
 	source /Users/damianveltkamp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-alias laptop='bash <(curl -s https://raw.githubusercontent.com/monfresh/laptop/master/laptop)'
+#alias laptop='bash <(curl -s https://raw.githubusercontent.com/monfresh/laptop/master/laptop)'
 
-export PATH="$HOME/.bin:$PATH"
+#export PATH="$HOME/.bin:$PATH"
 
-eval "$(hub alias -s)"
+#eval "$(hub alias -s)"
 
-source /usr/local/share/chruby/chruby.sh
+#source /usr/local/share/chruby/chruby.sh
 
-source /usr/local/share/chruby/auto.sh
-
-chruby ruby-2.7.1
-[ -f /Users/damianveltkamp/.config/cani/completions/_cani.zsh ] && source /Users/damianveltkamp/.config/cani/completions/_cani.zsh
+#source /usr/local/share/chruby/auto.sh
