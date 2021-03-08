@@ -4,7 +4,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
-Plug 'dense-analysis/ale'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -20,6 +19,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'unblevable/quick-scope'
 Plug 'lumiliet/vim-twig', { 'for': ['html'] }
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
+Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -30,6 +30,7 @@ let $RC="$HOME/.vim/vimrc"
 " Basic vim setup
 syntax on
 set mouse=a
+set number
 set relativenumber
 set clipboard=unnamedplus
 set expandtab
@@ -41,13 +42,18 @@ set noshowmode
 set termguicolors
 set updatetime=50
 set nowrap
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set scrolloff=16
+set signcolumn=yes
 
 " Indentation
 set autoindent
 set smarttab
 set smartindent
 
-" REMAPPINGS HERE
 " Extreme movementkeys
 nnoremap H 0
 nnoremap L $
@@ -86,7 +92,7 @@ map  <F6> :setlocal spell! spelllang=nl<CR>
 map  <F7> :set spelllang=en_us<CR>
 
 " Remove highlighting of previous search
-nnorema <Space> :noh<Return>
+nnoremap <Space> :noh<Return>
 
 " Launch fzf
 nnoremap <leader>f :Files<CR>
@@ -110,6 +116,29 @@ nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
 nnoremap <leader>rpw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
+" Use CD to show documentation in preview window.
+nnoremap <leader>cd :call <SID>show_documentation()<CR>
+
+" COC Format file
+nmap <leader>cf :call CocAction('format')<CR>
+
+" COC jump to errors
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
+
+" Undo tree keybinding
+nnoremap <leader>u :UndotreeShow<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " use <c-space> (control + space) for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -162,22 +191,14 @@ let g:lightline = {
 
 " Enables cursor line position tracking:
 set cursorline
-highlight LineNr guifg=#ffffff
+highlight LineNr guifg=white
 
 " Removes the underline causes by enabling cursorline:
 highlight clear CursorLine
 
 " Sets the line numbering to red background:
-highlight CursorLineNR guibg=red
-
-
-" ALE SETTINGS "
-let g:ale_fixers = {
-      "\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-      "\   'javascript': ['eslint'],
-\}
-let g:ale_fix_on_save = 1
-
+highlight CursorLineNR guibg=#8ac6f2
+highlight CursorLineNR guifg=#000000
 
 " Quickscope settings "
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -261,6 +282,8 @@ augroup THE_PRIMEAGEN
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
+" Prettier
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
 " Clear vim registers
 command! RegisterWipe for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
-ugroup END
