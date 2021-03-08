@@ -1,4 +1,4 @@
-# Set Spaceship ZSH as a prompt
+  # Set Spaceship ZSH as a prompt
 
   # VARIABLES
   export NOTES_DIR="$HOME/documents/notes"
@@ -127,6 +127,11 @@
     git checkout $(git branch -a | fzf| awk '{$1=$1};1')
   }
 
+  # Fzf and gitbranches implementation
+  gfb() {
+    git fetch $(git branch -a | fzf| awk '{$1=$1};1')
+  }
+
 
 	ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=160'
 
@@ -141,4 +146,4 @@
 
 #source /usr/local/share/chruby/chruby.sh
 
-#source /usr/local/share/chruby/auto.sh
+#source /usr/local/share/chruby/auto.sh -f /Users/damianveltkamp/.config/cani/completions/_cani.zsh ] && source /Users/damianveltkamp/.config/cani/completions/_cani.zsh
