@@ -112,7 +112,7 @@ brew install fd
 Clone this repository onto your machine:
 
 ```
-git clone https://github.com/damianveltkamp/dotfiles.git ~/
+git clone https://github.com/damianveltkamp/dotfiles.git ~/damian-dotfiles
 ```
 
 Create a config directory on your machine on your home path
@@ -124,5 +124,5 @@ mkdir -p ~/.config/nvim
 Move my configuration files into your configuration directory:
 
 ```
-mv $HOME/dotfiles/nvim $HOME/.config/nvim
+mv $HOME/damian-dotfiles/nvim $HOME/.config/nvim
 ```
