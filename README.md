@@ -118,7 +118,7 @@ git clone https://github.com/damianveltkamp/dotfiles.git ~/damian-dotfiles
 Create a config directory on your machine on your home path
 
 ```
-mkdir -p ~/.config/nvim
+mkdir -p ~/.config
 ```
 
 If you already have a config directory for nvim in ~/.config make sure to rename it by for example doing the following:
