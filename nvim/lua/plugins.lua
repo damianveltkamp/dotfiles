@@ -9,7 +9,10 @@ return require('packer').startup(function()
   }
   use 'gruvbox-community/gruvbox'
   use 'lambdalisue/fern.vim'
-  use 'preservim/nerdcommenter'
+  use 'lambdalisue/nerdfont.vim'
+  use 'lambdalisue/fern-renderer-nerdfont.vim'
+  use 'lambdalisue/glyph-palette.vim'
+  use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use 'airblade/vim-gitgutter'
   use {
@@ -20,6 +23,10 @@ return require('packer').startup(function()
   use 'lumiliet/vim-twig'
   use 'mbbill/undotree'
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/nvim-compe'
+  use 'kosayoda/nvim-lightbulb'
   use 'jiangmiao/auto-pairs'
+  use 'norcalli/snippets.nvim'
+  use 'joshdick/onedark.vim'
+  use 'onsails/lspkind-nvim'
 end)

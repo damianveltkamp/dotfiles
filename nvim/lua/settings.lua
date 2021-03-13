@@ -3,6 +3,8 @@ require('utils/setvariable')
 
 vim.cmd 'filetype plugin indent on'
 vim.cmd 'syntax on'
+vim.cmd 'set noswapfile'
+vim.cmd 'set cindent'
 setOption('global', 'mouse', 'a')
 setOption('global', 'encoding', 'utf-8')
 setOption('window', 'number', true)
@@ -17,12 +19,10 @@ setOption('global', 'showmode', false)
 setOption('global', 'termguicolors', true)
 setOption('global', 'updatetime', 50)
 setOption('window', 'wrap', false)
-setOption('global', 'swapfile', false)
 setOption('global', 'backup', false)
 setOption('global', 'undofile', true)
 setOption('global', 'undodir', os.getenv( "HOME" ) .. '/.config/nvim/undodir')
 setOption('global', 'scrolloff', 16)
-setOption('global', 'signcolumn', 'yes')
 setOption('buffer', 'autoindent', true)
 setOption('global', 'smarttab', true)
 setOption('buffer', 'smartindent', true)
@@ -65,3 +65,11 @@ augroup END
 
 -- Unset default keymappings for fern
 setGlobalVariable('fern#disable_default_mappings', 1)
+setGlobalVariable('fern#renderer', 'nerdfont')
+setGlobalVariable('loaded_netrw', 1)
+setGlobalVariable('loaded_netrwPlugin', 1)
+setGlobalVariable('loaded_netrwFileHandlers', 1)
+
+-- GitGutter
+setGlobalVariable('gitgutter_enabled', 1)
+setGlobalVariable('git_gutter_sign_priority', 1)

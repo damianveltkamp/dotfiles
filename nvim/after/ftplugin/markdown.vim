@@ -1,1 +1,1 @@
-autocmd BufWritePre <buffer> lua formatting()
+" autocmd BufWritePre <buffer> lua formatting()

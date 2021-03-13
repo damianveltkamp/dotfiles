@@ -1,1 +1,1 @@
-autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+" autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()

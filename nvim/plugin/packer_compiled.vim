@@ -36,29 +36,45 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
   ["emmet-vim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
+  ["fern-renderer-nerdfont.vim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/fern-renderer-nerdfont.vim"
   },
   ["fern.vim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/fern.vim"
   },
+  ["glyph-palette.vim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/glyph-palette.vim"
+  },
   gruvbox = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/gruvbox"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
-  nerdcommenter = {
+  ["nerdfont.vim"] = {
     loaded = true,
-    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/nerdcommenter"
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/nerdfont.vim"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/nvim-compe"
+  },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -67,6 +83,10 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["onedark.vim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/onedark.vim"
   },
   ["packer.nvim"] = {
     loaded = false,
@@ -85,6 +105,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/quick-scope"
   },
+  ["snippets.nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/snippets.nvim"
+  },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
@@ -96,6 +120,10 @@ _G.packer_plugins = {
   undotree = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/undotree"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-fugitive"] = {
     loaded = true,

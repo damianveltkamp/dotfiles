@@ -1,3 +1,5 @@
+require('theme/onedark')
+require('theme/start-screen')
 require('utils/setoptions')
 require('utils/setvariable')
 
@@ -7,6 +9,9 @@ local lualine = require('lualine')
 -- Statusline settings
 lualine.status()
 lualine.options.theme = 'wombat'
+
+-- Custom collors for quickscope and cursorlines
+setOption('window', 'cursorline', true)
 
 vim.api.nvim_command([[
 augroup CustomColors
@@ -19,15 +24,6 @@ augroup CustomColors
 
 augroup END
 ]])
-
--- Gruvbox settings
-setGlobalVariable('gruvbox_contrast_dark', 'hard')
-setGlobalVariable('gruvbox_invert_selection', '0')
-command 'colorscheme gruvbox'
-setOption('global', 'background', 'dark')
-
--- Cursorline settings
-setOption('window', 'cursorline', true)
 
 -- Fzf window styling
 setGlobalVariable('fzf_layout', {window = { width = 0.8, height = 0.8}})
