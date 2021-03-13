@@ -115,7 +115,7 @@ Clone this repository onto your machine:
 git clone https://github.com/damianveltkamp/dotfiles.git ~/damian-dotfiles
 ```
 
-Create a config directory on your machine on your home path
+Create a config directory on your machine on your home path if you don't already have one
 
 ```
 mkdir -p ~/.config
