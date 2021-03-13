@@ -19,6 +19,7 @@ Installation guide is written towards Macos users.
 - [Git](https://formulae.brew.sh/formula/git)
 - [Fzf](https://formulae.brew.sh/formula/fzf)
 - [Efm languageserver](https://formulae.brew.sh/formula/efm-langserver)
+- [Fd]()
 
 ## Installing
 
@@ -35,7 +36,7 @@ into your terminal:
 
 ### Tmux
 
-You can install Tmux by using homebrew
+You can install Tmux by using homebrew.
 
 ```
 brew install tmux
@@ -43,21 +44,62 @@ brew install tmux
 
 ### Ripgrep
 
-You can install Ripgrep by using homebrew
+You can install Ripgrep by using homebrew.
 
 ```
 brew install ripgrep
 ```
 
-## Brew packages
+### Node
 
-fd
-fzf
-git
-git-gui
-grep
-neovim
-nvm
-ripgrep
-tmux
-vim
+You can install Node from their [website](https://nodejs.org/en/download/), make sure you install the LTS version of node
+if you want to have the most stable version.
+
+### Nvm
+
+You can install Nvm by using homebrew.
+
+```
+brew install nvm
+```
+
+### Neovim
+
+This setup makes use of the new features in Neovim 0.5, this version is not officially released yet but we can install it with homebrew.
+This setup will not work with Neovim versions below 0.5.
+
+```
+brew install neovim --head
+```
+
+### Git
+
+You can install Git by using homebrew.
+
+```
+brew install neovim
+```
+
+### Fzf
+
+You can install Fzf by using homebrew.
+
+```
+brew install fzf
+```
+
+### Efm-languageserver
+
+You can install Efm-languageserver by using homebrew.
+
+```
+brew install efm-langserver
+```
+
+### Fd
+
+You can install Fd by using homebrew.
+
+```
+brew install fd
+```
