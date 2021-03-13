@@ -1,17 +1,18 @@
 # Dotfiles
 
 Repository for all my dotfile configurations.
-Installation guide is written towards Macos users.
+This setup makes use of the Neovim nightly build 0.5 and is not compatible with versions below 0.5.
+Installation guide is written towards Macos users and is only for installing my Neovim setup.
 
 ## Table of contents
 
 - [Prerequisites](#prerequisites)
-- [Installing](#installing)
+- [Installing prerequisites](#installing-prerequisites)
+- [Installing the setup](#installing-the-setup)
 
 ## Prerequisites
 
 - [Homebrew](https://brew.sh/)
-- [Tmux](https://formulae.brew.sh/formula/tmux)
 - [Ripgrep](https://formulae.brew.sh/formula/ripgrep)
 - [Node](https://nodejs.org/en/download/)
 - [Nvm](https://formulae.brew.sh/formula/nvm)
@@ -19,9 +20,9 @@ Installation guide is written towards Macos users.
 - [Git](https://formulae.brew.sh/formula/git)
 - [Fzf](https://formulae.brew.sh/formula/fzf)
 - [Efm languageserver](https://formulae.brew.sh/formula/efm-langserver)
-- [Fd]()
+- [Fd](https://formulae.brew.sh/formula/fd)
 
-## Installing
+## Installing prerequisites
 
 This installing section is written towards Macos users.
 
@@ -34,13 +35,15 @@ into your terminal:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Tmux
+### Zsh
 
-You can install Tmux by using homebrew.
+To change your default shell on Macos to zsh type the following command in the terminal.
 
 ```
-brew install tmux
+chsh -s /bin/zsh
 ```
+
+Enter your password when prompted. After doing this shutdown your terminal window and reopen it, you are now using Zsh as the default shell.
 
 ### Ripgrep
 
@@ -102,4 +105,24 @@ You can install Fd by using homebrew.
 
 ```
 brew install fd
+```
+
+## Installing the setup
+
+Clone this repository onto your machine:
+
+```
+git clone https://github.com/damianveltkamp/dotfiles.git ~/
+```
+
+Create a config directory on your machine on your home path
+
+```
+mkdir -p ~/.config/nvim
+```
+
+Move my configuration files into your configuration directory:
+
+```
+mv $HOME/dotfiles/nvim $HOME/.config/nvim
 ```
