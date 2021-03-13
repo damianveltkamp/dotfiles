@@ -121,8 +121,14 @@ Create a config directory on your machine on your home path
 mkdir -p ~/.config/nvim
 ```
 
+If you already have a config directory for nvim in ~/.config make sure to rename it by for example doing the following:
+
+```
+mv ~/.config/nvim ~/.config/old-nvim
+```
+
 Move my configuration files into your configuration directory:
 
 ```
-mv $HOME/damian-dotfiles/nvim $HOME/.config/nvim
+mv -i $HOME/damian-dotfiles/nvim $HOME/.config
 ```
