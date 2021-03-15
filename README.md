@@ -4,6 +4,8 @@ Repository for all my dotfile configurations.
 This setup makes use of the Neovim nightly build 0.5 and is not compatible with versions below 0.5.
 Installation guide is written towards Macos users and is only for installing my Neovim setup.
 
+For the complete [documentation](https://github.com/damianveltkamp/dotfiles/wiki/Configuration-documentation) check the wiki
+
 ## Table of contents
 
 - [Prerequisites](#prerequisites)
