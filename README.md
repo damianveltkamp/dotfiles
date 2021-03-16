@@ -9,7 +9,7 @@ But feel free to use these as a inspiration when creating your own setup.
 
 If you do end up deciding to install these configs I have a installation guide below.
 
-For the complete [documentation](https://github.com/damianveltkamp/dotfiles/wiki/Configuration-documentation) check the wiki
+For the complete [documentation](https://github.com/damianveltkamp/dotfiles/wiki) check the wiki
 
 ## Table of contents
 
