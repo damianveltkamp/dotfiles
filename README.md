@@ -28,6 +28,14 @@ For the complete [documentation](https://github.com/damianveltkamp/dotfiles/wiki
 - [Fzf](https://formulae.brew.sh/formula/fzf)
 - [Efm languageserver](https://formulae.brew.sh/formula/efm-langserver)
 - [Fd](https://formulae.brew.sh/formula/fd)
+- [Typescript](https://www.npmjs.com/package/typescript)
+- [Eslint_d](https://www.npmjs.com/package/eslint_d)
+- [Prettier](https://prettier.io/docs/en/install.html)
+- [Vim languageserver](https://github.com/iamcco/vim-language-server)
+- [Html languageserver](https://github.com/vscode-langservers/vscode-html-languageserver-bin)
+- [Css languageserver](https://github.com/vscode-langservers/vscode-css-languageserver-bin)
+- [Yaml languageserver](https://github.com/redhat-developer/yaml-language-server)
+- [Json languageserver](https://github.com/vscode-langservers/vscode-json-languageserver)
 
 ## Installing prerequisites
 
@@ -54,7 +62,7 @@ Enter your password when prompted. After doing this shutdown your terminal windo
 
 ### Ripgrep
 
-You can install Ripgrep by using homebrew.
+Install command:
 
 ```
 brew install ripgrep
@@ -67,7 +75,7 @@ if you want to have the most stable version.
 
 ### Nvm
 
-You can install Nvm by using homebrew.
+Install command:
 
 ```
 brew install nvm
@@ -84,7 +92,7 @@ brew install neovim --head
 
 ### Git
 
-You can install Git by using homebrew.
+Install command
 
 ```
 brew install neovim
@@ -92,7 +100,7 @@ brew install neovim
 
 ### Fzf
 
-You can install Fzf by using homebrew.
+Install command
 
 ```
 brew install fzf
@@ -100,7 +108,7 @@ brew install fzf
 
 ### Efm-languageserver
 
-You can install Efm-languageserver by using homebrew.
+Install command:
 
 ```
 brew install efm-langserver
@@ -108,10 +116,74 @@ brew install efm-langserver
 
 ### Fd
 
-You can install Fd by using homebrew.
+Install command:
 
 ```
 brew install fd
+```
+
+### Typescript
+
+Install command:
+
+```
+npm install -g typescript
+```
+
+### Eslint_d
+
+Install command:
+
+```
+npm install -g eslint_d
+```
+
+### Prettier
+
+Install command:
+
+```
+npm install -g prettier
+```
+
+### Vim languageserver
+
+Install command:
+
+```
+npm install -g vim-language-server
+```
+
+### Html languageserver
+
+Install command:
+
+```
+npm install -g vscode-html-languageserver-bin
+```
+
+### Css languageserver
+
+Install command:
+
+```
+npm install -g vscode-css-languageserver-bin
+```
+
+### Yaml languageserver
+
+Install command:
+
+```
+npm install -g yaml-language-server
+```
+
+### Json languageserver
+
+Install command:
+
+```
+npm install -g vscode-json-languageserver
 ```
 
 ## Installing the setup
@@ -138,4 +210,16 @@ Move my configuration files into your configuration directory:
 
 ```
 mv -i $HOME/damian-dotfiles/nvim $HOME/.config
+```
+
+Now the only thing left to do should be installing all packages with packer by.
+To do this open up nvim by typing nvim in the terminal, after it opened type the following commands
+in command mode.
+
+```
+:PackerCompile
+```
+
+```
+:PackerInstall
 ```
