@@ -1,0 +1,86 @@
+window:
+  padding:
+    x: 10
+    y: 10
+  decorations: none
+
+colors:
+  # Default colors
+  primary:
+    background: "#282c34"
+    # background: "#2E3440"
+    foreground: "#D8DEE9"
+
+# Normal colors
+  normal:
+    black: "#3B4252"
+    red: "#BF616A"
+    green: "#64E88C"
+    yellow: "#EBCB8B"
+    blue: "#81A1C1"
+    magenta: "#B48EAD"
+    cyan: "#88C0D0"
+    white: "#abb2bf"
+
+  # Bright colors
+  bright:
+    black: "#5c6370"
+    red: "#e06c75"
+    green: "#98c379"
+    yellow: "#FFBE6E"
+    blue: "#61afef"
+    magenta: "#c678dd"
+    cyan: "#87d7ff"
+    white: "#ECEFF4"
+
+background_opacity: 1.0
+
+font:
+  normal:
+    family: "Hack Nerd Font"
+    style: Regular
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
+  italic:
+    family: "Hack Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "Hack Nerd Font"
+    style: Bold Italic
+
+  # Point size
+  size: 14.0
+
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 10
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+selection:
+  semantic_escape_chars: ',?`|:"'' ()[]{}<>'
+  save_to_clipboard: true
+
+cursor:
+  unfocused_hollow: true
+
+live_config_reload: true
+
+key_bindings:
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
