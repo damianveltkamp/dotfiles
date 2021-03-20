@@ -59,6 +59,15 @@ local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+local check_back_space = function()
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
+end
+
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
@@ -149,25 +158,20 @@ local on_attach = function(client, bufnr)
 
   local opts = { noremap=true}
 
-  -- TODO set keymappings
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'ghi', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gsi', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '[d', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-
   buf_set_keymap('n', 'gdw', '<Cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<CR>', opts)
-
-  buf_set_keymap("n", "<leader>i", "<cmd> echo 43<CR>", opts)
-  buf_set_keymap("n", "<leader>z", "<cmd> echo 44<CR>", opts)
 
   if client.resolved_capabilities.completion then
     vim.cmd 'imap <silent> <C-n> <Plug>(completion_trigger)'
   end
 
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>i", "<cmd> echo 42<CR>", opts)
     vim.api.nvim_exec([[
     augroup Format
     autocmd! * <buffer>
@@ -221,7 +225,7 @@ local languages = {
   javascriptreact = {prettier, eslint},
   yaml = {prettier},
   json = {prettier},
-  html = {},
+  html = {prettier},
   scss = {prettier},
   css = {prettier},
   markdown = {prettier}

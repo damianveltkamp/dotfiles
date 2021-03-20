@@ -44,9 +44,8 @@ map('v', '<', '<gv')
 map('v', '>', '>gv')
 
 -- Spellchecking
-map('', '<F6>', '<cmd> setlocal spell! spelllang=nl<CR>')
+map('', '<F6>', '<cmd> set spelllang=nl<CR>')
 map('', '<F7>', '<cmd> set spelllang=en_us<CR>')
-map('', '<F8>', '<cmd> set nospell<CR>')
 
 -- Remove highlighting from previous search
 map('n', '<Space>', '<cmd> noh <CR>')

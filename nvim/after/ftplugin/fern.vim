@@ -12,4 +12,3 @@ nmap <buffer> v <Plug>(fern-action-open:vsplit)
 nmap <buffer> M <Plug>(fern-action-mark)
 nmap <buffer> sh <Plug>(fern-action-hidden:set)
 nmap <buffer> nsh <Plug>(fern-action-hidden:unset)
-

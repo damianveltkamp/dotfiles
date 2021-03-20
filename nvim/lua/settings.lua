@@ -5,6 +5,8 @@ vim.cmd 'filetype plugin indent on'
 vim.cmd 'syntax on'
 vim.cmd 'set noswapfile'
 vim.cmd 'set cindent'
+vim.cmd 'set signcolumn=yes'
+vim.cmd 'set jumpoptions+=stack'
 setOption('global', 'mouse', 'a')
 setOption('global', 'encoding', 'utf-8')
 setOption('window', 'number', true)
