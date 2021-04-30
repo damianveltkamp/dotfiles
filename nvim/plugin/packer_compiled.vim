@@ -52,6 +52,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/fern.vim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
   ["glyph-palette.vim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/glyph-palette.vim"
@@ -65,7 +69,6 @@ _G.packer_plugins = {
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lualine.nvim"] = {
-    config = { "\27LJ\2\nÁ\3\0\0\a\0\26\0\0316\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\3\0005\4\4\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\0034\4\3\0005\5\r\0005\6\14\0=\6\15\5>\5\1\4=\4\16\0035\4\17\0=\4\18\0035\4\19\0=\4\20\0035\4\21\0=\4\22\0035\4\23\0=\4\24\3=\3\25\2B\0\2\1K\0\1\0\rsections\14lualine_z\1\2\0\0\rlocation\14lualine_y\1\2\0\0\rprogress\14lualine_x\1\3\0\0\rencoding\rfiletype\14lualine_c\1\2\0\0\rfilename\14lualine_b\ncolor\1\0\2\afg\f#000000\abg\f#FFA1AA\1\2\2\0\vbranch\nupper\2\ticon\bîœ‚\14lualine_a\1\0\0\1\2\0\0\tmode\foptions\1\0\0\25component_separators\1\3\0\0\6|\6|\23section_separators\1\3\0\0\5\5\1\0\2\18icons_enabled\2\ntheme\vwombat\nsetup\flualine\frequire\0" },
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
@@ -134,9 +137,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
-  ["vim-gitgutter"] = {
+  ["vim-pandoc"] = {
     loaded = true,
-    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-pandoc"
+  },
+  ["vim-pandoc-syntax"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-pandoc-syntax"
+  },
+  ["vim-styled-components"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-styled-components"
   },
   ["vim-surround"] = {
     loaded = true,
@@ -152,8 +163,6 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: lualine.nvim
-try_loadstring("\27LJ\2\nÁ\3\0\0\a\0\26\0\0316\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\3\0005\4\4\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\0034\4\3\0005\5\r\0005\6\14\0=\6\15\5>\5\1\4=\4\16\0035\4\17\0=\4\18\0035\4\19\0=\4\20\0035\4\21\0=\4\22\0035\4\23\0=\4\24\3=\3\25\2B\0\2\1K\0\1\0\rsections\14lualine_z\1\2\0\0\rlocation\14lualine_y\1\2\0\0\rprogress\14lualine_x\1\3\0\0\rencoding\rfiletype\14lualine_c\1\2\0\0\rfilename\14lualine_b\ncolor\1\0\2\afg\f#000000\abg\f#FFA1AA\1\2\2\0\vbranch\nupper\2\ticon\bîœ‚\14lualine_a\1\0\0\1\2\0\0\tmode\foptions\1\0\0\25component_separators\1\3\0\0\6|\6|\23section_separators\1\3\0\0\5\5\1\0\2\18icons_enabled\2\ntheme\vwombat\nsetup\flualine\frequire\0", "config", "lualine.nvim")
 END
 
 catch

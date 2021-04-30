@@ -1,7 +1,9 @@
 require('utils/setvariable')
 require('utils/setoptions')
 require('lsp/diagnostics')
-require'snippets'.use_suggested_mappings()
+
+-- TODO define own mappings
+-- require'snippets'.use_suggested_mappings()
 
 local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -50,7 +52,9 @@ vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
     vim.fn.winrestview(view)
     if bufnr == vim.api.nvim_get_current_buf() then
       vim.cmd [[noautocmd :update]]
-      vim.cmd [[GitGutter]]
+
+      -- TODO check why gitgutter is called here
+      -- vim.cmd [[GitGutter]]
     end
   end
 end
@@ -94,7 +98,11 @@ vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', {expr = true})
 vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', {expr = true})
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', {expr = true})
 vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', {expr = true})
-vim.api.nvim_set_keymap('i', '<CR>', 'compe#confirm("<CR>")', {expr = true})
+
+-- TODO check why this fks up my enter key when completion window has no selection
+vim.cmd "inoremap <silent><expr> <CR>      compe#confirm('<CR>')"
+vim.cmd "inoremap <silent><expr> <C-Space> compe#complete()"
+-- vim.api.nvim_set_keymap('i', '<CR>', 'compe#confirm("<CR>")', {expr = true})
 
 -- Config symbols
 require('lspkind').init({
@@ -159,7 +167,9 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true}
 
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', 'ghi', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gsi', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -188,6 +198,8 @@ local on_attach = function(client, bufnr)
     vim.cmd [[autocmd CursorHold * lua require'nvim-lightbulb'.update_lightbulb()]]
     vim.cmd [[augroup END]]
 
+    -- TODO find out why telescope code actions is not working
+    -- buf_set_keymap('n', 'ga', '<Cmd>lua require("telescope.builtin").lsp_code_actions()<CR>', opts)
     buf_set_keymap('n', 'ga', '<Cmd> lua vim.lsp.buf.code_action() <CR>', opts)
   end
 end
@@ -225,10 +237,12 @@ local languages = {
   javascriptreact = {prettier, eslint},
   yaml = {prettier},
   json = {prettier},
-  html = {prettier},
+  html = {},
   scss = {prettier},
   css = {prettier},
-  markdown = {prettier}
+  markdown = {prettier},
+  pandoc = {prettier},
+  bib = {prettier}
 }
 
 nvim_lsp.efm.setup {

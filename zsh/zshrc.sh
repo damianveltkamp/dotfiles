@@ -13,6 +13,8 @@ fi
 
 zplug load
 
+# Setting PATH
+
 # VARIABLES
 export NOTES_DIR="$HOME/documents/notes"
 export NVM_DIR="$HOME/.nvm"
@@ -88,9 +90,18 @@ function up_widget() {
   zle accept-line
 }
 
+# CD into work directory
+function work_directory() {
+  BUFFER="cd ~/documents/work"
+  zle accept-line
+}
+
 function my_init() {
   zle -N development_directory
   bindkey "^p" development_directory
+
+  zle -N work_directory
+  bindkey "^w" work_directory
 
   zle -N notes_directory
   bindkey "^n" notes_directory
@@ -186,3 +197,5 @@ nvi() {
 }
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
+
+export PATH="$HOME/.config/bin:$PATH"

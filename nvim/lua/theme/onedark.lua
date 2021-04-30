@@ -1,10 +1,13 @@
+require('utils/setvariable')
+
+setGlobalVariable('onedark_hide_endofbuffer', 1)
+setGlobalVariable('onedark_terminal_italics', 1)
+setGlobalVariable('onedark_termcolors', 1)
+-- TODO Set global function
 vim.api.nvim_command([[
 colorscheme onedark
 
 highlight Comment cterm=italic gui=italic
-let g:onedark_hide_endofbuffer=1
-let g:onedark_terminal_italics=1
-let g:onedark_termcolors=256
 
 hi CursorLineNR guibg=#8ac6f2 |
 hi CursorLineNR guifg=#000000

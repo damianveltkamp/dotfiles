@@ -14,30 +14,15 @@ return require('packer').startup(function()
   use 'lambdalisue/glyph-palette.vim'
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
-  use 'airblade/vim-gitgutter'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
   use {
     'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    config = function()
-      require('lualine').setup{
-        options = {
-          theme = 'wombat',
-          section_separators = {'', ''},
-          component_separators = {'|', '|'},
-          icons_enabled = true,
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = {
-            {'branch', icon = '', upper = true, color = {fg = '#000000', bg = '#FFA1AA'}}
-          },
-          lualine_c = { 'filename' },
-          lualine_x = { 'encoding', 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location'  },
-        }
-      }
-    end
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use 'unblevable/quick-scope'
   use 'lumiliet/vim-twig'
@@ -51,4 +36,7 @@ return require('packer').startup(function()
   use 'onsails/lspkind-nvim'
   use 'hrsh7th/vim-vsnip'
   use 'Glench/Vim-Jinja2-Syntax'
+  use 'styled-components/vim-styled-components'
+  use 'vim-pandoc/vim-pandoc'
+  use 'vim-pandoc/vim-pandoc-syntax'
 end)

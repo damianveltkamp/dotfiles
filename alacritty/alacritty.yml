@@ -1,8 +1,8 @@
 window:
+  decorations: 'none'
   padding:
     x: 10
     y: 10
-  decorations: none
 
 colors:
   # Default colors

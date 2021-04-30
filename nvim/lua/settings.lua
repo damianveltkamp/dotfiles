@@ -38,7 +38,7 @@ setGlobalVariable('qs_highlight_on_keys', {'f', 'F', 't', 'T'})
 -- Highlight yanked text
 vim.api.nvim_command([[
 augroup LuaHighlight
-    autocmd TextYankPost * lua require 'vim.highlight'.on_yank({timeout = 80})
+    autocmd TextYankPost * :lua require 'vim.highlight'.on_yank({timeout = 80})
 augroup = END
 ]])
 
@@ -72,6 +72,12 @@ setGlobalVariable('loaded_netrw', 1)
 setGlobalVariable('loaded_netrwPlugin', 1)
 setGlobalVariable('loaded_netrwFileHandlers', 1)
 
--- GitGutter
-setGlobalVariable('gitgutter_enabled', 1)
-setGlobalVariable('git_gutter_sign_priority', 1)
+-- Pandoc setup
+setGlobalVariable('pandoc#completion#bib#mode', 'citeproc')
+vim.cmd "let g:pandoc#biblio#bibs = ['~/.pandoc/default.bib']"
+
+-- Unset mappings for autopairs plugin
+setGlobalVariable('AutoPairsMapCh', 0)
+
+-- Unset mappings for autopairs plugin
+vim.cmd 'let g:pandoc#modules#disabled = ["folding"]'

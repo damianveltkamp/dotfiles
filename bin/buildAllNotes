@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+
+# Set default variable values
+FILE=unset
+EXTENSION="pdf"
+BIBLOC="$NOTES_DIR/references.bib"
+
+# Show message when undefined options are given
+usage()
+{
+  echo "Usage: buildNote [ -e = extension wich you want to build ] [ -b = location for your bib file ]"
+  exit 2
+}
+
+# Set options to their variable
+while getopts e:b:f: opt
+do
+  case "$opt" in
+    f) FILE=$OPTARG
+      ;;
+    e) EXTENSION=$OPTARG
+      ;;
+    b) BIBLOC=$OPTARG
+      ;;
+    *)  echo "Unexpected option: $opt"
+      usage
+      break
+      ;;
+  esac
+done
+
+function compileToPdf() {
+  find . -type f -name "*.md" -exec buildNote -f {} -e $EXTENSION -b $BIBLOC  \;
+}
+
+compileToPdf 2>/dev/null ; osascript -e 'display notification "Finished compiling" with title "Pandoc"'   &> /dev/null &

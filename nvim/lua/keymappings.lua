@@ -2,7 +2,6 @@ require('utils/setmapping')
 
 -- Set leader key
 vim.cmd 'let mapleader = " "'
-vim.cmd 'let g:gitgutter_map_keys = 0'
 
 -- Extreme movementkeys
 map('n', 'H', '0')
@@ -64,22 +63,6 @@ map('n', '<leader>gc', '<cmd> Git commit <CR>')
 map('n', '<leader>gp', '<cmd> Git push <CR>')
 map('n', '<leader>gj', '<cmd> diffget //3 <CR>')
 map('n', '<leader>gf', '<cmd> diffget //2 <CR>')
-
--- Completion menu navigation
--- local function t(str)
---     return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
-
--- function smart_tab()
---     return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
--- end
-
--- function smart_tab_backwards()
---     return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
--- end
-
--- vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.smart_tab()', {expr = true, noremap = true})
--- vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_tab_backwards()', {expr = true, noremap = true})
 
 -- Undotree bindings
 map('n', '<leader>u', '<cmd> UndotreeShow <CR>')

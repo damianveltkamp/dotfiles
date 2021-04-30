@@ -1,5 +1,3 @@
-call glyph_palette#apply()
-
 highlight TelescopeSelection guifg=#87d7ff gui=bold
 highlight TelescopeMatching guifg=#FFA1AA
 

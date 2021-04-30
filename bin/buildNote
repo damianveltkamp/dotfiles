@@ -1,0 +1,64 @@
+#!/usr/bin/env zsh
+
+# Set default variable values
+FILE=unset
+EXTENSION="pdf"
+BIBLOC="$NOTES_DIR/references.bib"
+CSL="$HOME/.config/pandoc/citation/styles/apa.csl"
+HEADER="$HOME/.config/pandoc/template/header.tex"
+LANGUAGE="NL"
+
+# Show message when undefined options are given
+usage()
+{
+  echo "Usage: buildNote [ -e = extension wich you want to build ] [ -b = location for your bib file ]"
+  exit 2
+}
+
+# Set options to their variable
+while getopts e:b:f:l: opt
+do
+  case "$opt" in
+    f) FILE=$OPTARG
+      ;;
+    e) EXTENSION=$OPTARG
+      ;;
+    b) BIBLOC=$OPTARG
+      ;;
+    l) LANGUAGE=$OPTARG
+      ;;
+    *)  echo "Unexpected option: $opt"
+      usage
+      break
+      ;;
+  esac
+done
+
+# TODO create function that returns table of contents title based on language flag
+# function tocTitle() {
+#   if [[$LANGUAGE == "NL"]]
+#     return 'toc-title:Inhoudsopgave'
+#   fi
+
+#   return 'toc-title:Table of contents'
+# }
+
+# filename=$1
+target="$(dirname "${FILE}")/$EXTENSION"
+outputFile="$(basename "$FILE" .md).$EXTENSION"
+
+# Create target directory if it does not already exist
+mkdir -p $target
+
+# Compile document with pandoc
+pandoc \
+  -H $HEADER \
+  --pdf-engine=xelatex \
+  --filter pandoc-crossref \
+  --citeproc --bibliography $BIBLOC \
+  --csl $CSL \
+  --toc \
+  -V linkcolor=blue \
+  -V 'geometry:margin=1in' \
+  -V 'toc-title:Inhoudsopgave' \
+  -o "$target/$outputFile" $FILE

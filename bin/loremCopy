@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+# Show message when undefined options are given
+usage()
+{
+  echo "Usage: loremCopy [ -s = Amount of lorem sentences to be copied into clipboard ] [ -n = Amount of lorem words to be copied into clipboard]"
+  exit 2
+}
+
+while getopts s:n: opt
+do
+  case "$opt" in
+    s) SENTENCES=$OPTARG
+      ;;
+    n) WORDS=$OPTARG
+      ;;
+    *) echo "Unexpected option: $opt"
+      usage
+      break
+      ;;
+  esac
+done
+
+if [ -n "${SENTENCES+1}" ]; then
+  lorem -s $SENTENCES | pbcopy
+fi
+
+if [ -n "${WORDS+1}" ]; then
+  lorem -n $WORDS | pbcopy
+fi
