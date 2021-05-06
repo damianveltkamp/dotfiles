@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+# Show message when undefined options are given
+usage()
+{
+  echo "Usage: openNote [ -f = File to be opened ]"
+  exit 2
+}
+
+# Set options to their variable
+while getopts f:a: opt
+do
+  case "$opt" in
+    f) FILEPATH=$OPTARG
+      DIRNAME=$OPTARG:h
+      FILENAME=$OPTARG:t:r
+      ;;
+    a) APPLICATION=$OPTARG
+      ;;
+    *)  echo "Unexpected option: $opt"
+      usage
+      break
+      ;;
+  esac
+done
+
+if [ -n "${APPLICATION+1}" ]; then
+  open -a $APPLICATION "$DIRNAME/pdf/$FILENAME.pdf"
+fi
+
+if [ -z "${APPLICATION+1}" ]; then
+  open -a  "Preview" "$DIRNAME/pdf/$FILENAME.pdf"
+fi
