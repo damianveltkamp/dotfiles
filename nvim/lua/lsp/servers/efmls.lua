@@ -1,12 +1,3 @@
--- Format options for prettier
-local format_options_prettier = {
-  tabWidth = 4,
-  singleQuote = true,
-  trailingComma = 'all',
-  configPrecedence = 'prefer-file'
-}
-
--- Formatting via efm
 local eslint = require 'lsp/efm/eslint'
 local prettier = require 'lsp/efm/prettier'
 

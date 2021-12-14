@@ -1,3 +1,10 @@
+local format_options_prettier = {
+  tabWidth = 4,
+  singleQuote = true,
+  trailingComma = 'all',
+  configPrecedence = 'prefer-file'
+}
+
 -- Binding format options
 vim.g.format_options_typescript = format_options_prettier
 vim.g.format_options_javascript = format_options_prettier
