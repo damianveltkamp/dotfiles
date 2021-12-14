@@ -26,7 +26,7 @@ setOption('global', 'undofile', true)
 setOption('global', 'undodir', os.getenv( "HOME" ) .. '/.config/nvim/undodir')
 setOption('global', 'scrolloff', 16)
 setOption('buffer', 'autoindent', true)
-setOption('global', 'smarttab', true)
+setOption('global','smarttab', true)
 setOption('buffer', 'smartindent', true)
 setOption('global', 'splitbelow', true)
 setOption('global', 'splitright', true)
@@ -59,7 +59,6 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
-
 augroup THE_PRIMEAGEN
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
@@ -80,4 +79,4 @@ vim.cmd "let g:pandoc#biblio#bibs = ['~/.pandoc/default.bib']"
 setGlobalVariable('AutoPairsMapCh', 0)
 
 -- Unset mappings for autopairs plugin
-vim.cmd 'let g:pandoc#modules#disabled = ["folding"]'
+vim.cmd 'let g:pandoc#modules#disabled = ["folding"]' 

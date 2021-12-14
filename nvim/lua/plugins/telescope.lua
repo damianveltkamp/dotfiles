@@ -14,7 +14,7 @@ telescope.setup {
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
 
-    file_ignore_patterns = {'undodir/*', 'node_modules/*', 'package.lock.json'},
+    file_ignore_patterns = {'undodir/*', 'node_modules/*', 'package.lock.json', 'legacy/*'},
 
     mappings = {
       i = {

@@ -69,3 +69,10 @@ map('n', '<leader>u', '<cmd> UndotreeShow <CR>')
 
 -- Fern bindings
 map('n', '<C-n>', '<cmd> Fern . -drawer -reveal=% -toggle -width=35 <CR>')
+
+-- Format document
+map('n', '<leader>fd', '<cmd> silent !eslint --fix % <CR>')
+
+-- Switch tab stop
+map('n', '<leader>ts2', '<cmd> set tabstop=2 shiftwidth=2 softtabstop=2 <CR>')
+map('n', '<leader>ts4', '<cmd> set tabstop=4 shiftwidth=4 softtabstop=4 <CR>')

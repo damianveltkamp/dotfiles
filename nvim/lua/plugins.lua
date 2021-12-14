@@ -39,4 +39,6 @@ return require('packer').startup(function()
   use 'styled-components/vim-styled-components'
   use 'vim-pandoc/vim-pandoc'
   use 'vim-pandoc/vim-pandoc-syntax'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 end)
