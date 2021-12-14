@@ -35,9 +35,7 @@ function on_attach(client, bufnr)
     vim.cmd [[autocmd CursorHold * lua require'nvim-lightbulb'.update_lightbulb()]]
     vim.cmd [[augroup END]]
 
-    -- TODO find out why telescope code actions is not working
-    -- buf_set_keymap('n', 'ga', '<Cmd>lua require("telescope.builtin").lsp_code_actions()<CR>', opts)
-    map('n', 'ga', '<Cmd> lua vim.lsp.buf.code_action() <CR>', opts)
+    map('n', '<leader>ga', '<cmd> lua require("telescope.builtin").lsp_code_actions()<CR>')
   end
 end
 

@@ -63,6 +63,8 @@ map('n', '<leader>gc', '<cmd> Git commit <CR>')
 map('n', '<leader>gp', '<cmd> Git push <CR>')
 map('n', '<leader>gj', '<cmd> diffget //3 <CR>')
 map('n', '<leader>gf', '<cmd> diffget //2 <CR>')
+map('n', '<leader>gb', '<cmd> lua require"gitsigns".blame_line{full=true} <CR>')
+-- map('n', '<leader>gbt', '<cmd> Gitsigns toggle_current_line_blame <CR>')
 
 -- Undotree bindings
 map('n', '<leader>u', '<cmd> UndotreeShow <CR>')
