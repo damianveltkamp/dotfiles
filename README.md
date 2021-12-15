@@ -129,6 +129,12 @@ Install command:
 npm install -g typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
 ```
 
+### Git repos
+
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 ## Installing the setup
 
 THIS IS WIP (Currently working on implementing Gnu stow for creation of symlinks)
