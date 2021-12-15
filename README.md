@@ -16,6 +16,7 @@ For the complete [documentation](https://github.com/damianveltkamp/dotfiles/wiki
 - [Prerequisites](#prerequisites)
 - [Installing prerequisites](#installing-prerequisites)
 - [Installing the setup](#installing-the-setup)
+- [Stow](#stow)
 
 ## Prerequisites
 
@@ -222,4 +223,12 @@ in command mode.
 
 ```
 :PackerInstall
+```
+
+## Stow
+
+Making a simlink into ~/.config for nvim setup
+
+```
+stow --ignore ".DS_Store" -vt ~/ nvim
 ```
