@@ -83,11 +83,10 @@ brew install nvm
 
 ### Neovim
 
-This setup makes use of the new features in Neovim 0.5, this version is not officially released yet but we can install it with homebrew.
 This setup will not work with Neovim versions below 0.5.
 
 ```
-brew install neovim --head
+brew install neovim
 ```
 
 ### Git
@@ -95,7 +94,7 @@ brew install neovim --head
 Install command
 
 ```
-brew install neovim
+brew install git
 ```
 
 ### Fzf
