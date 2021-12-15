@@ -16,7 +16,6 @@ For the complete [documentation](https://github.com/damianveltkamp/dotfiles/wiki
 - [Prerequisites](#prerequisites)
 - [Installing prerequisites](#installing-prerequisites)
 - [Installing the setup](#installing-the-setup)
-- [Stow](#stow)
 
 ## Prerequisites
 
@@ -189,6 +188,8 @@ npm install -g vscode-json-languageserver
 
 ## Installing the setup
 
+THIS IS WIP (Currently working on implementing Gnu stow for creation of symlinks)
+
 Clone this repository onto your machine:
 
 ```
@@ -201,16 +202,10 @@ Create a config directory on your machine on your home path if you don't already
 mkdir -p ~/.config
 ```
 
-If you already have a config directory for nvim in ~/.config make sure to rename it by for example doing the following:
+Making a simlink into ~/.config for nvim setup
 
 ```
-mv ~/.config/nvim ~/.config/old-nvim
-```
-
-Move my configuration files into your configuration directory:
-
-```
-mv -i $HOME/damian-dotfiles/nvim $HOME/.config
+stow --ignore ".DS_Store" -vt ~/ nvim
 ```
 
 Now the only thing left to do should be installing all packages with packer by.
@@ -223,12 +218,4 @@ in command mode.
 
 ```
 :PackerInstall
-```
-
-## Stow
-
-Making a simlink into ~/.config for nvim setup
-
-```
-stow --ignore ".DS_Store" -vt ~/ nvim
 ```
