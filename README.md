@@ -122,68 +122,12 @@ Install command:
 brew install fd
 ```
 
-### Typescript
+### NPM packages
 
 Install command:
 
 ```
-npm install -g typescript
-```
-
-### Eslint_d
-
-Install command:
-
-```
-npm install -g eslint_d
-```
-
-### Prettier
-
-Install command:
-
-```
-npm install -g prettier
-```
-
-### Vim languageserver
-
-Install command:
-
-```
-npm install -g vim-language-server
-```
-
-### Html languageserver
-
-Install command:
-
-```
-npm install -g vscode-html-languageserver-bin
-```
-
-### Css languageserver
-
-Install command:
-
-```
-npm install -g vscode-css-languageserver-bin
-```
-
-### Yaml languageserver
-
-Install command:
-
-```
-npm install -g yaml-language-server
-```
-
-### Json languageserver
-
-Install command:
-
-```
-npm install -g vscode-json-languageserver
+npm install -g typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
 ```
 
 ## Installing the setup
