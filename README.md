@@ -157,7 +157,7 @@ Making a simlink into ~/.config for nvim setup
 stow --ignore ".DS_Store" -vt ~/ nvim pandoc
 ```
 
-Now the only thing left to do should be installing all packages with packer by.
+Now the only thing left to do should be installing all packages with packer.
 To do this open up nvim by typing nvim in the terminal, after it opened type the following commands
 in command mode.
 
