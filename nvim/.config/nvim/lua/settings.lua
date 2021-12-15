@@ -23,7 +23,7 @@ setOption('global', 'updatetime', 50)
 setOption('window', 'wrap', false)
 setOption('global', 'backup', false)
 setOption('global', 'undofile', true)
-setOption('global', 'undodir', os.getenv( "HOME" ) .. '/.config/nvim/undodir')
+setOption('global', 'undodir', os.getenv( "HOME" ) .. '/.config/undodir')
 setOption('global', 'scrolloff', 16)
 setOption('buffer', 'autoindent', true)
 setOption('global','smarttab', true)
@@ -79,4 +79,4 @@ vim.cmd "let g:pandoc#biblio#bibs = ['~/.pandoc/default.bib']"
 setGlobalVariable('AutoPairsMapCh', 0)
 
 -- Unset mappings for autopairs plugin
-vim.cmd 'let g:pandoc#modules#disabled = ["folding"]' 
+vim.cmd 'let g:pandoc#modules#disabled = ["folding"]'
