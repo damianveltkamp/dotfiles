@@ -31,6 +31,9 @@ map('n', '<leader>l', '<cmd> wincmd l <CR>')
 map('n', '<TAB>', '<cmd> bnext <CR>')
 map('n', '<S-TAB>', '<cmd> bprevious <CR>')
 
+-- Closes all buffers except current one
+map('n', 'cb', '<cmd> %bd|e#|bd# <CR>');
+
 -- Paste from blackhole register
 map('v', '<leader>p', '"_dP')
 
