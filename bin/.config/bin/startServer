@@ -3,14 +3,35 @@
 CURRENT_PANE=$TMUX_PANE
 ALL_PANES=$(tmux list-panes)
 
-read '?Package Manager: ' packageManager
-read '?Server start command: ' serverStartCommand
+while getopts p:c: opt
+do
+  case "$opt" in
+    p) PACKAGEMANAGER=$OPTARG
+      ;;
+    c) STARTCOMMAND=$OPTARG
+      ;;
+    *)  echo "Unexpected option: $opt"
+      usage
+      break
+      ;;
+  esac
+done
+
+echo $STARTCOMMAND
+
+if [ -z "$PACKAGEMANAGER" ]; then
+    read '?Package Manager: ' PACKAGEMANAGER
+fi
+
+if [ -z "$STARTCOMMAND" ]; then
+    read '?Server start command: ' STARTCOMMAND
+fi
 
 ## Check if ALL_PANES has more then 1 line
 ### if multiple lines then there are more than 1 tmux pane
 if (( $(grep -c . <<<"$ALL_PANES") > 1 )) then
-  tmux send-keys -t right "nvm use && ${packageManager} ${serverStartCommand}" Enter
+  tmux send-keys -t right "nvm use && ${PACKAGEMANAGER} ${STARTCOMMAND}" Enter
 else
   tmux split-window -h -c "#{pane_current_path}"
-  tmux send-keys -t right "nvm use && ${packageManager} ${serverStartCommand}" Enter
+  tmux send-keys -t right "nvm use && ${PACKAGEMANAGER} ${STARTCOMMAND}" Enter
 fi
