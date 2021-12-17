@@ -41,4 +41,11 @@ return require('packer').startup(function()
   use 'vim-pandoc/vim-pandoc-syntax'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use {
+    "ray-x/lsp_signature.nvim",
+  }
 end)

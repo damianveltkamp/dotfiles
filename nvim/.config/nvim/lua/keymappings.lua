@@ -64,6 +64,7 @@ map('n', '<leader>nd', '<cmd> lua require("plugins/telescope").search_notes()<CR
 map('n', '<leader>gs', '<cmd> Git <CR>')
 map('n', '<leader>gc', '<cmd> Git commit <CR>')
 map('n', '<leader>gp', '<cmd> Git push <CR>')
+map('n', '<leader>gsu', '<cmd> !git su <CR>')
 map('n', '<leader>gj', '<cmd> diffget //3 <CR>')
 map('n', '<leader>gf', '<cmd> diffget //2 <CR>')
 map('n', '<leader>gb', '<cmd> lua require"gitsigns".blame_line{full=true} <CR>')

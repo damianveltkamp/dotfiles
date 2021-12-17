@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+CURRENT_PANE=$TMUX_PANE
+ALL_PANES=$(tmux list-panes)
+
+read '?Package Manager: ' packageManager
+read '?Server start command: ' serverStartCommand
+
+## Check if ALL_PANES has more then 1 line
+### if multiple lines then there are more than 1 tmux pane
+if (( $(grep -c . <<<"$ALL_PANES") > 1 )) then
+  tmux send-keys -t right "nvm use && ${packageManager} ${serverStartCommand}" Enter
+else
+  tmux split-window -h -c "#{pane_current_path}"
+  tmux send-keys -t right "nvm use && ${packageManager} ${serverStartCommand}" Enter
+fi
