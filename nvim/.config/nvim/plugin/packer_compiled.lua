@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -200,6 +205,11 @@ _G.packer_plugins = {
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
   },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
+    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -220,6 +230,11 @@ _G.packer_plugins = {
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-jsx-typescript"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-jsx-typescript",
+    url = "https://github.com/peitalin/vim-jsx-typescript"
+  },
   ["vim-pandoc"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-pandoc",
@@ -229,6 +244,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-pandoc-syntax",
     url = "https://github.com/vim-pandoc/vim-pandoc-syntax"
+  },
+  ["vim-sneak"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/vim-sneak",
+    url = "https://github.com/justinmk/vim-sneak"
   },
   ["vim-styled-components"] = {
     loaded = true,

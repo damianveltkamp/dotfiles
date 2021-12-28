@@ -32,7 +32,7 @@ map('n', '<TAB>', '<cmd> bnext <CR>')
 map('n', '<S-TAB>', '<cmd> bprevious <CR>')
 
 -- Closes all buffers except current one
-map('n', 'cb', '<cmd> %bd|e#|bd# <CR>');
+map('n', '<leader>cb', '<cmd> %bd|e#|bd# <CR>');
 
 -- Paste from blackhole register
 map('v', '<leader>p', '"_dP')
@@ -59,6 +59,7 @@ map('n', '<leader>pb', '<cmd> lua require("telescope.builtin").buffers() <CR>')
 map('n', '<leader>th', '<cmd> lua require("telescope.builtin").help_tags()<CR>')
 map('n', '<leader>vrc', '<cmd> lua require("plugins/telescope").search_dotfiles()<CR>')
 map('n', '<leader>nd', '<cmd> lua require("plugins/telescope").search_notes()<CR>')
+map('n', '<leader>mf', '<cmd> lua require("telescope").extensions.media_files.media_files() <CR>')
 
 -- Git keybindings
 map('n', '<leader>gs', '<cmd> Git <CR>')
@@ -75,9 +76,6 @@ map('n', '<leader>u', '<cmd> UndotreeShow <CR>')
 
 -- Fern bindings
 map('n', '<C-n>', '<cmd> Fern . -drawer -reveal=% -toggle -width=35 <CR>')
-
--- Format document
-map('n', '<leader>fd', '<cmd> silent !eslint --fix % <CR>')
 
 -- Switch tab stop
 map('n', '<leader>ts2', '<cmd> set tabstop=2 shiftwidth=2 softtabstop=2 <CR>')

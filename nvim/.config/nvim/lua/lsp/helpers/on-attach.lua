@@ -3,16 +3,18 @@ require('utils/setmapping')
 function on_attach(client, bufnr)
   local opts = { noremap=true}
 
-  map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  map('n', 'ghi', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   map('n', 'gsi', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  map('n', '[d', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  map('n', ']d', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  map('n', 'gdw', '<Cmd>Telescope diagnostics<CR>', opts)
+  map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  map('n', 'gdw', '<cmd>Telescope diagnostics<CR>', opts)
+
+
+  map('n', 'gh', '<cmd> :Lspsaga hover_doc <CR>', opts)
 
   if client.resolved_capabilities.completion then
     vim.cmd 'imap <silent> <C-n> <Plug>(completion_trigger)'
@@ -35,7 +37,8 @@ function on_attach(client, bufnr)
     vim.cmd [[autocmd CursorHold * lua require'nvim-lightbulb'.update_lightbulb()]]
     vim.cmd [[augroup END]]
 
-    map('n', '<leader>ga', '<cmd> lua require("telescope.builtin").lsp_code_actions()<CR>')
+    -- map('n', '<leader>ga', '<cmd> lua require("lspsaga.codeaction").code_action() <CR>')
+    map('n', '<leader>ga', '<cmd> Lspsaga code_action <CR>')
   end
 end
 

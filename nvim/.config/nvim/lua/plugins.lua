@@ -48,4 +48,8 @@ return require('packer').startup(function()
   use {
     "ray-x/lsp_signature.nvim",
   }
+  use 'justinmk/vim-sneak'
+  use 'nvim-telescope/telescope-media-files.nvim'
+  use 'peitalin/vim-jsx-typescript'
+  use 'tami5/lspsaga.nvim'
 end)

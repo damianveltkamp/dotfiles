@@ -80,3 +80,8 @@ setGlobalVariable('AutoPairsMapCh', 0)
 
 -- Unset mappings for autopairs plugin
 vim.cmd 'let g:pandoc#modules#disabled = ["folding"]'
+
+-- Vim sneak settings
+vim.cmd "let g:sneak#prompt = '🔎'"
+vim.cmd 'let g:sneak#use_ic_scs = 1'
+vim.cmd 'let g:sneak#label = 1'
