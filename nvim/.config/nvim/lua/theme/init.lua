@@ -1,10 +1,18 @@
+local lualine_status_ok, lualine = pcall(require, 'lualine')
+if not lualine_status_ok then
+  vim.notify('Not able to load in lualine', 'error')
+  return
+end
+
 require('theme/onedark')
+require('theme/highlights/generic')
+require('theme/highlights/diagnostics')
 require('theme/start-screen')
 require('utils/setoptions')
 require('utils/setvariable')
 
 -- Statusline settings
-require('lualine').setup{
+lualine.setup{
   options = {
     theme = 'wombat',
     component_separators = {'|', '|'},

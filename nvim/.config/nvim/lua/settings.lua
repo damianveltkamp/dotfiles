@@ -1,3 +1,9 @@
+local notify_status_ok, notify = pcall(require, 'notify')
+if not notify_status_ok then
+  vim.notify('Not able to load in notify', 'error')
+  return
+end
+
 require('utils/setoptions')
 require('utils/setvariable')
 
@@ -7,6 +13,7 @@ vim.cmd 'set noswapfile'
 vim.cmd 'set cindent'
 vim.cmd 'set signcolumn=yes'
 vim.cmd 'set jumpoptions+=stack'
+vim.notify = notify
 setOption('global', 'mouse', 'a')
 setOption('global', 'encoding', 'utf-8')
 setOption('window', 'number', true)

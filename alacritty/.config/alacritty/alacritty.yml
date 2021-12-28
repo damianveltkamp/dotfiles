@@ -1,5 +1,5 @@
 window:
-  decorations: 'none'
+  decorations: "none"
   padding:
     x: 10
     y: 10
@@ -11,7 +11,7 @@ colors:
     # background: "#2E3440"
     foreground: "#D8DEE9"
 
-# Normal colors
+  # Normal colors
   normal:
     black: "#3B4252"
     red: "#BF616A"
@@ -50,7 +50,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 21.0
 
   offset:
     x: 0

@@ -1,5 +1,14 @@
-local eslint = require 'lsp/efm/eslint'
-local prettier = require 'lsp/efm/prettier'
+local eslint_status_ok, eslint = pcall(require, 'lsp/efm/eslint')
+if not eslint_status_ok then
+  vim.notify('Not able to load in eslint config', 'error')
+  return
+end
+
+local prettier_status_ok, prettier = pcall(require, 'lsp/efm/prettier')
+if not prettier_status_ok then
+  vim.notify('Not able to load in prettier config', 'error')
+  return
+end
 
 -- TODO add back prettier for html when i find a way to implement nunjucks formatting
 local languages = {
@@ -9,7 +18,6 @@ local languages = {
   javascriptreact = {prettier, eslint},
   yaml = {prettier},
   json = {prettier},
-  html = {prettier},
   scss = {prettier},
   css = {prettier},
   markdown = {prettier},

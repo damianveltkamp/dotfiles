@@ -8,7 +8,6 @@ function on_attach(client, bufnr)
   map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   map('n', 'gsi', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   map('n', 'gdw', '<cmd>Telescope diagnostics<CR>', opts)
@@ -38,7 +37,7 @@ function on_attach(client, bufnr)
     vim.cmd [[augroup END]]
 
     -- map('n', '<leader>ga', '<cmd> lua require("lspsaga.codeaction").code_action() <CR>')
-    map('n', '<leader>ga', '<cmd> Lspsaga code_action <CR>')
+    map('n', 'ga', '<cmd> Lspsaga code_action <CR>')
   end
 end
 

@@ -83,3 +83,9 @@ map('n', '<leader>ts4', '<cmd> set tabstop=4 shiftwidth=4 softtabstop=4 <CR>')
 
 -- Keymapping to start a development server
 map('n', '<leader>ss', "<cmd> lua startServer() <CR>")
+
+-- Keymappings for quickfix list
+map('n', '<leader>qo', "<cmd> copen <CR>")
+map('n', '<leader>qc', "<cmd> cexpr []<CR>")
+map('n', '<leader>qn', "<cmd> cn <CR>")
+map('n', '<leader>qp', "<cmd> cp <CR>")

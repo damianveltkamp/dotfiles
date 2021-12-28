@@ -1,8 +1,32 @@
-local telescope = require('telescope')
-local actions = require('telescope.actions')
-local builtin = require('telescope.builtin')
-local previewers = require('telescope.previewers')
-local sorters = require('telescope.sorters')
+local telescope_status_ok, telescope = pcall(require, 'telescope')
+if not telescope_status_ok then
+  vim.notify('Not able to load in telescope', 'error')
+  return
+end
+
+local actions_status_ok, actions = pcall(require, 'telescope.actions')
+if not actions_status_ok then
+  vim.notify('Not able to load in telescope actions', 'error')
+  return
+end
+
+local builtin_status_ok, builtin = pcall(require, 'telescope.builtin')
+if not builtin_status_ok then
+  vim.notify('Not able to load in telescope builtin', 'error')
+  return
+end
+
+local previewers_status_ok, previewers = pcall(require, 'telescope.previewers')
+if not previewers_status_ok then
+  vim.notify('Not able to load in telescope previewers', 'error')
+  return
+end
+
+local sorters_status_ok, sorters = pcall(require, 'telescope.sorters')
+if not sorters_status_ok then
+  vim.notify('Not able to load in telescope sorters', 'error')
+  return
+end
 
 telescope.setup {
   defaults = {

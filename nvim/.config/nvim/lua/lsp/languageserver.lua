@@ -6,8 +6,9 @@ require('utils/setvariable')
 require('utils/setoptions')
 require('lsp/diagnostics')
 require('lsp/helpers/on-attach')
-require('lsp/helpers/completion')
+require('lsp/helpers/treesitter')
 require('lsp/helpers/lspkind')
+require('lsp/helpers/completion')
 require('lsp/helpers/formatting')
 
 -- Servers

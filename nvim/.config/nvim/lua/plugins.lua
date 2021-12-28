@@ -1,5 +1,30 @@
 vim.cmd [[packadd packer.nvim]]
-return require('packer').startup(function()
+
+local packer_status_ok, packer = pcall(require, 'packer')
+if not packer_status_ok then
+  vim.notify('Not able to load in Packer', 'error')
+  return
+end
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- and automatically installs plugins
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
+packer.startup(function()
   use {'wbthomason/packer.nvim', opt = true}
   use 'tpope/vim-fugitive'
   use 'mattn/emmet-vim'
@@ -28,17 +53,30 @@ return require('packer').startup(function()
   use 'lumiliet/vim-twig'
   use 'mbbill/undotree'
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   use 'kosayoda/nvim-lightbulb'
   use 'jiangmiao/auto-pairs'
   use 'norcalli/snippets.nvim'
-  use 'joshdick/onedark.vim'
+  use 'navarasu/onedark.nvim'
   use 'onsails/lspkind-nvim'
   use 'hrsh7th/vim-vsnip'
-  use 'Glench/Vim-Jinja2-Syntax'
-  use 'styled-components/vim-styled-components'
-  use 'vim-pandoc/vim-pandoc'
-  use 'vim-pandoc/vim-pandoc-syntax'
+  use {
+    'Glench/Vim-Jinja2-Syntax',
+    ft = {'html'}
+  }
+  use {
+    'vim-pandoc/vim-pandoc',
+    ft = {'markdown'}
+  }
+  use {
+    'vim-pandoc/vim-pandoc-syntax',
+    ft = {'markdown'}
+  }
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use {
@@ -52,4 +90,5 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'peitalin/vim-jsx-typescript'
   use 'tami5/lspsaga.nvim'
+  use 'rcarriga/nvim-notify'
 end)
