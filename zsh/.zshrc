@@ -84,6 +84,12 @@ function home_directory() {
   zle accept-line
 }
 
+# CD into personal development directory
+function development_directory() {
+  BUFFER="cd ~/documents/development"
+  zle accept-line
+}
+
 # CD up a directory
 function up_widget() {
   BUFFER="cd .."
@@ -111,6 +117,9 @@ function my_init() {
 
   zle -N home_directory
   bindkey "^h" home_directory
+
+  zle -N home_directory
+  bindkey "^d" home_directory
 
   zle -N up_widget
   bindkey "^k" up_widget

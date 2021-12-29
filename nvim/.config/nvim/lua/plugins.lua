@@ -45,10 +45,8 @@ packer.startup(function()
       'nvim-lua/plenary.nvim'
     }
   }
-  use {
-    'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
+  use 'kyazdani42/nvim-web-devicons'
+  use 'hoob3rt/lualine.nvim'
   use 'unblevable/quick-scope'
   use 'lumiliet/vim-twig'
   use 'mbbill/undotree'
@@ -67,7 +65,7 @@ packer.startup(function()
   use 'hrsh7th/vim-vsnip'
   use {
     'Glench/Vim-Jinja2-Syntax',
-    ft = {'html'}
+    ft = {'html', 'jinja.html'}
   }
   use {
     'vim-pandoc/vim-pandoc',
@@ -91,4 +89,10 @@ packer.startup(function()
   use 'peitalin/vim-jsx-typescript'
   use 'tami5/lspsaga.nvim'
   use 'rcarriga/nvim-notify'
+  use 'romgrk/barbar.nvim'
+  use {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "BufReadPost",
+  }
+  use 'glepnir/dashboard-nvim'
 end)

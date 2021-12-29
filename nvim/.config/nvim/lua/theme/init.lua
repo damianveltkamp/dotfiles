@@ -7,7 +7,8 @@ end
 require('theme/onedark')
 require('theme/highlights/generic')
 require('theme/highlights/diagnostics')
-require('theme/start-screen')
+require('theme/highlights/dashboard')
+require('theme/dashboard')
 require('utils/setoptions')
 require('utils/setvariable')
 

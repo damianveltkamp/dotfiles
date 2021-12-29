@@ -32,7 +32,9 @@ map('n', '<TAB>', '<cmd> bnext <CR>')
 map('n', '<S-TAB>', '<cmd> bprevious <CR>')
 
 -- Closes all buffers except current one
-map('n', '<leader>cb', '<cmd> %bd|e#|bd# <CR>');
+map('n', '<leader>cab', '<cmd> %bd|e#|bd# <CR>');
+-- Closes current buffer
+map('n', '<leader>cb', '<cmd> BufferClose <CR>');
 
 -- Paste from blackhole register
 map('v', '<leader>p', '"_dP')
