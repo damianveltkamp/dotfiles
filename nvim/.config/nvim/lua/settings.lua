@@ -6,6 +6,7 @@ end
 
 require('utils/setoptions')
 require('utils/setvariable')
+require('utils/git')
 
 vim.cmd 'filetype plugin indent on'
 vim.cmd 'syntax on'

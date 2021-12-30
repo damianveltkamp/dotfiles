@@ -1,21 +1,3 @@
-function openNewPullRequest()
-  local pathSubstrings = {}
-
-  local handle = io.popen("git rev-parse --show-toplevel")
-  local gitProjectRoot = handle:read("*a")
-  handle:close()
-
-  for token in string.gmatch(gitProjectRoot, "[^/]+") do
-    table.insert(pathSubstrings, token)
-  end
-
-  local tableLength = table.getn(pathSubstrings)
-  local projectName = string.gsub(pathSubstrings[tableLength], "%s+", "")
-  local executionString = 'open -a "Google chrome" ' .. 'https://bitbucket.org/tamtam-nl/' .. projectName .. '/pull-requests/new'
-
-  os.execute(executionString)
-end
-
 local opts = {
     custom_header = {
       " █████╗  █████╗ ██████╗ ██╗███╗  ██╗ ██████╗          ",
@@ -31,18 +13,22 @@ local opts = {
         command = 'silent !open -a "Google chrome" "https://bitbucket.com"',
       },
       b = {
-        description = { '    BitBucket PR' },
-        command = 'silent lua openNewPullRequest() ',
+        description = { '    BitBucket PR' },
+        command = 'silent lua bitbucketOpenNewPullRequest()',
       },
       c = {
+        description = { '    Github PR   ' },
+        command = 'silent lua githubOpenNewPullRequest()',
+      },
+      d = {
         description = { '    Gmail       ' },
         command = 'silent !open -a "Google chrome" "https://gmail.com"',
       },
-      d = {
+      e = {
         description = { '    Jira        ' },
         command = 'silent !open -a "Google chrome" "https://dept-nl.atlassian.net/jira/your-work"',
       },
-      e = {
+      f = {
         description = { '    Spotify     ' },
         command = 'silent !open -a spotify',
       },
