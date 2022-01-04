@@ -5,6 +5,7 @@
   cbb = "!f() { git checkout -b "bug/$1"; }; f"
   su = "!f() { git rev-parse --abbrev-ref HEAD | xargs git push -u "origin "; }; f"
   ulb = "!f() { git rev-parse --abbrev-ref HEAD | xargs git pull "origin "; }; f"
+  tmp = "!f() { git rev-parse --abbrev-ref HEAD | sed 's/.*\\//tmp\\//' | xargs git checkout -b; }; f"
 [user]
 	name = Damian Veltkamp
 	email = damian.veltkamp@deptagency.com

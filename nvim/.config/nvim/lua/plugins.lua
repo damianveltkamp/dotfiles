@@ -37,7 +37,7 @@ packer.startup(function()
   use 'lambdalisue/nerdfont.vim'
   use 'lambdalisue/fern-renderer-nerdfont.vim'
   use 'lambdalisue/glyph-palette.vim'
-  use 'tpope/vim-commentary'
+  use 'numToStr/Comment.nvim'
   use 'tpope/vim-surround'
   use {
     'lewis6991/gitsigns.nvim',

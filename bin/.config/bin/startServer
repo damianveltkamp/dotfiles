@@ -26,6 +26,8 @@ fi
 if (( $(grep -c . <<<"$ALL_PANES") > 1 )) then
   tmux send-keys -t right "nvm use && ${STARTCOMMAND}" Enter
 else
-  tmux split-window -h -c "#{pane_current_path}"
+  # tmux split-window -h -c "#{pane_current_path}"
+  pane_id=$(tmux new-window -d -P -F "#{pane_id}")
+  tmux join-pane -h -b -t "$pane_id"
   tmux send-keys -t right "nvm use && ${STARTCOMMAND}" Enter
 fi

@@ -9,27 +9,27 @@ local opts = {
     },
     custom_section = {
       a = {
-        description = { '    BitBucket   ' },
-        command = 'silent !open -a "Google chrome" "https://bitbucket.com"',
+        description = { '    New PR   ' },
+        command = 'silent lua OpenNewPullRequest()',
       },
       b = {
-        description = { '    BitBucket PR' },
-        command = 'silent lua bitbucketOpenNewPullRequest()',
+        description = { '    BitBucket' },
+        command = 'silent !open -a "Google chrome" "https://bitbucket.com"',
       },
       c = {
-        description = { '    Github PR   ' },
-        command = 'silent lua githubOpenNewPullRequest()',
+        description = { '    Github   ' },
+        command = 'silent !open -a "Google chrome" "https://github.com/"',
       },
       d = {
-        description = { '    Gmail       ' },
+        description = { '    Gmail    ' },
         command = 'silent !open -a "Google chrome" "https://gmail.com"',
       },
       e = {
-        description = { '    Jira        ' },
+        description = { '    Jira     ' },
         command = 'silent !open -a "Google chrome" "https://dept-nl.atlassian.net/jira/your-work"',
       },
       f = {
-        description = { '    Spotify     ' },
+        description = { '    Spotify  ' },
         command = 'silent !open -a spotify',
       },
     }

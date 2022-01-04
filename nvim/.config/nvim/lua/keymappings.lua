@@ -71,6 +71,7 @@ map('n', '<leader>gsu', '<cmd> !git su <CR>')
 map('n', '<leader>gj', '<cmd> diffget //3 <CR>')
 map('n', '<leader>gf', '<cmd> diffget //2 <CR>')
 map('n', '<leader>gb', '<cmd> lua require"gitsigns".blame_line{full=true} <CR>')
+map('n', '<leader>gpr', '<cmd> lua OpenNewPullRequest() <CR>')
 -- map('n', '<leader>gbt', '<cmd> Gitsigns toggle_current_line_blame <CR>')
 
 -- Undotree bindings
@@ -84,7 +85,7 @@ map('n', '<leader>ts2', '<cmd> set tabstop=2 shiftwidth=2 softtabstop=2 <CR>')
 map('n', '<leader>ts4', '<cmd> set tabstop=4 shiftwidth=4 softtabstop=4 <CR>')
 
 -- Keymapping to start a development server
-map('n', '<leader>ss', "<cmd> lua startServer() <CR>")
+map('n', '<leader>ss', "<cmd> silent lua startServer() <CR>")
 
 -- Keymappings for quickfix list
 map('n', '<leader>qo', "<cmd> copen <CR>")
