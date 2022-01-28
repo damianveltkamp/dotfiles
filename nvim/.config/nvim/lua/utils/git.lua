@@ -1,38 +1,4 @@
-function OpenNewPullRequest()
-  local remoteHost = CheckRemoteHost()
-
-  if remoteHost['name'] == 'bitbucket' then
-    BitbucketNewPullRequest(remoteHost)
-  end
-
-  if remoteHost['name'] == 'github' then
-    GithubNewPullRequest(remoteHost)
-  end
-
-  if remoteHost['name'] == 'azure' then
-    AzureNewPullRequest(remoteHost)
-  end
-end
-
-function BitbucketNewPullRequest(remoteHost)
-  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/pull-requests/new'
-
-  os.execute(executionString)
-end
-
-function AzureNewPullRequest(remoteHost)
-  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/pullrequestcreate'
-
-  os.execute(executionString)
-end
-
-function GithubNewPullRequest(remoteHost)
-  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/compare'
-
-  os.execute(executionString)
-end
-
-function CheckRemoteHost()
+local checkRemoteHost = function()
   local remoteHost = {}
   local handle = io.popen('git config --get remote.origin.url')
   local gitRemoteUrl = handle:read('*a')
@@ -62,5 +28,49 @@ function CheckRemoteHost()
     remoteHost['remoteUrl'] = 'https://' .. string.gsub(normalizedGitRemoteUrl, ".*@", "")
 
     return remoteHost
+  end
+end
+
+local getSourceRef = function()
+  local handle = io.popen('git branch --show-current')
+  local sourceRef = handle:read('*a')
+  handle:close()
+
+  return sourceRef
+end
+
+local bitbucketNewPullRequest = function(remoteHost)
+  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/pull-requests/new'
+
+  os.execute(executionString)
+end
+
+local azureNewPullRequest = function(remoteHost, sourceRef)
+  local pullRequestString = '"' .. remoteHost['remoteUrl'] .. '/pullrequestcreate?sourceRef=' .. sourceRef .. '&targetRef=develop' .. '"'
+  local executionString = 'open -a "Google chrome" ' .. pullRequestString
+
+  os.execute(executionString)
+end
+
+local githubNewPullRequest = function(remoteHost)
+  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/compare'
+
+  os.execute(executionString)
+end
+
+function OpenNewPullRequest()
+  local remoteHost = checkRemoteHost()
+  local sourceRef = getSourceRef()
+
+  if remoteHost['name'] == 'bitbucket' then
+    bitbucketNewPullRequest(remoteHost)
+  end
+
+  if remoteHost['name'] == 'github' then
+    githubNewPullRequest(remoteHost)
+  end
+
+  if remoteHost['name'] == 'azure' then
+    azureNewPullRequest(remoteHost, sourceRef)
   end
 end
