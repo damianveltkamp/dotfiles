@@ -190,6 +190,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 # Line above enables dotfiles to be found
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # Fzf and gitbranches implementation
 gcb() {

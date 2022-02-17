@@ -92,3 +92,7 @@ map('n', '<leader>qo', "<cmd> copen <CR>")
 map('n', '<leader>qc', "<cmd> cexpr []<CR>")
 map('n', '<leader>qn', "<cmd> cn <CR>")
 map('n', '<leader>qp', "<cmd> cp <CR>")
+
+
+-- Opening current folder in finder
+map('n', '<leader>of', "<cmd> silent !open . <CR>")

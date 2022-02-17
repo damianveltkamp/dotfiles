@@ -43,7 +43,8 @@ packer.startup(function()
     'lewis6991/gitsigns.nvim',
     requires = {
       'nvim-lua/plenary.nvim'
-    }
+    },
+    tag = 'release'
   }
   use 'kyazdani42/nvim-web-devicons'
   use 'hoob3rt/lualine.nvim'

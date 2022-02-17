@@ -61,6 +61,7 @@ end
 function OpenNewPullRequest()
   local remoteHost = checkRemoteHost()
   local sourceRef = getSourceRef()
+  local normalizedSourceRef = string.gsub(sourceRef, "%s+", "")
 
   if remoteHost['name'] == 'bitbucket' then
     bitbucketNewPullRequest(remoteHost)
@@ -71,6 +72,6 @@ function OpenNewPullRequest()
   end
 
   if remoteHost['name'] == 'azure' then
-    azureNewPullRequest(remoteHost, sourceRef)
+    azureNewPullRequest(remoteHost, normalizedSourceRef)
   end
 end

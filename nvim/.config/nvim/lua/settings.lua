@@ -12,7 +12,8 @@ vim.cmd 'filetype plugin indent on'
 vim.cmd 'syntax on'
 vim.cmd 'set noswapfile'
 vim.cmd 'set cindent'
-vim.cmd 'set signcolumn=yes'
+vim.cmd 'set signcolumn=yes:2'
+
 vim.cmd 'set jumpoptions+=stack'
 vim.notify = notify
 setOption('global', 'mouse', 'a')

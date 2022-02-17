@@ -24,6 +24,7 @@ fi
 ## Check if ALL_PANES has more then 1 line
 ### if multiple lines then there are more than 1 tmux pane
 if (( $(grep -c . <<<"$ALL_PANES") > 1 )) then
+  tmux send-keys -t right "clear" Enter
   tmux send-keys -t right "nvm use && ${STARTCOMMAND}" Enter
 else
   # tmux split-window -h -c "#{pane_current_path}"
