@@ -96,3 +96,10 @@ map('n', '<leader>qp', "<cmd> cp <CR>")
 
 -- Opening current folder in finder
 map('n', '<leader>of', "<cmd> silent !open . <CR>")
+
+-- Moving text
+-- TODO find out why this does not work
+-- map('v', 'J', "<cmd> :m '>+1<CR>gv=gv")
+-- map('v', 'K', "<cmd> :m '<-2<CR>gv=gv")
+map('n', '<C-j>', "<cmd> :m .+1 <CR> ==")
+map('n', '<C-k>', "<cmd> :m .-2 <CR> ==")
