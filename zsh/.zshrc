@@ -208,6 +208,8 @@ nvi() {
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
 
+alias n="nvim"
+
 export PATH="$HOME/.config/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
