@@ -27,6 +27,7 @@ casks=(
 "spotify"
 "chrome"
 "slack"
+"alacritty"
 )
 
 for i in "${packages[@]}"
