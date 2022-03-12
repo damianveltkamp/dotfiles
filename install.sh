@@ -23,9 +23,21 @@ packages=(
 "fd"
 )
 
+casks=(
+"spotify"
+"chrome"
+"slack"
+)
+
 for i in "${packages[@]}"
 do
   brew install $i
+  echo "---------------------------------------------------------"
+done
+
+for i in "${casks[@]}"
+do
+  brew install --cask $i
   echo "---------------------------------------------------------"
 done
 
