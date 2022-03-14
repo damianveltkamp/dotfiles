@@ -1,6 +1,7 @@
 # Dotfiles
 
 Repository for all my dotfile configurations, and installation steps to get everything running on a new machine.
+Not advised to blindly copy paste from this repo, this is all for personal use, feel free to get inspired.
 
 ## Table of contents
 
