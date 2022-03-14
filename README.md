@@ -26,7 +26,7 @@ Create a config directory on your machine on your home path if you don't already
 mkdir -p ~/.config
 ```
 
-Making a simlink into ~/.config for nvim setup
+Make simlinks for all dotfiles and config files.
 
 ```
 cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux
