@@ -30,3 +30,13 @@ Make simlinks for all dotfiles and config files.
 ```
 cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux
 ```
+
+Only thing left is open neovim and install packer packes.
+
+```
+:PackerCompile
+```
+
+```
+:PackerInstall
+```
