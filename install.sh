@@ -21,13 +21,16 @@ packages=(
 "fzf"
 "efm-langserver"
 "fd"
+"zplug"
+"spaceship"
 )
 
 casks=(
 "spotify"
-"chrome"
-"slack"
 "alacritty"
+"shiftit"
+"slack"
+"google-chrome"
 )
 
 for i in "${packages[@]}"
@@ -35,6 +38,10 @@ do
   brew install $i
   echo "---------------------------------------------------------"
 done
+
+# Install hack font
+brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
+echo "---------------------------------------------------------"
 
 for i in "${casks[@]}"
 do
