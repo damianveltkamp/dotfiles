@@ -31,12 +31,6 @@ Install command:
 yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
 ```
 
-### Git repos
-
-```
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
 ## Installing the setup
 
 Curl install script to get all packages and casks and fonts:
