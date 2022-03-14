@@ -23,6 +23,7 @@ packages=(
 "fd"
 "zplug"
 "spaceship"
+"efm-langserver"
 )
 
 casks=(
