@@ -31,6 +31,7 @@ casks=(
 "shiftit"
 "slack"
 "google-chrome"
+"alfred"
 )
 
 for i in "${packages[@]}"
@@ -38,6 +39,10 @@ do
   brew install $i
   echo "---------------------------------------------------------"
 done
+
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "---------------------------------------------------------"
 
 # Install hack font
 brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
