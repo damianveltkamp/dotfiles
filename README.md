@@ -154,7 +154,7 @@ mkdir -p ~/.config
 Making a simlink into ~/.config for nvim setup
 
 ```
-stow --ignore ".DS_Store" -vt ~/ nvim pandoc
+stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux
 ```
 
 Now the only thing left to do should be installing all packages with packer.
