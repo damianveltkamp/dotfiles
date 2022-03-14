@@ -1,6 +1,6 @@
 # 🧰 Dotfiles
 
-Repository for all my dotfile configurations, and installation steps to get everything running on a new machine.
+Repository for all my dotfile configurations, and installation steps to get everything running on a new Mac OS machine.
 Not advised to blindly copy paste from this repo, this is all for personal use, feel free to get inspired.
 
 **_FYI: wiki is outdated and will not be updated._**
