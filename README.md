@@ -10,7 +10,6 @@ Repository for all my dotfile configurations, and installation steps to get ever
 
 ## Prerequisites
 
-- [Efm languageserver](https://formulae.brew.sh/formula/efm-langserver)
 - [Typescript](https://www.npmjs.com/package/typescript)
 - [Eslint_d](https://www.npmjs.com/package/eslint_d)
 - [Prettier](https://prettier.io/docs/en/install.html)
@@ -24,28 +23,12 @@ Repository for all my dotfile configurations, and installation steps to get ever
 
 This installing section is written towards Macos users.
 
-### Efm-languageserver
-
-Install command:
-
-```
-brew install efm-langserver
-```
-
-### Fd
-
-Install command:
-
-```
-brew install fd
-```
-
 ### NPM packages
 
 Install command:
 
 ```
-npm install -g typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
+yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
 ```
 
 ### Git repos
