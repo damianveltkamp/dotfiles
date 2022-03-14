@@ -7,7 +7,7 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 
 - [Installing the setup](#installing-the-setup)
 
-## Installing the setup
+## ⚙️ Installing the setup
 
 Curl install script to get all packages and casks and fonts:
 
