@@ -3,6 +3,8 @@
 Repository for all my dotfile configurations, and installation steps to get everything running on a new machine.
 Not advised to blindly copy paste from this repo, this is all for personal use, feel free to get inspired.
 
+FYI: wiki is outdated and will not be updated.
+
 ## ⚙️ Installing the setup
 
 Curl install script to get all packages and casks and fonts:
