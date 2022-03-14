@@ -43,6 +43,12 @@ do
   echo "---------------------------------------------------------"
 done
 
+for i in "${casks[@]}"
+do
+  brew install --cask $i
+  echo "---------------------------------------------------------"
+done
+
 # Install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "---------------------------------------------------------"
@@ -51,11 +57,8 @@ echo "---------------------------------------------------------"
 brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
 echo "---------------------------------------------------------"
 
-for i in "${casks[@]}"
-do
-  brew install --cask $i
-  echo "---------------------------------------------------------"
-done
+yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
+echo "---------------------------------------------------------"
 
 echo "Changing to zsh"
 chsh -s $(which zsh)
