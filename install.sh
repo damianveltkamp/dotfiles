@@ -31,6 +31,7 @@ casks=(
 "shiftit"
 "slack"
 "google-chrome"
+"firefox"
 "alfred"
 )
 
