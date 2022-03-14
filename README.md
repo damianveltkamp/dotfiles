@@ -5,6 +5,11 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 
 **_FYI: wiki is outdated and will not be updated._**
 
+## Table of contents
+
+- [Installing setup](#installing-setup)
+- [Manual installation steps](#manual-installation-steps)
+
 ## ⚙️ Installing the setup
 
 Curl install script to get all packages, casks and fonts, also changes default shell to zsh:
@@ -40,3 +45,9 @@ Only thing left is open neovim and install packer packes.
 ```
 :PackerInstall
 ```
+
+## 🔧 Manual installation steps
+
+- Set capslock key to escape key.
+- Set alfred to launch with cmd space, remove spotlight to launch with cmd space.
+- Set shiftit shortcuts.
