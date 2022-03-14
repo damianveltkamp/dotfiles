@@ -7,8 +7,8 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 
 ## Table of contents
 
-- [Installing setup](#installing-the-setup)
-- [Manual installation steps](#manual-installation-steps)
+- [Installing setup](#%EF%B8%8F-installing-the-setup)
+- [Manual installation steps](#-manual-installation-steps)
 
 ## ⚙️ Installing the setup
 
