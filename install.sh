@@ -24,6 +24,7 @@ packages=(
 "zplug"
 "spaceship"
 "efm-langserver"
+"yarn"
 )
 
 casks=(
