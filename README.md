@@ -137,12 +137,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Installing the setup
 
-THIS IS WIP (Currently working on implementing Gnu stow for creation of symlinks)
+Curl install script to get all packages and casks and fonts:
+
+```
+curl -s https://raw.githubusercontent.com/damianveltkamp/dotfiles/master/install.sh
+```
 
 Clone this repository onto your machine:
 
 ```
-git clone https://github.com/damianveltkamp/dotfiles.git ~/damian-dotfiles
+git clone https://github.com/damianveltkamp/dotfiles.git ~/Documents/development/dotfiles
 ```
 
 Create a config directory on your machine on your home path if you don't already have one
