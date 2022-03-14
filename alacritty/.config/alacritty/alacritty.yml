@@ -33,7 +33,7 @@ colors:
     cyan: "#87d7ff"
     white: "#ECEFF4"
 
-background_opacity: 1.0
+window.opacity: 1.0
 
 font:
   normal:
