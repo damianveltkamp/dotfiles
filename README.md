@@ -7,7 +7,7 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 
 ## ⚙️ Installing the setup
 
-Curl install script to get all packages and casks and fonts:
+Curl install script to get all packages, casks and fonts, also changes default shell to zsh:
 
 ```
 curl -s https://raw.githubusercontent.com/damianveltkamp/dotfiles/master/install.sh
