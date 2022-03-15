@@ -60,3 +60,5 @@ Only thing left is open neovim and install packer packes.
   - scss
   - vim
   - lua
+- Install lua language server
+  - [Luals](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run)
