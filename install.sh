@@ -25,6 +25,7 @@ packages=(
 "spaceship"
 "efm-langserver"
 "yarn"
+"ninja"
 )
 
 casks=(
