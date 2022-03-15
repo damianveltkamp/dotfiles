@@ -51,6 +51,7 @@ Only thing left is open neovim and install packer packes.
 - Set capslock key to escape key.
 - Set alfred to launch with cmd space, remove spotlight to launch with cmd space.
 - Set shiftit shortcuts.
+- Install XCode developer tools
 - Install treesitter language parsers
   - typescript
   - tsx
