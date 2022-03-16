@@ -26,6 +26,7 @@ packages=(
 "efm-langserver"
 "yarn"
 "ninja"
+"lerna"
 )
 
 casks=(
