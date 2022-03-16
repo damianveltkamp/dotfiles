@@ -23,7 +23,7 @@ function on_attach(client, bufnr)
     vim.api.nvim_exec([[
     augroup Format
     autocmd! * <buffer>
-    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, bufnr)
+    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
     augroup END
     ]], true)
   elseif client.resolved_capabilities.document_range_formatting then
