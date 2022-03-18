@@ -3,7 +3,7 @@
 # Set default variable values
 FILE=unset
 EXTENSION="pdf"
-BIBLOC="$NOTES_DIR/references.bib"
+BIBLOC="$HOME/.config/pandoc/bibliography/references.bib"
 CSL="$HOME/.config/pandoc/citation/apa.csl"
 HEADER="$HOME/.config/pandoc/template/header.tex"
 LANGUAGE="NL"
