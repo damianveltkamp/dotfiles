@@ -27,6 +27,8 @@ packages=(
 "yarn"
 "ninja"
 "lerna"
+"pandoc"
+"pandoc-crossref"
 )
 
 casks=(
@@ -53,6 +55,10 @@ done
 
 # Install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "---------------------------------------------------------"
+
+# Clone citation styles for use in pandoc
+git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc
 echo "---------------------------------------------------------"
 
 # Install hack font
