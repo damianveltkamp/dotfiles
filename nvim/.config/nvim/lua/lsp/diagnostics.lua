@@ -1,7 +1,5 @@
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- disable virtual text
+vim.diagnostic.config({
 	virtual_text = false,
-	-- show signs
 	signs = true,
 	update_in_insert = true,
 	underline = true,
