@@ -29,6 +29,8 @@ packages=(
 "lerna"
 "pandoc"
 "pandoc-crossref"
+"stylua"
+"jsonlint"
 )
 
 casks=(
@@ -39,6 +41,7 @@ casks=(
 "google-chrome"
 "firefox"
 "alfred"
+"basictex"
 )
 
 for i in "${packages[@]}"
@@ -65,7 +68,12 @@ echo "---------------------------------------------------------"
 brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
 echo "---------------------------------------------------------"
 
+# Install all global yarn packages
 yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
+echo "---------------------------------------------------------"
+
+# Install needed tex packages to create pdf's
+sudo tlmgr install glossaries mfirstuc datatools
 echo "---------------------------------------------------------"
 
 echo "Changing to zsh"
