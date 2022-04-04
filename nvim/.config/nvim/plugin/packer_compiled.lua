@@ -269,6 +269,12 @@ _G.packer_plugins = {
     path = "/Users/damianveltamp/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["trouble.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0" },
+    loaded = true,
+    path = "/Users/damianveltamp/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
   undotree = {
     loaded = true,
     path = "/Users/damianveltamp/.local/share/nvim/site/pack/packer/start/undotree",
@@ -321,12 +327,16 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType jinja.html ++once lua require("packer.load")({'Vim-Jinja2-Syntax'}, { ft = "jinja.html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-pandoc-syntax', 'vim-pandoc'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-pandoc', 'vim-pandoc-syntax'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'Vim-Jinja2-Syntax'}, { ft = "html" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
@@ -335,12 +345,12 @@ vim.cmd [[au BufReadPost * ++once lua require("packer.load")({'nvim-ts-context-c
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], true)
-vim.cmd [[source /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]]
-time([[Sourcing ftdetect script at: /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], false)
 time([[Sourcing ftdetect script at: /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/vim-pandoc/ftdetect/pandoc.vim]], true)
 vim.cmd [[source /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/vim-pandoc/ftdetect/pandoc.vim]]
 time([[Sourcing ftdetect script at: /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/vim-pandoc/ftdetect/pandoc.vim]], false)
+time([[Sourcing ftdetect script at: /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], true)
+vim.cmd [[source /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]]
+time([[Sourcing ftdetect script at: /Users/damianveltamp/.local/share/nvim/site/pack/packer/opt/Vim-Jinja2-Syntax/ftdetect/jinja.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
