@@ -60,8 +60,8 @@ map("n", "<leader>ps", '<cmd> lua require("telescope.builtin").live_grep() <CR>'
 map("n", "<leader>pb", '<cmd> lua require("telescope.builtin").buffers() <CR>')
 map("n", "<leader>th", '<cmd> lua require("telescope.builtin").help_tags()<CR>')
 map("n", "<leader>vrc", '<cmd> lua require("plugins/telescope").search_dotfiles()<CR>')
-map("n", "<leader>bs", '<cmd> lua require("plugins/telescope").search_notes()<CR>')
-map("n", "<leader>bf", '<cmd> lua require("plugins/telescope").grep_notes()<CR>')
+map("n", "<leader>bf", '<cmd> lua require("plugins/telescope").search_notes()<CR>')
+map("n", "<leader>bs", '<cmd> lua require("plugins/telescope").grep_notes()<CR>')
 map("n", "<leader>mf", '<cmd> lua require("telescope").extensions.media_files.media_files() <CR>')
 
 -- Git keybindings
@@ -103,3 +103,6 @@ map("n", "<leader>of", "<cmd> silent !open . <CR>")
 -- map('v', 'K', "<cmd> :m '<-2<CR>gv=gv")
 map("n", "<C-j>", "<cmd> :m .+1 <CR> ==")
 map("n", "<C-k>", "<cmd> :m .-2 <CR> ==")
+
+-- Eslint_d
+map("n", "<leader>ef", "mF:%!eslint_d --stdin --fix-to-stdout<CR>`F")

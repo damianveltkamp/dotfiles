@@ -72,7 +72,7 @@ export.search_dotfiles = function()
 		cwd = "$HOME/.config/nvim/",
 	})
 end
-export.find_notes = function()
+export.search_notes = function()
 	builtin.find_files({
 		prompt_title = "< File 2nd brain >",
 		cwd = "$HOME/documents/development/2nd-brain",
@@ -82,11 +82,6 @@ export.grep_notes = function()
 	builtin.live_grep({
 		prompt_title = "< Grep 2nd brain >",
 		cwd = "$HOME/documents/development/2nd-brain",
-	})
-end
-export.grep_todos = function()
-	builtin.live_grep({
-		prompt_title = "< TODOS >",
 	})
 end
 
