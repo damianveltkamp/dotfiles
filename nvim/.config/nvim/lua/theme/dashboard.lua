@@ -1,41 +1,50 @@
+local db = require("dashboard")
+
 local opts = {
-    custom_header = {
-      " █████╗  █████╗ ██████╗ ██╗███╗  ██╗ ██████╗          ",
-      "██╔══██╗██╔══██╗██╔══██╗██║████╗ ██║██╔════╝          ",
-      "██║  ╚═╝██║  ██║██║  ██║██║██╔██╗██║██║  ██╗          ",
-      "██║  ██╗██║  ██║██║  ██║██║██║╚████║██║  ╚██╗         ",
-      "╚█████╔╝╚█████╔╝██████╔╝██║██║ ╚███║╚██████╔╝██╗██╗██╗",
-      " ╚════╝  ╚════╝ ╚═════╝ ╚═╝╚═╝  ╚══╝ ╚═════╝ ╚═╝╚═╝╚═╝",
-    },
-    custom_section = {
-      a = {
-        description = { '    New PR   ' },
-        command = 'silent lua OpenNewPullRequest()',
-      },
-      b = {
-        description = { '    BitBucket' },
-        command = 'silent !open -a "Google chrome" "https://bitbucket.com"',
-      },
-      c = {
-        description = { '    Github   ' },
-        command = 'silent !open -a "Google chrome" "https://github.com/"',
-      },
-      d = {
-        description = { '    Gmail    ' },
-        command = 'silent !open -a "Google chrome" "https://gmail.com"',
-      },
-      e = {
-        description = { '    Jira     ' },
-        command = 'silent !open -a "Google chrome" "https://dept-nl.atlassian.net/jira/your-work"',
-      },
-      f = {
-        description = { '    Spotify  ' },
-        command = 'silent !open -a spotify',
-      },
-    }
+	custom_header = {
+		"                                                      ",
+		"                                                      ",
+		"                                                      ",
+		" █████╗  █████╗ ██████╗ ██╗███╗  ██╗ ██████╗          ",
+		"██╔══██╗██╔══██╗██╔══██╗██║████╗ ██║██╔════╝          ",
+		"██║  ╚═╝██║  ██║██║  ██║██║██╔██╗██║██║  ██╗          ",
+		"██║  ██╗██║  ██║██║  ██║██║██║╚████║██║  ╚██╗         ",
+		"╚█████╔╝╚█████╔╝██████╔╝██║██║ ╚███║╚██████╔╝██╗██╗██╗",
+		" ╚════╝  ╚════╝ ╚═════╝ ╚═╝╚═╝  ╚══╝ ╚═════╝ ╚═╝╚═╝╚═╝",
+		"                                                      ",
+		"                                                      ",
+		"                                                      ",
+	},
+	custom_section = {
+		{
+			desc = "    New PR   ",
+			action = "silent lua OpenNewPullRequest()",
+		},
+		{
+			desc = "    BitBucket",
+			action = 'silent !open -a "Google chrome" "https://bitbucket.com"',
+		},
+		{
+			desc = "    Github   ",
+			action = 'silent !open -a "Google chrome" "https://github.com/"',
+		},
+		{
+			desc = "    Gmail    ",
+			action = 'silent !open -a "Google chrome" "https://gmail.com"',
+		},
+		{
+			desc = "    Jira     ",
+			action = 'silent !open -a "Google chrome" "https://dept-nl.atlassian.net/jira/your-work"',
+		},
+		{
+			desc = "    Spotify  ",
+			action = "silent !open -a spotify",
+		},
+		{
+			desc = "",
+		},
+	},
 }
 
--- https://bitbucket.org/tamtam-nl/dtnl-total-energie-website/pull-requests/new
-
-vim.g.dashboard_custom_header = opts.custom_header
-vim.g.dashboard_custom_section = opts.custom_section
+db.custom_header = opts.custom_header
+db.custom_center = opts.custom_section

@@ -14,13 +14,11 @@ fi
 
 zplug load
 
-# Setting PATH
-
 # VARIABLES
-export NOTES_DIR="$HOME/documents/notes"
+export NOTES_DIR="$HOME/Documents/notes"
 export NVM_DIR="$HOME/.nvm"
-  [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
-  [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # ~/.zshrc
 autoload -Uz compinit
@@ -30,8 +28,8 @@ else
   compinit
 fi
 
-autoload -U promptinit; promptinit
-prompt spaceship
+# symlink;
+fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 # vi mode
 bindkey -v
@@ -40,20 +38,23 @@ export KEYTIMEOUT=1
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
+    [[ $1 = 'block' ]]; then
     echo -ne '\e[2 q'
   elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
+    [[ ${KEYMAP} == viins ]] ||
+    [[ ${KEYMAP} = '' ]] ||
+    [[ $1 = 'beam' ]]; then
     echo -ne '\e[6 q'
   fi
 }
+
 zle -N zle-keymap-select
+
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[6 q"
+  zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+  echo -ne "\e[6 q"
 }
+
 zle -N zle-line-init
 echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
@@ -63,13 +64,13 @@ chpwd() ls
 
 # CD into development directory
 function development_directory() {
-  BUFFER="cd ~/documents/development"
+  BUFFER="cd ~/Documents/development"
   zle accept-line
 }
 
 # CD into notes directory
 function notes_directory() {
-  BUFFER="cd ~/documents/notes"
+  BUFFER="cd ~/Documents/notes"
   zle accept-line
 }
 
@@ -87,7 +88,7 @@ function home_directory() {
 
 # CD into personal development directory
 function development_directory() {
-  BUFFER="cd ~/documents/development"
+  BUFFER="cd ~/Documents/development"
   zle accept-line
 }
 
@@ -99,7 +100,7 @@ function up_widget() {
 
 # CD into work directory
 function work_directory() {
-  BUFFER="cd ~/documents/work"
+  BUFFER="cd ~/Documents/work"
   zle accept-line
 }
 
@@ -144,7 +145,6 @@ bip() {
   ### BREW + FZF
   # update multiple packages at once
   # mnemonic [B]rew [U]pdate [P]lugin
-
   local inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[brew:install]'")
 
   if [[ $inst ]]; then
@@ -173,7 +173,6 @@ bup() {
 rfl() {
   for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 }
-
 
 # FZF ripgrep
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -210,13 +209,6 @@ nvi() {
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
 
 alias n="nvim"
-
-export PATH="$HOME/.config/bin:$PATH"
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 alias luamake=/Users/damianveltamp/lua-language-server/3rd/luamake/luamake
+
+eval "$(starship init zsh)"
