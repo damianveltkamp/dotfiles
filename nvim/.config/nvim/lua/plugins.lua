@@ -30,9 +30,13 @@ packer.startup(function()
 	use("mattn/emmet-vim")
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, {
-			"nvim-telescope/telescope-fzy-native.nvim",
-		} },
+		requires = {
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+			{
+				"nvim-telescope/telescope-fzy-native.nvim",
+			},
+		},
 	})
 	use("gruvbox-community/gruvbox")
 	use("lambdalisue/fern.vim")
@@ -59,7 +63,6 @@ packer.startup(function()
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 	use("kosayoda/nvim-lightbulb")
 	use("jiangmiao/auto-pairs")
 	use("norcalli/snippets.nvim")
@@ -109,4 +112,5 @@ packer.startup(function()
 			})
 		end,
 	})
+	use("github/copilot.vim")
 end)

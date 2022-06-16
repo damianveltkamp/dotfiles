@@ -1,5 +1,5 @@
 window:
-  decorations: "none"
+  decorations: "transparent"
   padding:
     x: 10
     y: 10
