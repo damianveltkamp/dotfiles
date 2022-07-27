@@ -11,6 +11,7 @@ function on_attach(client, bufnr)
 	map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	map("n", "gdw", "<cmd>Telescope diagnostics<CR>", opts)
+	map("n", "grn", "<cmd>lua vim.lsp.buf.rename<CR>", opts)
 
 	map("n", "gh", "<cmd> :Lspsaga hover_doc <CR>", opts)
 

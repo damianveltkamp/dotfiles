@@ -112,5 +112,5 @@ packer.startup(function()
 			})
 		end,
 	})
-	use("github/copilot.vim")
+	use("jxnblk/vim-mdx-js")
 end)

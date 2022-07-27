@@ -14,6 +14,7 @@ vim.cmd("set noswapfile")
 vim.cmd("set cindent")
 vim.cmd("set signcolumn=yes:2")
 vim.cmd("set showmatch")
+vim.cmd("let g:fern_disable_startup_warnings = 1")
 
 vim.cmd("set jumpoptions+=stack")
 vim.notify = notify

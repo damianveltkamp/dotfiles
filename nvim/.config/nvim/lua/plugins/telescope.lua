@@ -48,6 +48,11 @@ telescope.setup({
 				["<C-q>"] = actions.send_to_qflist,
 			},
 		},
+		layout_config = {
+			horizontal = {
+				preview_cutoff = 0,
+			},
+		},
 	},
 	extensions = {
 		fzy_native = {
