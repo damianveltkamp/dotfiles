@@ -106,3 +106,13 @@ map("n", "<C-k>", "<cmd> :m .-2 <CR> ==")
 
 -- Eslint_d
 map("n", "<leader>ef", "mF:%!eslint_d --stdin --fix-to-stdout<CR>`F")
+
+-- Don't yank with x
+map("n", "x", '"_x')
+
+-- Increment/decrement
+map("n", "+", "<C-a>")
+map("n", "-", "<C-x>")
+
+-- Select all
+map("n", "<C-a>", "gg<S-v>G")

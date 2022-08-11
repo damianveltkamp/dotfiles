@@ -3,17 +3,15 @@ require("utils/setmapping")
 function on_attach(client, bufnr)
 	local opts = { noremap = true }
 
-	map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	map("n", "gsi", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	map("n", "gdw", "<cmd>Telescope diagnostics<CR>", opts)
-	map("n", "grn", "<cmd>lua vim.lsp.buf.rename<CR>", opts)
 
-	map("n", "gh", "<cmd> :Lspsaga hover_doc <CR>", opts)
+	map("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	map("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	map("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opts)
+	map("n", "gh", "<cmd>Lspsaga hover_doc <CR>", opts)
+	map("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
 
 	if client.resolved_capabilities.completion then
 		vim.cmd("imap <silent> <C-n> <Plug>(completion_trigger)")

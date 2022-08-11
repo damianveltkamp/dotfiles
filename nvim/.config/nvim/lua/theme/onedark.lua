@@ -1,4 +1,4 @@
-require('utils/setvariable')
+require("utils/setvariable")
 
 -- TODO Set global function
 vim.api.nvim_command([[

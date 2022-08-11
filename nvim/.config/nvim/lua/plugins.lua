@@ -26,25 +26,9 @@ packer.init({
 
 packer.startup(function()
 	use({ "wbthomason/packer.nvim", opt = true })
+
+	-- Git
 	use("tpope/vim-fugitive")
-	use("mattn/emmet-vim")
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = {
-			{ "nvim-lua/popup.nvim" },
-			{ "nvim-lua/plenary.nvim" },
-			{
-				"nvim-telescope/telescope-fzy-native.nvim",
-			},
-		},
-	})
-	use("gruvbox-community/gruvbox")
-	use("lambdalisue/fern.vim")
-	use("lambdalisue/nerdfont.vim")
-	use("lambdalisue/fern-renderer-nerdfont.vim")
-	use("lambdalisue/glyph-palette.vim")
-	use("numToStr/Comment.nvim")
-	use("tpope/vim-surround")
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {
@@ -52,55 +36,21 @@ packer.startup(function()
 		},
 		tag = "release",
 	})
-	use("kyazdani42/nvim-web-devicons")
-	use("hoob3rt/lualine.nvim")
-	use("unblevable/quick-scope")
-	use("lumiliet/vim-twig")
-	use("mbbill/undotree")
+
+	-- Lsp
 	use("neovim/nvim-lspconfig")
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
-	use("kosayoda/nvim-lightbulb")
-	use("jiangmiao/auto-pairs")
-	use("norcalli/snippets.nvim")
-	use("navarasu/onedark.nvim")
 	use("onsails/lspkind-nvim")
-	use("hrsh7th/vim-vsnip")
-	use({
-		"Glench/Vim-Jinja2-Syntax",
-		ft = { "html", "jinja.html" },
-	})
-	use({
-		"vim-pandoc/vim-pandoc",
-		ft = { "markdown" },
-	})
-	use({
-		"vim-pandoc/vim-pandoc-syntax",
-		ft = { "markdown" },
-	})
-	use("jose-elias-alvarez/null-ls.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use({
+		"ray-x/lsp_signature.nvim",
+	})
+	use("tami5/lspsaga.nvim")
+	use("jose-elias-alvarez/null-ls.nvim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use({
-		"ray-x/lsp_signature.nvim",
-	})
-	use("justinmk/vim-sneak")
-	use("nvim-telescope/telescope-media-files.nvim")
-	use("peitalin/vim-jsx-typescript")
-	use("tami5/lspsaga.nvim")
-	use("rcarriga/nvim-notify")
-	use("romgrk/barbar.nvim")
-	use({
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = "BufReadPost",
-	})
-	use("glepnir/dashboard-nvim")
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -112,5 +62,81 @@ packer.startup(function()
 			})
 		end,
 	})
+
+	-- Completion
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-buffer")
+	use("mattn/emmet-vim")
+
+	-- UI
+	use("navarasu/onedark.nvim")
+	use("romgrk/barbar.nvim")
+	use("glepnir/dashboard-nvim")
+	use("hoob3rt/lualine.nvim")
+	use("norcalli/nvim-colorizer.lua")
+
+	-- Snipets
+	use("norcalli/snippets.nvim")
+	use("hrsh7th/vim-vsnip")
+
+	-- Fuzy finding
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+			{
+				"nvim-telescope/telescope-fzy-native.nvim",
+			},
+		},
+	})
+
+	-- File finder
+	use("lambdalisue/fern.vim")
+
+	-- Fonts & icons
+	use("lambdalisue/fern-renderer-nerdfont.vim")
+	use("lambdalisue/nerdfont.vim")
+	use("lambdalisue/glyph-palette.vim")
+	use("kyazdani42/nvim-web-devicons")
+	use("kosayoda/nvim-lightbulb")
+
+	-- Navigation
+	use("unblevable/quick-scope")
+	use("justinmk/vim-sneak")
+
+	-- Autopairing
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+	use("windwp/nvim-ts-autotag")
+
+	-- JSX
+	use("peitalin/vim-jsx-typescript")
+
+	-- Pandoc & MDX
+	use({
+		"vim-pandoc/vim-pandoc",
+		ft = { "markdown" },
+	})
+	use({
+		"vim-pandoc/vim-pandoc-syntax",
+		ft = { "markdown" },
+	})
 	use("jxnblk/vim-mdx-js")
+
+	-- Misc
+	use("numToStr/Comment.nvim")
+	use("tpope/vim-surround")
+	use("mbbill/undotree")
+	use("rcarriga/nvim-notify")
+	use({
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = "BufReadPost",
+	})
 end)

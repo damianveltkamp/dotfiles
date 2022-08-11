@@ -4,6 +4,12 @@ if not notify_status_ok then
 	return
 end
 
+notify.setup({
+	max_width = 50,
+	max_height = 10,
+	minimum_width = 50,
+})
+
 require("utils/setoptions")
 require("utils/setvariable")
 require("utils/git")
@@ -86,10 +92,6 @@ setGlobalVariable("loaded_netrwFileHandlers", 1)
 setGlobalVariable("pandoc#completion#bib#mode", "citeproc")
 vim.cmd("let g:pandoc#biblio#bibs = ['~/.pandoc/default.bib']")
 
--- Unset mappings for autopairs plugin
-setGlobalVariable("AutoPairsMapCh", 0)
-
--- Unset mappings for autopairs plugin
 vim.cmd('let g:pandoc#modules#disabled = ["folding"]')
 
 -- Vim sneak settings
