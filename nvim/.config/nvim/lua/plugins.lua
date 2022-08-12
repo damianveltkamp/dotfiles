@@ -42,9 +42,6 @@ packer.startup(function()
 	use("hrsh7th/cmp-nvim-lsp")
 	use("onsails/lspkind-nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use({
-		"ray-x/lsp_signature.nvim",
-	})
 	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use({
@@ -130,13 +127,29 @@ packer.startup(function()
 	})
 	use("jxnblk/vim-mdx-js")
 
-	-- Misc
+	-- Markdown preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown", "markdown.mdx", "pandoc" }
+		end,
+		ft = { "markdown" },
+	})
+
+	-- Commenting
 	use("numToStr/Comment.nvim")
-	use("tpope/vim-surround")
-	use("mbbill/undotree")
-	use("rcarriga/nvim-notify")
 	use({
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		event = "BufReadPost",
 	})
+
+	-- Surround operations
+	use("tpope/vim-surround")
+
+	-- Undo history explorer
+	use("mbbill/undotree")
+
+	-- Custom notifications plugin
+	use("rcarriga/nvim-notify")
 end)

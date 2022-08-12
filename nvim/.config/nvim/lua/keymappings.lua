@@ -116,3 +116,9 @@ map("n", "-", "<C-x>")
 
 -- Select all
 map("n", "<C-a>", "gg<S-v>G")
+
+-- Markdown preview
+map("n", "<leader>mp", "<cmd>MarkdownPreview<CR>")
+
+-- Start search and replace
+map("n", "<leader>rp", ":%s/")

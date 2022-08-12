@@ -31,6 +31,7 @@ packages=(
 "pandoc-crossref"
 "stylua"
 "jsonlint"
+"lua-language-server"
 )
 
 casks=(
