@@ -71,8 +71,9 @@ vim.keymap.set("n", "<leader>gsu", "<cmd> !git su <CR>")
 vim.keymap.set("n", "<leader>gj", "<cmd> diffget //3 <CR>")
 vim.keymap.set("n", "<leader>gf", "<cmd> diffget //2 <CR>")
 vim.keymap.set("n", "<leader>gb", '<cmd> lua require"gitsigns".blame_line{full=true} <CR>')
-vim.keymap.set("n", "<leader>gpr", "<cmd> lua OpenNewPullRequest() <CR>")
--- map('n', '<leader>gbt', '<cmd> Gitsigns toggle_current_line_blame <CR>')
+vim.keymap.set("n", "<leader>gpr", "<cmd> DVOpenNewPullRequest <CR>")
+vim.keymap.set("n", "<leader>gor", "<cmd> DVOpenCurrentRepo <CR>")
+vim.keymap.set('n', '<leader>gbt', '<cmd> Gitsigns toggle_current_line_blame <CR>')
 
 -- Undotree bindings
 vim.keymap.set("n", "<leader>u", "<cmd> UndotreeShow <CR>")

@@ -1,16 +1,16 @@
 function on_attach(client, bufnr)
-	local opts = { noremap = true }
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	-- vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 	-- vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-	vim.keymap.set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-	vim.keymap.set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
+	vim.keymap.set("n", "[d", vim.lsp.diagnostic.goto_prev)
+	vim.keymap.set("n", "]d", vim.lsp.diagnostic.goto_next)
 	vim.keymap.set("n", "gdw", "<cmd>Telescope diagnostics<CR>")
 
-	vim.keymap.set("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-	vim.keymap.set("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-	vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+	vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help)
+	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 	vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc <CR>")
 	vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
 

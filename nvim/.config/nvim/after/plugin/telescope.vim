@@ -6,3 +6,4 @@ highlight TelescopeBorder         guifg=#87d7ff
 highlight TelescopePromptBorder   guifg=#87d7ff
 highlight TelescopeResultsBorder  guifg=#87d7ff
 highlight TelescopePreviewBorder  guifg=#87d7ff
+

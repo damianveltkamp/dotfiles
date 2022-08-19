@@ -23,6 +23,8 @@ local options = {
 	tabstop = 2, -- Defines the number of spaces that a <Tab> in a file counts for.
 	shiftwidth = 2, -- Number of spaces inserted for each indent.
 	softtabstop = 2, -- Number of spaces inserted for each indent during editing operations.
+	autoindent = true, -- Copies indent from current line when starting new line.
+	smartindent = true, -- Enables smart indenting.
 	showmode = false, -- Disable showing current mode on last line.
 	termguicolors = true, -- Enables 24-bit RGB colors in the TUI.
 	updatetime = 300, -- Time till command is executed after typing last character.
@@ -31,8 +33,6 @@ local options = {
 	undofile = true, -- Enables persistant undo's.
 	undodir = os.getenv("HOME") .. "/.config/undodir", -- Sets the directory in which undofiles should be saved.
 	scrolloff = 16, -- Amount of screen lines to keep above and below cursor before buffer scrolls.
-	autoindent = true, -- Copies indent from current line when starting new line.
-	smartindent = true, -- Enables smart indenting.
 	splitbelow = true, -- When splitting a window will put the new window below the current one.
 	splitright = true, -- When splitting a window will put the new window on the right of the current one.
 	signcolumn = "yes:2", -- Sets 2 columns for signcolumn.
@@ -70,5 +70,14 @@ fun! TrimWhitespace()
 endfun
 augroup THE_PRIMEAGEN
     autocmd BufWritePre * :call TrimWhitespace()
+augroup END
+]])
+
+vim.api.nvim_command([[
+augroup Cursorline
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
 augroup END
 ]])

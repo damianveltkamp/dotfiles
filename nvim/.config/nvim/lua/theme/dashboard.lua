@@ -18,7 +18,7 @@ local opts = {
 	custom_section = {
 		{
 			desc = "    New PR   ",
-			action = "silent lua OpenNewPullRequest()",
+			action = "DVOpenNewPullRequest",
 		},
 		{
 			desc = "    BitBucket",

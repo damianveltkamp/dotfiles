@@ -1,10 +1,10 @@
--- TODO Set global function
-vim.api.nvim_command([[
-colorscheme onedark
+local status_ok, onedark = pcall(require, "onedark")
+if not status_ok then
+	return
+end
 
-" checks if your terminal has 24-bit color support
-if (has("termguicolors"))
-    set termguicolors
-    hi LineNr ctermbg=NONE guibg=NONE
-endif
-]])
+onedark.setup({
+	style = "cool",
+})
+
+onedark.load()

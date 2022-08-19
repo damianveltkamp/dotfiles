@@ -1,77 +1,91 @@
 local checkRemoteHost = function()
-  local remoteHost = {}
-  local handle = io.popen('git config --get remote.origin.url')
-  local gitRemoteUrl = handle:read('*a')
-  handle:close()
+	local remoteHost = {}
+	local handle = io.popen("git config --get remote.origin.url")
+	local gitRemoteUrl = handle:read("*a")
+	handle:close()
 
-  local normalizedGitRemoteUrl = string.gsub(gitRemoteUrl, "%s+", "")
+	local normalizedGitRemoteUrl = string.gsub(gitRemoteUrl, "%s+", "")
 
-  if string.find(normalizedGitRemoteUrl, 'github') then
-    remoteHost['name'] = 'github'
-    remoteHost['remoteUrl'] = string.gsub(normalizedGitRemoteUrl, "%.git", "")
-    return remoteHost
-  end
+	if string.find(normalizedGitRemoteUrl, "github") then
+		remoteHost["name"] = "github"
+		remoteHost["remoteUrl"] = string.gsub(normalizedGitRemoteUrl, "%.git", "")
+		return remoteHost
+	end
 
-  if string.find(normalizedGitRemoteUrl, 'bitbucket') then
-    local urlRemovedPrefix = string.gsub(normalizedGitRemoteUrl, ".*@", "")
-    local urlColonReplace = string.gsub(urlRemovedPrefix, '%:', '/')
-    local url = 'https://' .. urlColonReplace
+	if string.find(normalizedGitRemoteUrl, "bitbucket") then
+		local urlRemovedPrefix = string.gsub(normalizedGitRemoteUrl, ".*@", "")
+		local urlColonReplace = string.gsub(urlRemovedPrefix, "%:", "/")
+		local url = "https://" .. urlColonReplace
 
-    remoteHost['name'] = 'bitbucket'
-    remoteHost['remoteUrl'] = url
+		remoteHost["name"] = "bitbucket"
+		remoteHost["remoteUrl"] = url
 
-    return remoteHost
-  end
+		return remoteHost
+	end
 
-  if string.find(normalizedGitRemoteUrl, 'azure') then
-    remoteHost['name'] = 'azure'
-    remoteHost['remoteUrl'] = 'https://' .. string.gsub(normalizedGitRemoteUrl, ".*@", "")
+	if string.find(normalizedGitRemoteUrl, "azure") then
+		remoteHost["name"] = "azure"
+		remoteHost["remoteUrl"] = "https://" .. string.gsub(normalizedGitRemoteUrl, ".*@", "")
 
-    return remoteHost
-  end
+		return remoteHost
+	end
 end
 
 local getSourceRef = function()
-  local handle = io.popen('git branch --show-current')
-  local sourceRef = handle:read('*a')
-  handle:close()
+	local handle = io.popen("git branch --show-current")
+	local sourceRef = handle:read("*a")
+	handle:close()
 
-  return sourceRef
+	return sourceRef
 end
 
 local bitbucketNewPullRequest = function(remoteHost)
-  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/pull-requests/new'
+	local executionString = 'open -a "Google chrome" ' .. remoteHost["remoteUrl"] .. "/pull-requests/new"
 
-  os.execute(executionString)
+	os.execute(executionString)
 end
 
 local azureNewPullRequest = function(remoteHost, sourceRef)
-  local pullRequestString = '"' .. remoteHost['remoteUrl'] .. '/pullrequestcreate?sourceRef=' .. sourceRef .. '&targetRef=develop' .. '"'
-  local executionString = 'open -a "Google chrome" ' .. pullRequestString
+	local pullRequestString = '"'
+		.. remoteHost["remoteUrl"]
+		.. "/pullrequestcreate?sourceRef="
+		.. sourceRef
+		.. "&targetRef=develop"
+		.. '"'
+	local executionString = 'open -a "Google chrome" ' .. pullRequestString
 
-  os.execute(executionString)
+	os.execute(executionString)
 end
 
 local githubNewPullRequest = function(remoteHost)
-  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/compare'
+	local executionString = 'open -a "Google chrome" ' .. remoteHost["remoteUrl"] .. "/compare"
 
-  os.execute(executionString)
+	os.execute(executionString)
 end
 
-function OpenNewPullRequest()
-  local remoteHost = checkRemoteHost()
-  local sourceRef = getSourceRef()
-  local normalizedSourceRef = string.gsub(sourceRef, "%s+", "")
+vim.api.nvim_create_user_command("DVOpenNewPullRequest", function()
+	local remoteHost = checkRemoteHost()
+	local sourceRef = getSourceRef()
+	local normalizedSourceRef = string.gsub(sourceRef, "%s+", "")
 
-  if remoteHost['name'] == 'bitbucket' then
-    bitbucketNewPullRequest(remoteHost)
-  end
+	if remoteHost["name"] == "bitbucket" then
+		bitbucketNewPullRequest(remoteHost)
+	end
 
-  if remoteHost['name'] == 'github' then
-    githubNewPullRequest(remoteHost)
-  end
+	if remoteHost["name"] == "github" then
+		githubNewPullRequest(remoteHost)
+	end
 
-  if remoteHost['name'] == 'azure' then
-    azureNewPullRequest(remoteHost, normalizedSourceRef)
-  end
-end
+	if remoteHost["name"] == "azure" then
+		azureNewPullRequest(remoteHost, normalizedSourceRef)
+	end
+end, {})
+
+vim.api.nvim_create_user_command("DVOpenCurrentRepo", function()
+	local handle = io.popen("git config --get remote.origin.url")
+	local gitRemoteUrl = handle:read("*a")
+	handle:close()
+
+	local executionString = 'open -a "Google chrome" ' .. gitRemoteUrl
+	os.execute(executionString)
+end, {})
