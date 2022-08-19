@@ -1,5 +1,3 @@
-require("utils/setvariable")
-
 -- TODO Set global function
 vim.api.nvim_command([[
 colorscheme onedark

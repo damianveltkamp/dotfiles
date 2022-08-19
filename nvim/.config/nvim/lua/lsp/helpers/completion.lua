@@ -10,8 +10,6 @@ if not lspkind_status_ok then
 	return
 end
 
-require("utils/setmapping")
-
 local source_mapping = {
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
@@ -29,7 +27,7 @@ local feedkey = function(key, mode)
 end
 
 -- Set completion menu options
-setOption("global", "completeopt", "menuone,noselect")
+vim.opt.completeopt = "menuone,noselect"
 
 cmp.setup({
 	snippet = {

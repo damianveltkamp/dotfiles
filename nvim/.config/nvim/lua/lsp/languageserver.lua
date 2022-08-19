@@ -2,8 +2,6 @@
 Nvim_lsp = require("lspconfig")
 
 -- Load helpers and utilities
-require("utils/setvariable")
-require("utils/setoptions")
 require("lsp/diagnostics")
 require("lsp/helpers/on-attach")
 require("lsp/helpers/treesitter")

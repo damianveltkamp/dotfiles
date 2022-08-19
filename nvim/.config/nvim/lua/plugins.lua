@@ -73,6 +73,7 @@ packer.startup(function()
 	use("glepnir/dashboard-nvim")
 	use("hoob3rt/lualine.nvim")
 	use("norcalli/nvim-colorizer.lua")
+	use("lukas-reineke/indent-blankline.nvim")
 
 	-- Snipets
 	use("norcalli/snippets.nvim")
@@ -89,6 +90,9 @@ packer.startup(function()
 			},
 		},
 	})
+
+	-- Optimization
+	use("lewis6991/impatient.nvim")
 
 	-- File finder
 	use("lambdalisue/fern.vim")

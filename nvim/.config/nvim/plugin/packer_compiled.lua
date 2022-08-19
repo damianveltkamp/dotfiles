@@ -129,6 +129,16 @@ _G.packer_plugins = {
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/glyph-palette.vim",
     url = "https://github.com/lambdalisue/glyph-palette.vim"
   },
+  ["impatient.nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/damianveltkamp/.local/share/nvim/site/pack/packer/start/lspkind-nvim",

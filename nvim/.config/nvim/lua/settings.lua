@@ -1,64 +1,48 @@
 vim.scriptencoding = "utf-8"
 
-require("utils/setoptions")
-require("utils/setvariable")
 require("utils/git")
 
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
 vim.cmd("set noswapfile")
 vim.cmd("set cindent")
-vim.cmd("set signcolumn=yes:2")
 vim.cmd("set showmatch")
-vim.cmd("let g:fern_disable_startup_warnings = 1")
-
 vim.cmd("set jumpoptions+=stack")
-setOption("global", "encoding", "utf-8")
-setOption("global", "fileencoding", "a")
-setOption("global", "mouse", "a")
-setOption("window", "number", true)
-setOption("window", "relativenumber", true)
-setOption("global", "inccommand", "split")
-setOption("global", "ignorecase", true)
-setOption("global", "breakindent", true)
-setOption("global", "clipboard", "unnamedplus")
-setOption("buffer", "expandtab", true)
-setOption("buffer", "tabstop", 2)
-setOption("buffer", "shiftwidth", 2)
-setOption("buffer", "softtabstop", 2)
-setOption("global", "hidden", true)
-setOption("global", "showmode", false)
-setOption("global", "termguicolors", true)
-setOption("global", "updatetime", 50)
-setOption("window", "wrap", false)
-setOption("global", "backup", false)
-setOption("global", "undofile", true)
-setOption("global", "undodir", os.getenv("HOME") .. "/.config/undodir")
-setOption("global", "scrolloff", 16)
-setOption("buffer", "autoindent", true)
-setOption("global", "smarttab", true)
-setOption("buffer", "smartindent", true)
-setOption("global", "splitbelow", true)
-setOption("global", "splitright", true)
 
--- Quickscope highlight on specific keys
-setGlobalVariable("qs_highlight_on_keys", { "f", "F", "t", "T" })
+local options = {
+	encoding = "utf-8", -- Sets encoding to utf-8 for RPC communication.
+	fileencoding = "utf-8", -- Sets encoding to utf-8 for file content for the current buffer.
+	mouse = "a", -- Enables mouse support.
+	number = true, -- Enables line numbers.
+	relativenumber = true, -- Enables relative line numbers.
+	inccommand = "split", -- Shows effects of a command in a preview window.
+	ignorecase = true, -- Search case insensative.
+	breakindent = true, -- Every wrapped line will continue visually indented.
+	clipboard = "unnamedplus", -- Enables system clipboard integration.
+	expandtab = true, -- Enables appropriate number of spaces to insert a tab in INSERT mode.
+	tabstop = 2, -- Defines the number of spaces that a <Tab> in a file counts for.
+	shiftwidth = 2, -- Number of spaces inserted for each indent.
+	softtabstop = 2, -- Number of spaces inserted for each indent during editing operations.
+	showmode = false, -- Disable showing current mode on last line.
+	termguicolors = true, -- Enables 24-bit RGB colors in the TUI.
+	updatetime = 300, -- Time till command is executed after typing last character.
+	wrap = false, -- Disable wrapping.
+	backup = false, -- Disable writing of backup files.
+	undofile = true, -- Enables persistant undo's.
+	undodir = os.getenv("HOME") .. "/.config/undodir", -- Sets the directory in which undofiles should be saved.
+	scrolloff = 16, -- Amount of screen lines to keep above and below cursor before buffer scrolls.
+	autoindent = true, -- Copies indent from current line when starting new line.
+	smartindent = true, -- Enables smart indenting.
+	splitbelow = true, -- When splitting a window will put the new window below the current one.
+	splitright = true, -- When splitting a window will put the new window on the right of the current one.
+	signcolumn = "yes:2", -- Sets 2 columns for signcolumn.
+	laststatus = 3, -- Enables global statusline
+	cursorline = true, -- Enables cursor line
+}
 
-setGlobalVariable("fern#disable_default_mappings", 1)
-setGlobalVariable("fern#renderer", "nerdfont")
-setGlobalVariable("loaded_netrw", 1)
-setGlobalVariable("loaded_netrwPlugin", 1)
-setGlobalVariable("loaded_netrwFileHandlers", 1)
-
--- Pandoc setup
-setGlobalVariable("pandoc#completion#bib#mode", "citeproc")
-vim.cmd("let g:pandoc#biblio#bibs = ['~/.pandoc/default.bib']")
-vim.cmd('let g:pandoc#modules#disabled = ["folding"]')
-
--- Vim sneak settings
-vim.cmd("let g:sneak#prompt = '🔎'")
-vim.cmd("let g:sneak#use_ic_scs = 1")
-vim.cmd("let g:sneak#label = 1")
+for k, v in pairs(options) do
+	vim.opt[k] = v
+end
 
 -- Highlight yanked text
 vim.api.nvim_command([[
