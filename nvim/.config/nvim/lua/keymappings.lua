@@ -10,8 +10,8 @@ vim.keymap.set("n", "K", "gg")
 
 -- Insertmode movement movement
 vim.keymap.set("i", "<C-h>", "<Left>")
-vim.keymap.set("i", "<C-j>", "<Down>")
-vim.keymap.set("i", "<C-k>", "<Up>")
+-- vim.keymap.set("i", "<C-j>", "<Down>")
+-- vim.keymap.set("i", "<C-k>", "<Up>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
 -- Command line movement
@@ -73,7 +73,7 @@ vim.keymap.set("n", "<leader>gf", "<cmd> diffget //2 <CR>")
 vim.keymap.set("n", "<leader>gb", '<cmd> lua require"gitsigns".blame_line{full=true} <CR>')
 vim.keymap.set("n", "<leader>gpr", "<cmd> DVOpenNewPullRequest <CR>")
 vim.keymap.set("n", "<leader>gor", "<cmd> DVOpenCurrentRepo <CR>")
-vim.keymap.set('n', '<leader>gbt', '<cmd> Gitsigns toggle_current_line_blame <CR>')
+vim.keymap.set("n", "<leader>gbt", "<cmd> Gitsigns toggle_current_line_blame <CR>")
 
 -- Undotree bindings
 vim.keymap.set("n", "<leader>u", "<cmd> UndotreeShow <CR>")

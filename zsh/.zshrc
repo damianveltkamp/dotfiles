@@ -14,6 +14,10 @@ fi
 
 zplug load
 
+alias n="nvim"
+alias ll="ls -l"
+alias luamake=/Users/damianveltamp/lua-language-server/3rd/luamake/luamake
+
 # VARIABLES
 export NOTES_DIR="$HOME/Documents/notes"
 export NVM_DIR="$HOME/.nvm"
@@ -60,7 +64,7 @@ echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
 # Custom cd
-chpwd() ls
+chpwd() ll
 
 # CD into development directory
 function development_directory() {
@@ -207,8 +211,5 @@ nvi() {
 }
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
-
-alias n="nvim"
-alias luamake=/Users/damianveltamp/lua-language-server/3rd/luamake/luamake
 
 eval "$(starship init zsh)"

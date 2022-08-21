@@ -9,9 +9,13 @@ treesitter.setup({
 		enable_autocmd = false,
 	},
 	ensure_installed = {
+		"typescript",
 		"tsx",
+		"javascript",
 		"lua",
+		"html",
 		"json",
+		"scss",
 		"css",
 	},
 })
