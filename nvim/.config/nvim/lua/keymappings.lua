@@ -66,8 +66,8 @@ vim.keymap.set("n", "<leader>mf", '<cmd> lua require("telescope").extensions.med
 -- Git keybindings
 vim.keymap.set("n", "<leader>gs", "<cmd> Git <CR>")
 vim.keymap.set("n", "<leader>gc", "<cmd> Git commit <CR>")
-vim.keymap.set("n", "<leader>gp", "<cmd> Git push <CR>")
-vim.keymap.set("n", "<leader>gsu", "<cmd> !git su <CR>")
+vim.keymap.set("n", "<leader>gp", "<cmd> TermExec cmd='git push' <CR>")
+vim.keymap.set("n", "<leader>gsu", "<cmd> TermExec cmd='git su' <CR>")
 vim.keymap.set("n", "<leader>gj", "<cmd> diffget //3 <CR>")
 vim.keymap.set("n", "<leader>gf", "<cmd> diffget //2 <CR>")
 vim.keymap.set("n", "<leader>gb", '<cmd> lua require"gitsigns".blame_line{full=true} <CR>')
@@ -80,10 +80,6 @@ vim.keymap.set("n", "<leader>u", "<cmd> UndotreeShow <CR>")
 
 -- Fern bindings
 vim.keymap.set("n", "<C-n>", "<cmd> Fern . -drawer -reveal=% -toggle -width=35 <CR>")
-
--- Switch tab stop
-vim.keymap.set("n", "<leader>ts2", "<cmd> set tabstop=2 shiftwidth=2 softtabstop=2 <CR>")
-vim.keymap.set("n", "<leader>ts4", "<cmd> set tabstop=4 shiftwidth=4 softtabstop=4 <CR>")
 
 -- Keymapping to start a development server
 vim.keymap.set("n", "<leader>ss", "<cmd> silent lua startServer() <CR>")
@@ -122,3 +118,12 @@ vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreview<CR>")
 
 -- Start search and replace
 vim.keymap.set("n", "<leader>rp", ":%s/")
+
+-- Resource luasnips
+vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
+
+-- Open floating terminal
+vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm <CR>")
+
+-- Take code screenshot and copy to clopboard
+vim.keymap.set("n", "<leader>ts", "<cmd>DVSiliconScreenshot <CR>")

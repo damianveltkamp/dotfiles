@@ -1,6 +1,7 @@
 vim.scriptencoding = "utf-8"
 
 require("utils/git")
+require("utils/silicon")
 
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
@@ -8,6 +9,8 @@ vim.cmd("set noswapfile")
 vim.cmd("set cindent")
 vim.cmd("set showmatch")
 vim.cmd("set jumpoptions+=stack")
+
+vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 
 local options = {
 	encoding = "utf-8", -- Sets encoding to utf-8 for RPC communication.
@@ -44,12 +47,11 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
--- Highlight yanked text
-vim.api.nvim_command([[
-augroup LuaHighlight
-    autocmd TextYankPost * :lua require 'vim.highlight'.on_yank({timeout = 80})
-augroup = END
-]])
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	callback = function()
+		require("vim.highlight").on_yank({ timeout = 200 })
+	end,
+})
 
 -- Return to the same line you left off at
 vim.api.nvim_command([[
@@ -61,22 +63,10 @@ augroup line_return
 augroup END
 ]])
 
--- Trim whitespace on safe
-vim.api.nvim_command([[
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-augroup THE_PRIMEAGEN
-    autocmd BufWritePre * :call TrimWhitespace()
-augroup END
-]])
-
 vim.api.nvim_command([[
 augroup Cursorline
     au VimEnter * setlocal cursorline
-    au WinEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline      
     au BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END

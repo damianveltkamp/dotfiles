@@ -4,7 +4,10 @@ if not luasnip_status_ok then
 	return
 end
 
-vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
+local snip = luasnip.snippet
+local text = luasnip.text_node
+local func = luasnip.function_node
+local insert = luasnip.insert_node
 
 luasnip.config.set_config({
 	history = true,
@@ -18,6 +21,7 @@ luasnip.config.set_config({
 -- Luasnip keymap
 vim.keymap.set({ "i", "s" }, "<c-k>", function()
 	if luasnip.expand_or_jumpable() then
+		print("44")
 		luasnip.expand_or_jump()
 	end
 end, { silent = true })
@@ -29,5 +33,30 @@ vim.keymap.set({ "i", "s" }, "<c-j>", function()
 end, { silent = true })
 
 luasnip.snippets = {
-	tsx = {},
+	all = {
+		luasnip.parser.parse_snippet("Expand", "--testing"),
+	},
 }
+
+luasnip.add_snippets(nil, {
+	typescriptreact = {
+		luasnip.parser.parse_snippet(
+			"component",
+			"export type $1 = { \n $2 \n}\n\nexport const $3 = ({$4}: $5) => { \n};"
+		),
+	},
+})
+
+-- luasnip.add_snippets(nil, {
+-- 	all = {
+-- 		snip({
+-- 			trig = "date",
+-- 			namr = "Date",
+-- 			dscr = "Date in the form of YYYY-MM-DD",
+-- 		}, {
+-- 			func(function()
+-- 				return os.date("%Y-%m-%d")
+-- 			end, {}),
+-- 		}),
+-- 	},
+-- })

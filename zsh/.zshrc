@@ -64,7 +64,7 @@ echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
 # Custom cd
-chpwd() ll
+# chpwd() ll
 
 # CD into development directory
 function development_directory() {

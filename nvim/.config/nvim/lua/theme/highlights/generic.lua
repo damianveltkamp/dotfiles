@@ -4,4 +4,5 @@ hi CursorLineNR guibg=#efa35d |
 hi CursorLineNR guifg=#000000
 
 hi LineNr guifg=#ffffff
+hi IncSearch guibg=#efa35d
 ]])

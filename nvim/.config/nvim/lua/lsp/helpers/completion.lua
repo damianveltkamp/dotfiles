@@ -32,8 +32,11 @@ vim.opt.completeopt = "menuone,noselect"
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
+		-- expand = function(args)
+		-- 	vim.fn["vsnip#anonymous"](args.body)
+		-- end,
 	},
 	mapping = {
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -75,6 +78,7 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 	}, {
 		{ name = "buffer" },
 	}),

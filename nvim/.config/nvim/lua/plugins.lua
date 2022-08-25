@@ -66,6 +66,7 @@ packer.startup(function()
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-buffer")
 	use("mattn/emmet-vim")
+	use("saadparwaiz1/cmp_luasnip")
 
 	-- UI
 	use("navarasu/onedark.nvim")
@@ -76,8 +77,8 @@ packer.startup(function()
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- Snipets
-	use("norcalli/snippets.nvim")
-	use("hrsh7th/vim-vsnip")
+	-- use("norcalli/snippets.nvim")
+	-- use("hrsh7th/vim-vsnip")
 	use("L3MON4D3/LuaSnip")
 
 	-- Fuzy finding
@@ -157,4 +158,13 @@ packer.startup(function()
 
 	-- Custom notifications plugin
 	use("rcarriga/nvim-notify")
+
+	-- Terminal integration
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "v2.*",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
 end)
