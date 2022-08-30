@@ -22,7 +22,7 @@ packages=(
 "efm-langserver"
 "fd"
 "zplug"
-"spaceship"
+"starship"
 "efm-langserver"
 "yarn"
 "ninja"
