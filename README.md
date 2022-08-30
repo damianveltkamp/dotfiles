@@ -15,7 +15,7 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 Curl install script to get all packages, casks and fonts, also changes default shell to zsh:
 
 ```
-curl -s https://raw.githubusercontent.com/damianveltkamp/dotfiles/master/install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/damianveltkamp/dotfiles/master/install.sh)"
 ```
 
 Clone this repository onto your machine:

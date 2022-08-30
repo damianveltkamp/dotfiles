@@ -17,6 +17,8 @@ zplug load
 alias n="nvim"
 alias ll="ls -l"
 alias luamake=/Users/damianveltamp/lua-language-server/3rd/luamake/luamake
+alias disableDesktop="defaults write com.apple.finder CreateDesktop false; killall Finder"
+alias enableDesktop="defaults write com.apple.finder CreateDesktop true; killall Finder"
 
 # VARIABLES
 export NOTES_DIR="$HOME/Documents/notes"
