@@ -59,9 +59,11 @@ done
 
 # Install yabai from custom formula
 brew install koekeishiya/formulae/yabai
+echo "---------------------------------------------------------"
 
 # Install skhd from custom formula
 brew install koekeishiya/formulae/skhd
+echo "---------------------------------------------------------"
 
 # Install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
