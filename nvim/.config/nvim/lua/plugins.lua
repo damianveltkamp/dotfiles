@@ -48,6 +48,7 @@ packer.startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("nvim-treesitter/nvim-treesitter-context")
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -122,15 +123,7 @@ packer.startup(function()
 	-- JSX
 	use("peitalin/vim-jsx-typescript")
 
-	-- Pandoc & MDX
-	use({
-		"vim-pandoc/vim-pandoc",
-		ft = { "markdown" },
-	})
-	use({
-		"vim-pandoc/vim-pandoc-syntax",
-		ft = { "markdown" },
-	})
+	-- MDX
 	use("jxnblk/vim-mdx-js")
 
 	-- Markdown preview
