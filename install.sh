@@ -57,6 +57,12 @@ do
   echo "---------------------------------------------------------"
 done
 
+# Install yabai from custom formula
+brew install koekeishiya/formulae/yabai
+
+# Install skhd from custom formula
+brew install koekeishiya/formulae/skhd
+
 # Install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "---------------------------------------------------------"
