@@ -3,7 +3,7 @@ alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
-alt - q : yabai -m window --close
+alt - q : yabai -m window --focus recent; yabai -m window --close recent 
 
 # move window and focus desktop
 shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
