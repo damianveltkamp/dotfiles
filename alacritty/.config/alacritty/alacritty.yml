@@ -1,3 +1,5 @@
+TERM: screen-256color
+
 window:
   opacity: 0.9
   decorations: "transparent"

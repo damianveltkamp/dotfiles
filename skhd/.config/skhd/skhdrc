@@ -6,15 +6,15 @@ alt - l : yabai -m window --focus east
 alt - q : yabai -m window --focus recent; yabai -m window --close recent 
 
 # move window and focus desktop
-shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
-shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
-shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
-shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
-shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
-shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
-shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
-shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
-shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+shift + alt - 1 : yabai -m window --space 1; osascript -e 'tell application "System Events" to key code 18 using option down'
+shift + alt - 2 : yabai -m window --space 2; osascript -e 'tell application "System Events" to key code 19 using option down'
+shift + alt - 3 : yabai -m window --space 3; osascript -e 'tell application "System Events" to key code 20 using option down'
+shift + alt - 4 : yabai -m window --space 4; osascript -e 'tell application "System Events" to key code 21 using option down'
+shift + alt - 5 : yabai -m window --space 5; osascript -e 'tell application "System Events" to key code 23 using option down'
+shift + alt - 6 : yabai -m window --space 6; osascript -e 'tell application "System Events" to key code 22 using option down'
+shift + alt - 7 : yabai -m window --space 7; osascript -e 'tell application "System Events" to key code 26 using option down'
+shift + alt - 8 : yabai -m window --space 8; osascript -e 'tell application "System Events" to key code 28 using option down'
+shift + alt - 9 : yabai -m window --space 9; osascript -e 'tell application "System Events" to key code 25 using option down'
 
 # move managed window
 shift + alt + ctrl - h : yabai -m window --warp west
