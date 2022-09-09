@@ -127,3 +127,6 @@ vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm <CR>")
 
 -- Take code screenshot and copy to clopboard
 vim.keymap.set("n", "<leader>ts", "<cmd>DVSiliconScreenshot <CR>")
+
+-- Nvim hop
+vim.keymap.set("n", "s", "<cmd>HopChar2 <CR>")

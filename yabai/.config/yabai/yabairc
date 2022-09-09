@@ -6,7 +6,7 @@ yabai -m config mouse_follows_focus on
 
 ## Window borders
 yabai -m config window_border on | off
-yabai -m config window_border_width 4
+yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xffefa35d
 yabai -m config normal_window_border_color 0xff555555
 
@@ -23,11 +23,6 @@ yabai -m config left_padding 0
 yabai -m config right_padding 0
 yabai -m config window_gap 10
 
-# label spaces
-yabai -m space 1 --label Code
-yabai -m space 2 --label Web
-yabai -m space 3 --label Communication
-
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
@@ -35,6 +30,7 @@ yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
+yabai -m rule --add app="^Preview$" manage=off
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
