@@ -58,3 +58,13 @@ vim.api.nvim_command([[
   hi DashboardCenter guifg=#cad3f5
   hi DashboardFooter guifg=#cad3f5
 ]])
+
+-- Telescope
+vim.api.nvim_command([[
+hi TelescopeSelection guifg=#cad3f5 gui=bold
+hi TelescopeMatching guifg=#a6da95
+hi TelescopeBorder         guifg=#f5bde6
+hi TelescopePromptBorder   guifg=#f5bde6
+hi TelescopeResultsBorder  guifg=#cad3f5
+hi TelescopePreviewBorder  guifg=#f5bde6
+]])
