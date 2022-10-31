@@ -130,3 +130,9 @@ vim.keymap.set("n", "<leader>ts", "<cmd>DVSiliconScreenshot <CR>")
 
 -- Nvim hop
 vim.keymap.set("n", "s", "<cmd>HopChar2 <CR>")
+
+-- Safe file faster
+vim.keymap.set("n", "<leader>w", "<cmd>w <CR>")
+
+-- Close buffer
+vim.keymap.set("n", "<leader>q", "<cmd>q <CR>")

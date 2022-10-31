@@ -34,7 +34,7 @@ packer.startup(function()
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-		tag = "release",
+		tag = "v0.5",
 	})
 
 	-- Lsp
@@ -166,5 +166,9 @@ packer.startup(function()
 		config = function()
 			require("toggleterm").setup()
 		end,
+	})
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
 	})
 end)

@@ -4,19 +4,10 @@ if not lualine_status_ok then
 	return
 end
 
-local lualine_onedark_status_ok, lualine_onedark = pcall(require, "lualine.themes.onedark")
-if not lualine_onedark_status_ok then
-	vim.notify("Not able to load in lualine_onedark theme", "error")
-	return
-end
-
-lualine_onedark.normal.a.bg = personal_colors.DVOrange
-lualine_onedark.visual.a.bg = onedark_colors.green
-
 -- Statusline settings
 lualine.setup({
 	options = {
-		theme = lualine_onedark,
+		theme = "catppuccin",
 		section_separators = { left = "", right = "" },
 		icons_enabled = true,
 	},

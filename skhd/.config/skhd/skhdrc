@@ -16,6 +16,9 @@ shift + alt - 7 : yabai -m window --space 7; osascript -e 'tell application "Sys
 shift + alt - 8 : yabai -m window --space 8; osascript -e 'tell application "System Events" to key code 28 using option down'
 shift + alt - 9 : yabai -m window --space 9; osascript -e 'tell application "System Events" to key code 25 using option down'
 
+alt - m : sketchybar --bar topmost=off
+alt - s : brew services restart sketchybar
+
 # move managed window
 shift + alt + ctrl - h : yabai -m window --warp west
 shift + alt + ctrl - j : yabai -m window --warp south

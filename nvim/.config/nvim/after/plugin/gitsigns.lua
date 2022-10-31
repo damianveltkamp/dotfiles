@@ -19,11 +19,10 @@ gitsigns.setup({
 		noremap = true,
 		buffer = true,
 	},
-	watch_index = {
+	watch_gitdir = {
 		interval = 1000,
 	},
 	sign_priority = 1,
 	update_debounce = 200,
 	status_formatter = nil, -- Use default
-	use_decoration_api = false,
 })

@@ -1,7 +1,9 @@
 TERM: screen-256color
 
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+
 window:
-  opacity: 0.9
   decorations: "transparent"
   padding:
     x: 10
@@ -10,31 +12,30 @@ window:
 colors:
   # Default colors
   primary:
-    background: "#242B38"
-    # background: "#2E3440"
+    background: "#24273A"
     foreground: "#D8DEE9"
 
   # Normal colors
-  normal:
-    black: "#3B4252"
-    red: "#BF616A"
-    green: "#64E88C"
-    yellow: "#EBCB8B"
-    blue: "#81A1C1"
-    magenta: "#B48EAD"
-    cyan: "#88C0D0"
-    white: "#abb2bf"
-
-  # Bright colors
-  bright:
-    black: "#5c6370"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#FFBE6E"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#87d7ff"
-    white: "#ECEFF4"
+  # normal:
+  #   black: "#3B4252"
+  #   red: "#BF616A"
+  #   green: "#64E88C"
+  #   yellow: "#EBCB8B"
+  #   blue: "#81A1C1"
+  #   magenta: "#B48EAD"
+  #   cyan: "#88C0D0"
+  #   white: "#abb2bf"
+  #
+  # # Bright colors
+  # bright:
+  #   black: "#5c6370"
+  #   red: "#e06c75"
+  #   green: "#98c379"
+  #   yellow: "#FFBE6E"
+  #   blue: "#61afef"
+  #   magenta: "#c678dd"
+  #   cyan: "#87d7ff"
+  #   white: "#ECEFF4"
 
 window.opacity: 1.0
 

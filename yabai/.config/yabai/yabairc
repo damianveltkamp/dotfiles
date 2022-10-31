@@ -6,14 +6,11 @@ yabai -m config mouse_follows_focus on
 
 ## Window borders
 yabai -m config window_border on | off
-yabai -m config window_border_width 3
-yabai -m config active_window_border_color 0xffefa35d
+yabai -m config window_border_width 4
+yabai -m config active_window_border_color 0xfff5bde6
 yabai -m config normal_window_border_color 0xff555555
 
 yabai -m window --toggle border
-yabai -m rule --add app="Google Chrome" border=off
-yabai -m rule --add app="Safari" border=off
-yabai -m rule --add app="Firefox" border=off
 
 ## Change how yabai looks
 yabai -m config layout bsp
@@ -31,6 +28,8 @@ yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Preview$" manage=off
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
