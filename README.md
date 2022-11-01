@@ -31,7 +31,14 @@ mkdir -p ~/.config
 Make simlinks for all dotfiles and config files.
 
 ```
-cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd
+cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd sketchybar
+```
+
+Start yabai, skhd and sketchybar services.
+
+```
+brew services start yabai && brew services start skhd && brew services start sketchybar
+
 ```
 
 Only thing left is open neovim and install packer packes.
