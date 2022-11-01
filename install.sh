@@ -38,7 +38,6 @@ packages=(
 casks=(
 "spotify"
 "alacritty"
-"shiftit"
 "slack"
 "google-chrome"
 "firefox"
