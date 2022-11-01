@@ -50,8 +50,7 @@ do
                               background.padding_right=-4 \
                               background.color=0xff3C3E4F \
                               background.drawing=on \
-                              label.drawing=off \
-                              click_script="yabai -m space --focus $sid"
+                              label.drawing=off 
 done
 
 ############## ITEM DEFAULTS ###############

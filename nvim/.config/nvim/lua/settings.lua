@@ -9,7 +9,6 @@ vim.cmd("set noswapfile")
 vim.cmd("set cindent")
 vim.cmd("set showmatch")
 vim.cmd("set jumpoptions+=stack")
-vim.cmd("set winbar=%=%m%f")
 
 vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 
@@ -42,7 +41,7 @@ local options = {
 	signcolumn = "yes:2", -- Sets 2 columns for signcolumn.
 	laststatus = 3, -- Enables global statusline
 	cursorline = true, -- Enables cursor line
-	ch = 0, -- Remove command line height when not executing command.
+	-- ch = 0, -- Remove command line height when not executing command.
 }
 
 for k, v in pairs(options) do
@@ -51,7 +50,7 @@ end
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()
-		require("vim.highlight").on_yank({ timeout = 200 })
+		vim.highlight.on_yank({ timeout = 200 })
 	end,
 })
 

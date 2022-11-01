@@ -13,6 +13,7 @@ function on_attach(client, bufnr)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 	vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc <CR>")
 	vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
+	vim.keymap.set("n", "ga", "<cmd> Lspsaga code_action <CR>")
 
 	if client.server_capabilities.completion then
 		vim.cmd("imap <silent> <C-n> <Plug>(completion_trigger)")
@@ -23,8 +24,6 @@ function on_attach(client, bufnr)
 		vim.cmd([[autocmd! * <buffer>]])
 		vim.cmd([[autocmd CursorHold * lua require'nvim-lightbulb'.update_lightbulb()]])
 		vim.cmd([[augroup END]])
-
-		vim.keymap.set("n", "ga", "<cmd> Lspsaga code_action <CR>")
 	end
 end
 
