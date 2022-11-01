@@ -32,6 +32,7 @@ packages=(
 "stylua"
 "jsonlint"
 "lua-language-server"
+"sketchybar"
 )
 
 casks=(
