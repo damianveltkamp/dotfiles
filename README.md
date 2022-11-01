@@ -58,5 +58,4 @@ Only thing left is open neovim and install packer packes.
 - Remove Mac input sources shortcuts.
   - [C-Space overrides by input sources shortcut](https://github.com/tmux/tmux/issues/457)
 - Set alfred to launch with cmd space, remove spotlight to launch with cmd space.
-- Set shiftit shortcuts.
 - Install XCode developer tools
