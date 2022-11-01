@@ -72,7 +72,7 @@ packer.startup(function()
 	-- UI
 	-- use("navarasu/onedark.nvim")
 	use("romgrk/barbar.nvim")
-	-- use("glepnir/dashboard-nvim")
+	use("glepnir/dashboard-nvim")
 	use("hoob3rt/lualine.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use("lukas-reineke/indent-blankline.nvim")

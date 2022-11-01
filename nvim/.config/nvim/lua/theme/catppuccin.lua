@@ -7,6 +7,8 @@ local colorPallet = {
 	red = "#ed8796",
 	blue = "#8aadf4",
 	green = "#a6da95",
+	pink = "#f5bde6",
+	text = "#cad3f5",
 }
 
 catppuccin.setup({
@@ -61,10 +63,15 @@ vim.api.nvim_command([[
 
 -- Telescope
 vim.api.nvim_command([[
-hi TelescopeSelection guifg=#cad3f5 gui=bold
+hi TelescopeSelection guifg=#ffffff gui=bold
 hi TelescopeMatching guifg=#a6da95
-hi TelescopeBorder         guifg=#f5bde6
-hi TelescopePromptBorder   guifg=#f5bde6
-hi TelescopeResultsBorder  guifg=#cad3f5
-hi TelescopePreviewBorder  guifg=#f5bde6
+hi TelescopeBorder         guifg=#8aadf4
+hi TelescopePromptBorder   guifg=#8aadf4
+hi TelescopeResultsBorder  guifg=#8aadf4
+hi TelescopePreviewBorder  guifg=#8aadf4
+]])
+
+-- Winbar
+vim.api.nvim_command([[
+hi WinBar guifg=#cad3f5
 ]])
