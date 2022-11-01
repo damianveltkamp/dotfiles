@@ -70,9 +70,9 @@ packer.startup(function()
 	use("saadparwaiz1/cmp_luasnip")
 
 	-- UI
-	use("navarasu/onedark.nvim")
+	-- use("navarasu/onedark.nvim")
 	use("romgrk/barbar.nvim")
-	use("glepnir/dashboard-nvim")
+	-- use("glepnir/dashboard-nvim")
 	use("hoob3rt/lualine.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use("lukas-reineke/indent-blankline.nvim")

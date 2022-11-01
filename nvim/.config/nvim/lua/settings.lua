@@ -9,6 +9,7 @@ vim.cmd("set noswapfile")
 vim.cmd("set cindent")
 vim.cmd("set showmatch")
 vim.cmd("set jumpoptions+=stack")
+vim.cmd("set winbar=%=%m%f")
 
 vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 
