@@ -3,14 +3,6 @@ if not status_ok then
 	return
 end
 
-local colorPallet = {
-	red = "#ed8796",
-	blue = "#8aadf4",
-	green = "#a6da95",
-	pink = "#f5bde6",
-	text = "#cad3f5",
-}
-
 catppuccin.setup({
 	flavour = "macchiato",
 })
