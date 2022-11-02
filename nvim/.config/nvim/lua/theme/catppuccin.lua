@@ -3,6 +3,35 @@ if not status_ok then
 	return
 end
 
+local catppuccinColors = {
+	roseWater = "#f4dbd6",
+	flamingo = "#f0c6c6",
+	pink = "#f5bde6",
+	mauve = "#c6a0f6",
+	red = "#ed8796",
+	maroon = "#ee99a0",
+	peach = "#f5a97f",
+	yellow = "#eed49f",
+	green = "#a6da95",
+	teal = "#8bd5ca",
+	sky = "#91d7e3",
+	sapphire = "#7dc4e4",
+	blue = "#8aadf4",
+	lavender = "#b7bdf8",
+	text = "#cad3f5",
+	subtext1 = "#b8c0e0",
+	subtext0 = "#a5adcb",
+	overlay2 = "#939ab7",
+	overlay1 = "#8087a2",
+	overlay0 = "#6e738d",
+	surface2 = "#5b6078",
+	surface1 = "#494d64",
+	surface0 = "#363a4f",
+	base = "#24273a",
+	mantle = "#1e2030",
+	crust = "#181926",
+}
+
 catppuccin.setup({
 	flavour = "macchiato",
 })
@@ -10,60 +39,44 @@ catppuccin.setup({
 vim.api.nvim_command("colorscheme catppuccin")
 
 -- Generic
-vim.api.nvim_command([[
-highlight Comment cterm=italic gui=italic
-hi CursorLineNR guibg=#f5a97f |
-hi CursorLineNR guifg=#181926
-
-hi LineNr guifg=#cad3f5
-hi IncSearch guibg=#f5a97f
-]])
+vim.api.nvim_set_hl(0, "Comment", { italic = true })
+vim.api.nvim_set_hl(0, "CursorLineNR", { fg = catppuccinColors.crust, bg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, "LineNr", { fg = catppuccinColors.text })
+vim.api.nvim_set_hl(0, "IncSearch", { bg = catppuccinColors.peach })
 
 -- Git signs config
-vim.api.nvim_command([[
-  hi GitSignsAdd guifg=#a6da95
-  hi GitSignsChange guifg=#8aadf4
-  hi GitSidnsDelete guifg=#ed8796
-]])
+vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = catppuccinColors.green })
+vim.api.nvim_set_hl(0, "GitSignsChange", { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = catppuccinColors.red })
 
 -- Status bar config
 
 -- Diagnostics
-vim.api.nvim_command([[
-hi DiagnosticError ctermfg=1 guifg=#ed8796
-hi DiagnosticWarn ctermfg=3 guifg=#eed49f
-hi DiagnosticInfo ctermfg=4 guifg=#8aadf4
-hi DiagnosticHint ctermfg=7 guifg=#c6a0f6
-
-hi DiagnosticUnderlineError cterm=underline gui=undercurl guisp=#ed8796
-hi DiagnosticUnderlineWarn cterm=underline gui=undercurl guisp=#eed49f
-hi DiagnosticUnderlineInfo cterm=underline gui=undercurl guisp=#8aadf4
-hi DiagnosticUnderlineHint cterm=underline gui=undercurl guisp=#c6a0f6
-
-hi DiagnosticVirtualTextError guifg=#181926 guibg=#ed8796
-hi DiagnosticVirtualTextWarn guifg=#93691d guibg=#333232
-hi DiagnosticVirtualTextInfo guifg=#2b6f77 guibg=#28333B
-hi DiagnosticVirtualTextHint guifg=#181926 guibg=#c6a0f6
-]])
+vim.api.nvim_set_hl(0, "DiagnosticError", { fg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = catppuccinColors.yellow })
+vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = catppuccinColors.mauve })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { fg = catppuccinColors.yellow })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { fg = catppuccinColors.yellow })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { fg = catppuccinColors.mauve })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = catppuccinColors.crust, bg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = catppuccinColors.crust, bg = catppuccinColors.mauve })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = catppuccinColors.crust, bg = catppuccinColors.yellow })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = catppuccinColors.crust, bg = catppuccinColors.green })
 
 -- Dashboard
-vim.api.nvim_command([[
-  hi DashboardHeader guifg=#8aadf4
-  hi DashboardCenter guifg=#cad3f5
-  hi DashboardFooter guifg=#cad3f5
-]])
+vim.api.nvim_set_hl(0, "DashboardHeader", { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, "DashboardCenter", { fg = catppuccinColors.text })
+vim.api.nvim_set_hl(0, "DashboardFooter", { fg = catppuccinColors.text })
 
 -- Telescope
-vim.api.nvim_command([[
-hi TelescopeSelection guifg=#ffffff gui=bold
-hi TelescopeMatching guifg=#a6da95
-hi TelescopeBorder         guifg=#8aadf4
-hi TelescopePromptBorder   guifg=#8aadf4
-hi TelescopeResultsBorder  guifg=#8aadf4
-hi TelescopePreviewBorder  guifg=#8aadf4
-]])
+vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#ffffff", bold = true })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = catppuccinColors.green })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = catppuccinColors.blue })
 
 -- Winbar
-vim.api.nvim_command([[
-hi WinBar guifg=#cad3f5
-]])
+vim.api.nvim_set_hl(0, "WinBar", { fg = catppuccinColors.text })

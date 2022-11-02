@@ -8,6 +8,7 @@ winbar_filetype_exclude = {
 	"Trouble",
 	"toggleterm",
 	"fern",
+	"fugitive",
 }
 
 local excludes = function()
