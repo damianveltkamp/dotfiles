@@ -98,10 +98,14 @@ packer.startup(function()
 	use("lewis6991/impatient.nvim")
 
 	-- File finder
-	use("lambdalisue/fern.vim")
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	})
 
 	-- Fonts & icons
-	use("lambdalisue/fern-renderer-nerdfont.vim")
 	use("lambdalisue/nerdfont.vim")
 	use("lambdalisue/glyph-palette.vim")
 	use("kyazdani42/nvim-web-devicons")

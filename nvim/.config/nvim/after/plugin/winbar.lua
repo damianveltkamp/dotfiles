@@ -7,8 +7,8 @@ winbar_filetype_exclude = {
 	"packer",
 	"Trouble",
 	"toggleterm",
-	"fern",
 	"fugitive",
+	"NvimTree",
 }
 
 local excludes = function()
