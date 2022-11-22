@@ -1,4 +1,5 @@
 vim.g.loaded_netrw = 1
+
 vim.g.loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
@@ -23,16 +24,30 @@ require("nvim-tree").setup({
 		},
 	},
 	renderer = {
-		group_empty = true,
 		icons = {
-			git = {
-				unstaged = "+",
-				staged = "✓",
-				unmerged = "",
-				renamed = "➜",
-				untracked = "+",
-				deleted = "-",
-				ignored = "◌",
+			glyphs = {
+				default = "",
+				symlink = "",
+				bookmark = "",
+				folder = {
+					arrow_closed = "",
+					arrow_open = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
+				},
+				git = {
+					unstaged = "M",
+					staged = "✓",
+					unmerged = "",
+					renamed = "R",
+					untracked = "+",
+					deleted = "-",
+					ignored = "◌",
+				},
 			},
 		},
 	},

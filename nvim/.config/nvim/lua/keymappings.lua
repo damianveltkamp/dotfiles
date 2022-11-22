@@ -132,6 +132,7 @@ vim.keymap.set("n", "s", "<cmd>HopChar2 <CR>")
 
 -- Safe file faster
 vim.keymap.set("n", "<leader>w", "<cmd>w <CR>")
+vim.keymap.set("n", "<leader>W", "<cmd>noa w <CR>")
 
 -- Close buffer
 vim.keymap.set("n", "<leader>q", "<cmd>q <CR>")
