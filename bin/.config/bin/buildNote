@@ -4,7 +4,7 @@
 FILE=unset
 EXTENSION="pdf"
 BIBLOC="$HOME/.config/pandoc/bibliography/references.bib"
-CSL="$HOME/.config/pandoc/citation/apa.csl"
+CSL="$HOME/.config/pandoc-citation-styles/apa.csl"
 HEADER="$HOME/.config/pandoc/template/header.tex"
 LANGUAGE="NL"
 

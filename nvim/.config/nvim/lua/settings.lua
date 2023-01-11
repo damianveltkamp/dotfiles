@@ -42,7 +42,7 @@ local options = {
 	signcolumn = "yes:2", -- Sets 2 columns for signcolumn.
 	laststatus = 3, -- Enables global statusline
 	cursorline = true, -- Enables cursor line
-	ch = 0, -- Remove command line height when not executing command.
+	-- ch = 0, -- Remove command line height when not executing command.
 }
 
 for k, v in pairs(options) do

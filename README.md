@@ -59,3 +59,17 @@ Only thing left is open neovim and install packer packes.
   - [C-Space overrides by input sources shortcut](https://github.com/tmux/tmux/issues/457)
 - Set alfred to launch with cmd space, remove spotlight to launch with cmd space.
 - Install XCode developer tools
+
+### Pandoc
+
+Install glossaries for pandoc by running:
+
+```
+sudo tlmgr install glossaries
+```
+
+Clone citation styles
+
+```
+git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc-citation-styles
+```
