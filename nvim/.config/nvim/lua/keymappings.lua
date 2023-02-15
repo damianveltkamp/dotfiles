@@ -78,7 +78,7 @@ vim.keymap.set("n", "<leader>gbt", "<cmd> Gitsigns toggle_current_line_blame <CR
 -- Undotree bindings
 vim.keymap.set("n", "<leader>u", "<cmd> UndotreeShow <CR>")
 
-vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle <CR>")
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeFindFileToggle <CR>")
 
 -- Keymapping to start a development server
 vim.keymap.set("n", "<leader>ss", "<cmd> silent lua startServer() <CR>")

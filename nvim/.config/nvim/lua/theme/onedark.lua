@@ -48,13 +48,6 @@
 --   hi GitSidnsDelete guifg=#e06c75
 -- ]])
 
--- Dashboard
--- vim.api.nvim_command([[
---   hi DashboardHeader guifg=#8ac6f2
---   hi DashboardCenter guifg=#ffffff
---   hi DashboardFooter guifg=#ffffff
--- ]])
-
 -- onedark_colors = {
 -- 	blue = "#61afef",
 -- 	green = "#98c379",

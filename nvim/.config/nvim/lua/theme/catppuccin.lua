@@ -38,11 +38,6 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = catppuccinColors.crus
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = catppuccinColors.crust, bg = catppuccinColors.yellow })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = catppuccinColors.crust, bg = catppuccinColors.green })
 
--- Dashboard
-vim.api.nvim_set_hl(0, "DashboardHeader", { fg = catppuccinColors.blue })
-vim.api.nvim_set_hl(0, "DashboardCenter", { fg = catppuccinColors.text })
-vim.api.nvim_set_hl(0, "DashboardFooter", { fg = catppuccinColors.text })
-
 -- Telescope
 vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#ffffff", bold = true })
 vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = catppuccinColors.green })
