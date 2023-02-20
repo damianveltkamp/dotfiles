@@ -60,5 +60,5 @@ pandoc \
   --toc \
   -V linkcolor=blue \
   -V 'geometry:margin=1in' \
-  -V 'toc-title:Inhoudsopgave' \
+  -V 'toc-title:Table of contents' \
   -o "$target/$outputFile" $FILE
