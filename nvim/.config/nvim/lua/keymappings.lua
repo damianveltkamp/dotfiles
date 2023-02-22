@@ -74,6 +74,7 @@ vim.keymap.set("n", "<leader>gb", '<cmd> lua require"gitsigns".blame_line{full=t
 vim.keymap.set("n", "<leader>gpr", "<cmd> DVOpenNewPullRequest <CR>")
 vim.keymap.set("n", "<leader>gor", "<cmd> DVOpenCurrentRepo <CR>")
 vim.keymap.set("n", "<leader>gbt", "<cmd> Gitsigns toggle_current_line_blame <CR>")
+vim.keymap.set("n", "<leader>gtn", "<cmd> DVGetTicketNumber<CR>")
 
 -- Undotree bindings
 vim.keymap.set("n", "<leader>u", "<cmd> UndotreeShow <CR>")

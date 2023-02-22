@@ -39,6 +39,21 @@ local getSourceRef = function()
 	return sourceRef
 end
 
+local getTicketNumber = function()
+	local handle = io.popen("git branch --show-current")
+	local sourceRef = handle:read("*a")
+	handle:close()
+
+	local number = string.match(sourceRef, "%d+")
+
+	return number
+end
+
+vim.api.nvim_create_user_command("DVGetTicketNumber", function()
+	local number = getTicketNumber()
+	os.execute("echo " .. number .. " | pbcopy")
+end, {})
+
 local bitbucketNewPullRequest = function(remoteHost)
 	local executionString = 'open -a "Google chrome" ' .. remoteHost["remoteUrl"] .. "/pull-requests/new"
 
