@@ -9,19 +9,20 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 require("null-ls").setup({
 	sources = {
 		formatting.prettier,
-		require("null-ls").builtins.diagnostics.eslint_d,
+		require("null-ls").builtins.diagnostics.eslint,
+		require("null-ls").builtins.formatting.eslint,
 		require("null-ls").builtins.diagnostics.jsonlint,
 		require("null-ls").builtins.formatting.stylua,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({bufnr = bufnr})
-        end,
-      })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = bufnr })
+				end,
+			})
 		end
 	end,
 })

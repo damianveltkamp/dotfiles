@@ -100,9 +100,6 @@ vim.keymap.set("n", "<leader>of", "<cmd> silent !open . <CR>")
 vim.keymap.set("n", "<C-j>", "<cmd> :m .+1 <CR> ==")
 vim.keymap.set("n", "<C-k>", "<cmd> :m .-2 <CR> ==")
 
--- Eslint_d
-vim.keymap.set("n", "<leader>ef", "mF:%!eslint_d --stdin --fix-to-stdout<CR>`F")
-
 -- Don't yank with x
 vim.keymap.set("n", "x", '"_x')
 
