@@ -20,7 +20,7 @@ require("null-ls").setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
+					vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
 				end,
 			})
 		end

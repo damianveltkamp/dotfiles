@@ -51,7 +51,7 @@ end
 
 vim.api.nvim_create_user_command("DVGetTicketNumber", function()
 	local number = getTicketNumber()
-	os.execute("echo " .. number .. " | pbcopy")
+	os.execute("echo " .. number .. "| tr -d '\n' | pbcopy")
 end, {})
 
 local bitbucketNewPullRequest = function(remoteHost)

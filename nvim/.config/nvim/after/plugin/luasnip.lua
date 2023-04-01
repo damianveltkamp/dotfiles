@@ -11,10 +11,8 @@ local insert = luasnip.insert_node
 
 luasnip.config.set_config({
 	history = true,
-
 	-- This enables dynamic snippets update as you type.
 	updateevents = "TextChanged,TextChangedI",
-
 	enable_autosnippets = true,
 })
 
@@ -48,6 +46,9 @@ luasnip.add_snippets(nil, {
 	},
 	typescript = {
 		luasnip.parser.parse_snippet("lookuptable", "const $1 = ($2) => ({\n$3\n});"),
+		luasnip.parser.parse_snippet("ve:mq", "'@media': {\n[$1]: {\n $2 \n}\n},"),
+		luasnip.parser.parse_snippet("ve:selectors", "selectors: {\n'$1': {\n $2 \n}\n},"),
+		luasnip.parser.parse_snippet("font", "...theme.fonts.$1"),
 	},
 })
 
