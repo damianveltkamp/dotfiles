@@ -14,6 +14,8 @@ vim.api.nvim_command("colorscheme catppuccin")
 -- Generic
 vim.api.nvim_set_hl(0, "Comment", { italic = true })
 vim.api.nvim_set_hl(0, "CursorLineNR", { fg = catppuccinColors.crust, bg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#303347" })
+vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#303347" })
 vim.api.nvim_set_hl(0, "LineNr", { fg = catppuccinColors.text })
 vim.api.nvim_set_hl(0, "IncSearch", { bg = catppuccinColors.peach })
 

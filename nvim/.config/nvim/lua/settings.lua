@@ -42,6 +42,7 @@ local options = {
 	signcolumn = "yes:2", -- Sets 2 columns for signcolumn.
 	laststatus = 3, -- Enables global statusline
 	cursorline = true, -- Enables cursor line
+	cursorcolumn = true, -- Enables vertical cursor line
 	-- ch = 0, -- Remove command line height when not executing command.
 }
 
@@ -68,7 +69,7 @@ augroup END
 vim.api.nvim_command([[
 augroup Cursorline
     au VimEnter * setlocal cursorline
-    au WinEnter * setlocal cursorline      
+    au WinEnter * setlocal cursorline
     au BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END
