@@ -78,7 +78,7 @@ brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
 echo "---------------------------------------------------------"
 
 # Install all global yarn packages
-yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server
+yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server typescript-language-server
 echo "---------------------------------------------------------"
 
 # Install needed tex packages to create pdf's
