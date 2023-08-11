@@ -30,6 +30,9 @@ vim.keymap.set("n", "<leader>l", "<cmd> wincmd l <CR>")
 vim.keymap.set("n", "<TAB>", "<cmd> bnext <CR>")
 vim.keymap.set("n", "<S-TAB>", "<cmd> bprevious <CR>")
 
+-- Search replace
+vim.keymap.set("n", "<leader>rw", 'yiw :%s/<C-r>"/')
+
 -- Closes all buffers except current one
 vim.keymap.set("n", "<leader>cab", "<cmd> %bd|e#|bd# <CR>")
 -- Closes current buffer
@@ -113,9 +116,6 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Markdown preview
 vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreview<CR>")
-
--- Start search and replace
-vim.keymap.set("n", "<leader>rp", ":%s/")
 
 -- Resource luasnips
 vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
