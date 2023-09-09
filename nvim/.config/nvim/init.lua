@@ -1,6 +1,6 @@
 require("settings")
 require("keymappings")
-require("theme")
 require("plugins")
+require("theme")
 require("lsp/languageserver")
 require("start-server/start-server")

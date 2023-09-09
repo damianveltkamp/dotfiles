@@ -3,7 +3,6 @@ vim.api.nvim_set_hl(0, "WinBarModified", { fg = "#181926", bg = "#f5a97f" })
 
 winbar_filetype_exclude = {
 	"help",
-	"packer",
 	"Trouble",
 	"toggleterm",
 	"fugitive",

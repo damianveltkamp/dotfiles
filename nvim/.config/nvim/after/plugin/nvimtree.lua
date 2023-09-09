@@ -5,23 +5,27 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
+local function nvim_tree_on_attach(bufnr)
+	local api = require("nvim-tree.api")
+
+	local function opts(desc)
+		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	end
+
+	-- default mappings
+	api.config.mappings.default_on_attach(bufnr)
+
+	-- custom mappings
+	vim.keymap.set("n", "n", api.fs.create, opts("Create"))
+	vim.keymap.set("n", "R", api.fs.create, opts("Create"))
+end
 
 -- OR setup with some options
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
+	on_attach = nvim_tree_on_attach,
 	view = {
 		adaptive_size = true,
-		mappings = {
-			list = {
-				{ key = "n", action = "create" },
-				{ key = "d", action = "remove" },
-				{ key = "R", action = "refresh" },
-				{ key = "r", action = "rename" },
-				{ key = "<C-v>", action = "vsplit" },
-			},
-		},
 	},
 	renderer = {
 		icons = {

@@ -1,57 +1,47 @@
-vim.cmd([[packadd packer.nvim]])
-
-local packer_status_ok, packer = pcall(require, "packer")
-if not packer_status_ok then
-	vim.notify("Not able to load in Packer", "error")
-	return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- and automatically installs plugins
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+local opts = {}
 
--- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
-
-packer.startup(function()
-	use({ "wbthomason/packer.nvim", opt = true })
+local plugins = {
+	-- Colorscheme
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
 	-- Git
-	use("tpope/vim-fugitive")
-	use({
+	"tpope/vim-fugitive",
+	{
 		"lewis6991/gitsigns.nvim",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
 		tag = "v0.5",
-	})
+	},
 
 	-- Lsp
-	use("neovim/nvim-lspconfig")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("onsails/lspkind-nvim")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use("tami5/lspsaga.nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use({
+	"neovim/nvim-lspconfig",
+	"hrsh7th/cmp-nvim-lsp",
+	"onsails/lspkind-nvim",
+	"jose-elias-alvarez/nvim-lsp-ts-utils",
+	"tami5/lspsaga.nvim",
+	"jose-elias-alvarez/null-ls.nvim",
+	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-	})
-	use("nvim-treesitter/nvim-treesitter-context")
-	use({
+	},
+	-- use("nvim-treesitter/nvim-treesitter-context")
+	{
 		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("trouble").setup({
 				-- your configuration comes here
@@ -59,119 +49,111 @@ packer.startup(function()
 				-- refer to the configuration section below
 			})
 		end,
-	})
+	},
 
 	-- Completion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-buffer")
-	use("mattn/emmet-vim")
-	use("saadparwaiz1/cmp_luasnip")
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-cmdline",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-buffer",
+	"mattn/emmet-vim",
+	"saadparwaiz1/cmp_luasnip",
 
 	-- UI
 	-- use("navarasu/onedark.nvim")
-	use("romgrk/barbar.nvim")
-	use("hoob3rt/lualine.nvim")
-	use("norcalli/nvim-colorizer.lua")
-	use("lukas-reineke/indent-blankline.nvim")
+	"romgrk/barbar.nvim",
+	"hoob3rt/lualine.nvim",
+	"norcalli/nvim-colorizer.lua",
+	"lukas-reineke/indent-blankline.nvim",
 
 	-- Snipets
 	-- use("norcalli/snippets.nvim")
 	-- use("hrsh7th/vim-vsnip")
-	use("L3MON4D3/LuaSnip")
+	"L3MON4D3/LuaSnip",
 
 	-- Fuzy finding
-	use({
+	{
 		"nvim-telescope/telescope.nvim",
-		requires = {
+		dependencies = {
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 			{
 				"nvim-telescope/telescope-fzy-native.nvim",
 			},
 		},
-	})
+	},
 
 	-- Optimization
-	use("lewis6991/impatient.nvim")
+	"lewis6991/impatient.nvim",
 
 	-- File finder
-	use({
+	{
 		"nvim-tree/nvim-tree.lua",
-		requires = {
-			"nvim-tree/nvim-web-devicons",
+		dependencies = {
+			"kyazdani42/nvim-web-devicons",
 		},
-	})
+	},
 
 	-- Fonts & icons
-	use("lambdalisue/nerdfont.vim")
-	use("lambdalisue/glyph-palette.vim")
-	use("kyazdani42/nvim-web-devicons")
-	use("kosayoda/nvim-lightbulb")
+	"lambdalisue/nerdfont.vim",
+	"lambdalisue/glyph-palette.vim",
+	"kyazdani42/nvim-web-devicons",
+	"kosayoda/nvim-lightbulb",
 
 	-- Navigation
-	use("unblevable/quick-scope")
+	"unblevable/quick-scope",
 	-- use("justinmk/vim-sneak")
-	use({
+	{
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
 		config = function()
 			-- you can configure Hop the way you like here; see :h hop-config
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
-	})
+	},
+
 	-- Autopairing
-	use({
+	{
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
-	})
-	use("windwp/nvim-ts-autotag")
+	},
+	"windwp/nvim-ts-autotag",
 
 	-- JSX
-	use("peitalin/vim-jsx-typescript")
+	"peitalin/vim-jsx-typescript",
 
 	-- MDX
-	use("jxnblk/vim-mdx-js")
+	"jxnblk/vim-mdx-js",
 
 	-- Markdown preview
-	use({
+	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
+		build = "cd app && npm install",
 		setup = function()
 			vim.g.mkdp_filetypes = { "markdown", "markdown.mdx", "pandoc" }
 		end,
 		ft = { "markdown" },
-	})
+	},
 
 	-- Commenting
-	use("numToStr/Comment.nvim")
-	use({
+	"numToStr/Comment.nvim",
+	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		event = "BufReadPost",
-	})
+	},
 
 	-- Surround operations
-	use("tpope/vim-surround")
+	"tpope/vim-surround",
 
 	-- Undo history explorer
-	use("mbbill/undotree")
+	"mbbill/undotree",
 
 	-- Custom notifications plugin
-	use("rcarriga/nvim-notify")
+	"rcarriga/nvim-notify",
 
 	-- Terminal integration
-	use({
-		"akinsho/toggleterm.nvim",
-		tag = "v2.*",
-		config = function()
-			require("toggleterm").setup()
-		end,
-	})
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-	})
-end)
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+}
+require("lazy").setup(plugins, opts)
