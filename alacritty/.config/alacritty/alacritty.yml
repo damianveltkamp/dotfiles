@@ -4,6 +4,7 @@ import:
   - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
 
 window:
+  opacity: 0.7
   decorations: "transparent"
   padding:
     x: 10
@@ -36,8 +37,6 @@ colors:
   #   magenta: "#c678dd"
   #   cyan: "#87d7ff"
   #   white: "#ECEFF4"
-
-window.opacity: 1.0
 
 font:
   normal:

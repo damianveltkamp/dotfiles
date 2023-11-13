@@ -26,6 +26,7 @@ local plugins = {
 		},
 		tag = "v0.5",
 	},
+	"f-person/git-blame.nvim",
 
 	-- Lsp
 	"neovim/nvim-lspconfig",
