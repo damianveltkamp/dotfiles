@@ -2,7 +2,7 @@
   s = status
   crb = "!f() { git checkout -b "release/$1"; }; f"
   cfb = "!f() { git checkout -b "feature/$1"; }; f"
-  cbb = "!f() { git checkout -b "bug/$1"; }; f"
+  cbb = "!f() { git checkout -b "bugfix/$1"; }; f"
   cp = "!f() { git cherry-pick "$1"; }; f"
   chb = "!f() { git checkout -b "hotfix/$1"; }; f"
   su = "!f() { git rev-parse --abbrev-ref HEAD | xargs git push -u "origin "; }; f"
@@ -10,6 +10,9 @@
   ulb = "!f() { git rev-parse --abbrev-ref HEAD | xargs git pull "origin "; }; f"
   tmp = "!f() { git rev-parse --abbrev-ref HEAD | sed 's/.*\\//tmp\\//' | xargs git checkout -b; }; f"
   rlb = "!f() { git fetch origin | git rev-parse --abbrev-ref HEAD | sed 's/^/origin\\//' | xargs git reset --hard ; }; f"
+  ammend = commit --amend --no-edit
 [user]
 	name = Damian Veltkamp
 	email = damian.veltkamp@deptagency.com
+[core]
+	ignoreCase = false
