@@ -12,6 +12,7 @@ vim.cmd("set jumpoptions+=stack")
 vim.cmd("set winbar=%f%m")
 
 vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+vim.g.skip_ts_context_commentstring_module = true
 
 local options = {
 	encoding = "utf-8", -- Sets encoding to utf-8 for RPC communication.

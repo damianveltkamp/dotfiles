@@ -4,15 +4,16 @@ if not null_ls_status_ok then
 end
 
 local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 require("null-ls").setup({
 	sources = {
 		formatting.prettier,
-		require("null-ls").builtins.diagnostics.eslint,
-		require("null-ls").builtins.formatting.eslint,
-		require("null-ls").builtins.diagnostics.jsonlint,
-		require("null-ls").builtins.formatting.stylua,
+		diagnostics.eslint,
+		formatting.eslint,
+		diagnostics.jsonlint,
+		formatting.stylua,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

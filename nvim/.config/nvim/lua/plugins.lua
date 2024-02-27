@@ -65,12 +65,18 @@ local plugins = {
 	"romgrk/barbar.nvim",
 	"hoob3rt/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
-	"lukas-reineke/indent-blankline.nvim",
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
 	-- Snipets
 	-- use("norcalli/snippets.nvim")
 	-- use("hrsh7th/vim-vsnip")
-	"L3MON4D3/LuaSnip",
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
 
 	-- Fuzy finding
 	{
