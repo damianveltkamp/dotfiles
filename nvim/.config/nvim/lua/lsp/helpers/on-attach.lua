@@ -10,10 +10,12 @@ function on_attach(client, bufnr)
 
 	vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help)
 	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+	vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
+	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references)
+	vim.keymap.set("n", "gI", require("telescope.builtin").lsp_implementations)
 	vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc <CR>")
-	vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
-	vim.keymap.set("n", "ga", "<cmd> Lspsaga code_action <CR>")
+	vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>")
+	vim.keymap.set("n", "ca", "<cmd> Lspsaga code_action <CR>")
 
 	if client.server_capabilities.completion then
 		vim.cmd("imap <silent> <C-n> <Plug>(completion_trigger)")

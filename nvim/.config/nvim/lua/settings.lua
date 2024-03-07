@@ -44,12 +44,25 @@ local options = {
 	laststatus = 3, -- Enables global statusline
 	cursorline = true, -- Enables cursor line
 	cursorcolumn = true, -- Enables vertical cursor line
-	-- ch = 0, -- Remove command line height when not executing command.
 }
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+	command = "silent! EslintFixAll",
+})
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost", "TextChanged" }, {
+	callback = function()
+		local lint_status, lint = pcall(require, "lint")
+		if lint_status then
+			lint.try_lint()
+		end
+	end,
+})
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()

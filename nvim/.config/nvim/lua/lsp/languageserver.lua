@@ -10,9 +10,12 @@ require("lsp/helpers/completion")
 
 -- Servers
 require("lsp/servers/tsserver")
+require("lsp/servers/eslint")
 require("lsp/servers/cssls")
 require("lsp/servers/htmlls")
 require("lsp/servers/yamlls")
 require("lsp/servers/vimls")
 require("lsp/servers/luals")
-require("lsp/servers/nullls")
+
+-- Linting
+require("lsp/linting")

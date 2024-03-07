@@ -1,4 +1,4 @@
-TERM = "screen-256color"
+# TERM = "screen-256color"
 import = ["/Users/damianveltkamp/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]
 live_config_reload = true
 

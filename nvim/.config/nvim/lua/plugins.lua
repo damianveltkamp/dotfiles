@@ -34,23 +34,38 @@ local plugins = {
 	"onsails/lspkind-nvim",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"tami5/lspsaga.nvim",
-	"jose-elias-alvarez/null-ls.nvim",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	},
-	-- use("nvim-treesitter/nvim-treesitter-context")
 	{
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
+		opts = {},
 	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+
+	-- Formatting
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = {
+			-- Define your formatters
+			formatters_by_ft = {
+				lua = { "stylua" },
+				javascript = { { "prettierd", "prettier" } },
+			},
+			format_on_save = { timeout_ms = 500, lsp_fallback = true },
+		},
+	},
+
+	-- Linting
+	"mfussenegger/nvim-lint",
 
 	-- Completion
 	"hrsh7th/nvim-cmp",
@@ -61,15 +76,12 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip",
 
 	-- UI
-	-- use("navarasu/onedark.nvim")
 	"romgrk/barbar.nvim",
 	"hoob3rt/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
 	-- Snipets
-	-- use("norcalli/snippets.nvim")
-	-- use("hrsh7th/vim-vsnip")
 	{
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
@@ -81,6 +93,7 @@ local plugins = {
 	-- Fuzy finding
 	{
 		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
@@ -109,7 +122,6 @@ local plugins = {
 
 	-- Navigation
 	"unblevable/quick-scope",
-	-- use("justinmk/vim-sneak")
 	{
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
@@ -122,14 +134,9 @@ local plugins = {
 	-- Autopairing
 	{
 		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
+		opts = {},
 	},
 	"windwp/nvim-ts-autotag",
-
-	-- JSX
-	"peitalin/vim-jsx-typescript",
 
 	-- MDX
 	"jxnblk/vim-mdx-js",
@@ -161,6 +168,13 @@ local plugins = {
 	"rcarriga/nvim-notify",
 
 	-- Terminal integration
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{ "akinsho/toggleterm.nvim", version = "*", opts = {} },
+
+	-- TODO comment highlighting
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
 }
 require("lazy").setup(plugins, opts)
