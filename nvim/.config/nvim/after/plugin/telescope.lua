@@ -67,21 +67,27 @@ telescope.load_extension("fzy_native")
 local export = {}
 export.search_dotfiles = function()
 	builtin.find_files({
-		prompt_title = "< VimRC >",
+		prompt_title = "VimRC",
 		cwd = "$HOME/.config/nvim/",
 	})
 end
 export.search_notes = function()
 	builtin.find_files({
-		prompt_title = "< File 2nd brain >",
+		prompt_title = "File 2nd brain",
 		cwd = "$HOME/documents/development/2nd-brain",
 	})
 end
 export.grep_notes = function()
 	builtin.live_grep({
-		prompt_title = "< Grep 2nd brain >",
+		prompt_title = "Grep 2nd brain",
 		cwd = "$HOME/documents/development/2nd-brain",
 	})
+end
+export.search_buffer = function()
+	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
 end
 
 return export
