@@ -69,7 +69,7 @@ vim.keymap.set("n", "<leader>mf", '<cmd> lua require("telescope").extensions.med
 -- Git keybindings
 vim.keymap.set("n", "<leader>gs", "<cmd> Git <CR>")
 vim.keymap.set("n", "<leader>gc", "<cmd> Git commit <CR>")
-vim.keymap.set("n", "<leader>ga", "<cmd> !git commit --amend --no-edit <CR>")
+vim.keymap.set("n", "<leader>ga", "<cmd> !git ammend <CR>")
 vim.keymap.set("n", "<leader>gp", "<cmd> TermExec cmd='git push' <CR>")
 vim.keymap.set("n", "<leader>gsu", "<cmd> TermExec cmd='git su' <CR>")
 vim.keymap.set("n", "<leader>gj", "<cmd> diffget //3 <CR>")
