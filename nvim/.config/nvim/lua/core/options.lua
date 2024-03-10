@@ -1,7 +1,5 @@
+vim.loader.enable()
 vim.scriptencoding = "utf-8"
-
-require("utils/git")
-require("utils/silicon")
 
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")

@@ -73,24 +73,9 @@ vim.keymap.set(
 	'<cmd> lua require("telescope.builtin").help_tags()<CR>',
 	{ desc = "[S]earch [H]elp" }
 )
-vim.keymap.set(
-	"n",
-	"<leader>fn",
-	'<cmd> lua require("after/plugin/telescope").search_notes()<CR>',
-	{ desc = "[F]ind [N]otes" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>sn",
-	'<cmd> lua require("after/plugin/telescope").grep_notes()<CR>',
-	{ desc = "[S]earch [N]otes" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>sb",
-	'<cmd> lua require("after/plugin/telescope").search_buffer()<CR>',
-	{ desc = "[S]earch [B]uffer" }
-)
+vim.keymap.set("n", "<leader>fn", "<cmd> FindNotes <CR>", { desc = "[F]ind [N]otes" })
+vim.keymap.set("n", "<leader>sn", "<cmd> SearchNotes <CR>", { desc = "[S]earch [N]otes" })
+vim.keymap.set("n", "<leader>sb", "<cmd> SearchBuffer <CR>", { desc = "[S]earch [B]uffer" })
 vim.keymap.set(
 	"n",
 	"<leader>sk",
@@ -110,7 +95,6 @@ vim.keymap.set("n", "<leader>gf", "<cmd> diffget //2 <CR>", { desc = "Accept rig
 vim.keymap.set("n", "<leader>gb", '<cmd> lua require"gitsigns".blame_line{full=true} <CR>', { desc = "[G]it [B]lame" })
 vim.keymap.set("n", "<leader>gpr", "<cmd> DVOpenNewPullRequest <CR>", { desc = "[G]it [P]ull [R]equest" })
 vim.keymap.set("n", "<leader>gor", "<cmd> DVOpenCurrentRepo <CR>", { desc = "[G]it [O]pen [R]epo" })
-vim.keymap.set("n", "<leader>gbt", "<cmd> Gitsigns toggle_current_line_blame <CR>", { desc = "[G]it [B]lame [T]oggle" })
 vim.keymap.set("n", "<leader>gtn", "<cmd> DVGetTicketNumber<CR>", { desc = "[G]it [T]icket [N]umber" })
 
 -- Undotree bindings

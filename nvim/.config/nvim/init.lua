@@ -1,5 +1,3 @@
-require("settings")
-require("keymappings")
-require("plugins")
+require("core")
 require("theme")
 require("lsp/languageserver")
