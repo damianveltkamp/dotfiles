@@ -112,9 +112,8 @@ vim.keymap.set("n", "<leader>qp", "<cmd> cp <CR>", { desc = "[Q]uickfixlist [P]r
 vim.keymap.set("n", "<leader>of", "<cmd> silent !open . <CR>", { desc = "[O]pen project [F]older in finder" })
 
 -- Moving text
--- TODO find out why this does not work
--- vim.keymap.set("<cmd> :m '>+1<CR>gv=gv")
--- vim.keymap.set("<cmd> :m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move Selected Down" })
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move Selected Up" })
 vim.keymap.set("n", "<C-j>", "<cmd> :m .+1 <CR> ==", { desc = "Move current line downwards" })
 vim.keymap.set("n", "<C-k>", "<cmd> :m .-2 <CR> ==", { desc = "Move current line upwards" })
 
