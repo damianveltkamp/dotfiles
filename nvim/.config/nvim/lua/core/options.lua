@@ -13,6 +13,7 @@ vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 vim.g.skip_ts_context_commentstring_module = true
 
 local options = {
+	timeoutlen = 300,
 	encoding = "utf-8", -- Sets encoding to utf-8 for RPC communication.
 	fileencoding = "utf-8", -- Sets encoding to utf-8 for file content for the current buffer.
 	mouse = "a", -- Enables mouse support.

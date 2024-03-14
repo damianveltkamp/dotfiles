@@ -1,8 +1,8 @@
 return {
 	{
 		"windwp/nvim-autopairs",
-		event = { "InsertEnter" },
+		event = "InsertEnter",
 		opts = {},
 	},
-	{ "windwp/nvim-ts-autotag", opts = {} },
+	{ "windwp/nvim-ts-autotag", event = "InsertEnter", opts = {} },
 }

@@ -1,6 +1,7 @@
 return {
 	{
 		"numToStr/Comment.nvim",
+		event = "BufReadPost",
 		config = function()
 			local comment_status_ok, comment = pcall(require, "Comment")
 			if not comment_status_ok then
@@ -19,7 +20,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "VimEnter",
+		event = "BufReadPost",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},

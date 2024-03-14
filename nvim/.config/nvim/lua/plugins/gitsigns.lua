@@ -1,6 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufReadPost",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
