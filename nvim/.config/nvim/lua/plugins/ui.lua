@@ -1,7 +1,11 @@
 return {
-	{ "romgrk/barbar.nvim", event = "VimEnter" },
 	{ "hoob3rt/lualine.nvim", event = "VimEnter" },
-	{ "norcalli/nvim-colorizer.lua", event = "BufReadPost", opts = {} },
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",

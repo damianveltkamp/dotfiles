@@ -7,6 +7,12 @@ return {
 		{
 			"nvim-telescope/telescope-fzy-native.nvim",
 		},
+		{
+			"nvim-telescope/telescope-live-grep-args.nvim",
+			-- This will not install any breaking changes.
+			-- For major updates, this must be adjusted manually.
+			version = "^1.0.0",
+		},
 	},
 	config = function()
 		local telescope_status_ok, telescope = pcall(require, "telescope")
@@ -39,6 +45,14 @@ return {
 			return
 		end
 
+		local lga_actions_status_ok, lga_actions = pcall(require, "telescope-live-grep-args.actions")
+		if not sorters_status_ok then
+			vim.notify("Not able to load in telescope live grep args", "error")
+			return
+		end
+
+		telescope.load_extension("live_grep_args")
+
 		telescope.setup({
 			defaults = {
 				file_sorter = sorters.get_fzy_sorter,
@@ -69,6 +83,15 @@ return {
 				fzy_native = {
 					override_generic_sorter = false,
 					override_file_sorter = true,
+				},
+				live_grep_args = {
+					auto_quoting = true, -- enable/disable auto-quoting
+					-- define mappings, e.g.
+					mappings = { -- extend mappings
+						i = {
+							["<C-k>"] = lga_actions.quote_prompt(),
+						},
+					},
 				},
 			},
 		})

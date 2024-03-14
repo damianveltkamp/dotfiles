@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>rw", 'yiw :%s/<C-r>"/', { desc = "[R]ename [W]ord u
 vim.keymap.set("n", "<leader>cab", "<cmd> %bd|e#|bd# <CR>", { desc = "[C]lose [A]ll other [B]uffers" })
 
 -- Closes current buffer
-vim.keymap.set("n", "<leader>cb", "<cmd> BufferClose <CR>", { desc = "[C]lose [B]uffer" })
+vim.keymap.set("n", "<leader>cb", "<cmd> bd <CR>", { desc = "[C]lose [B]uffer" })
 
 -- Paste from blackhole register
 vim.keymap.set("v", "<leader>p", '"_dP', { desc = "[P]aste from blackhole register" })
@@ -66,6 +66,7 @@ vim.keymap.set(
 	'<cmd> lua require("telescope.builtin").live_grep() <CR>',
 	{ desc = "[S]earch project" }
 )
+vim.keymap.set("n", "<leader>swa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>fb", '<cmd> lua require("telescope.builtin").buffers() <CR>', { desc = "[F]ind [B]uffer" })
 vim.keymap.set(
 	"n",

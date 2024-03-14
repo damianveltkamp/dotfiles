@@ -12,7 +12,7 @@ function on_attach(client, bufnr)
 	vim.keymap.set("n", "gI", require("telescope.builtin").lsp_implementations, { desc = "[G]o to [I]mplementation" })
 	vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc <CR>", { desc = "[G]et [H]over documentation" })
 	vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>", { desc = "[R]e[N]ame" })
-	vim.keymap.set("n", "ca", "<cmd> Lspsaga code_action <CR>", { desc = "[C]ode [A]ction" })
+	vim.keymap.set("n", "<leader>ca", "<cmd> Lspsaga code_action <CR>", { desc = "[C]ode [A]ction" })
 
 	if client.server_capabilities.completion then
 		vim.cmd("imap <silent> <C-n> <Plug>(completion_trigger)")

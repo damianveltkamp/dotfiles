@@ -50,3 +50,8 @@ vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = catppuccinColors.blue })
 
 -- Winbar
 vim.api.nvim_set_hl(0, "WinBar", { fg = catppuccinColors.text })
+
+-- Mini tabline
+vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = catppuccinColors.peach })
