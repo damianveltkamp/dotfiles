@@ -1,3 +1,3 @@
 require("core")
 require("theme")
-require("lsp/languageserver")
+require("lsp/diagnostics")
