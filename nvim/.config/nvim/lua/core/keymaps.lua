@@ -53,38 +53,6 @@ vim.keymap.set("", "<F7>", "<cmd> set spelllang=en_us<CR>", { desc = "Set spellc
 -- Remove highlighting from previous search
 vim.keymap.set("n", "<Space>", "<cmd> noh <CR>", { desc = "Remove search highlight" })
 
--- Launch telescope
-vim.keymap.set(
-	"n",
-	"<leader>ff",
-	'<cmd> lua require("telescope.builtin").find_files() <CR>',
-	{ desc = "[F]ind [F]iles" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>sp",
-	'<cmd> lua require("telescope.builtin").live_grep() <CR>',
-	{ desc = "[S]earch project" }
-)
-vim.keymap.set("n", "<leader>swa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-vim.keymap.set("n", "<leader>fb", '<cmd> lua require("telescope.builtin").buffers() <CR>', { desc = "[F]ind [B]uffer" })
-vim.keymap.set(
-	"n",
-	"<leader>sh",
-	'<cmd> lua require("telescope.builtin").help_tags()<CR>',
-	{ desc = "[S]earch [H]elp" }
-)
-vim.keymap.set("n", "<leader>fn", "<cmd> FindNotes <CR>", { desc = "[F]ind [N]otes" })
-vim.keymap.set("n", "<leader>sn", "<cmd> SearchNotes <CR>", { desc = "[S]earch [N]otes" })
-vim.keymap.set("n", "<leader>sb", "<cmd> SearchBuffer <CR>", { desc = "[S]earch [B]uffer" })
-vim.keymap.set(
-	"n",
-	"<leader>sk",
-	'<cmd> lua require("telescope.builtin").keymaps() <CR>',
-	{ desc = "[S]earch [K]eymaps" }
-)
--- current_buffer_fuzzy_find
-
 -- Git keybindings
 vim.keymap.set("n", "<leader>gs", "<cmd> Git <CR>", { desc = "[G]it [S]tage" })
 vim.keymap.set("n", "<leader>gc", "<cmd> Git commit <CR>", { desc = "[G]it [C]ommit" })
@@ -143,7 +111,7 @@ vim.keymap.set(
 )
 
 -- Nvim hop
-vim.keymap.set("n", "s", "<cmd>HopChar2 <CR>", { desc = "[S]earch with nvim hop" })
+-- vim.keymap.set("n", "s", "<cmd>HopChar2 <CR>", { desc = "[S]earch with nvim hop" })
 
 -- Safe file faster
 vim.keymap.set("n", "<leader>w", "<cmd>w <CR>", { desc = "Save file" })
@@ -151,3 +119,6 @@ vim.keymap.set("n", "<leader>W", "<cmd>noa w <CR>", { desc = "Save without forma
 
 -- Close buffer
 vim.keymap.set("n", "<leader>q", "<cmd>q <CR>", { desc = "Quit Neovim" })
+
+-- Remove default bindings
+vim.keymap.set("n", "s", "<Nop>")

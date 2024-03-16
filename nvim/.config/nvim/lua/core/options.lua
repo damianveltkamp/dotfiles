@@ -7,13 +7,12 @@ vim.cmd("set noswapfile")
 vim.cmd("set cindent")
 vim.cmd("set showmatch")
 vim.cmd("set jumpoptions+=stack")
-vim.cmd("set winbar=%f%m")
 
 vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 vim.g.skip_ts_context_commentstring_module = true
 
 local options = {
-	timeoutlen = 300,
+	timeoutlen = 500,
 	encoding = "utf-8", -- Sets encoding to utf-8 for RPC communication.
 	fileencoding = "utf-8", -- Sets encoding to utf-8 for file content for the current buffer.
 	mouse = "a", -- Enables mouse support.

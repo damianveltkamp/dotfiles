@@ -1,8 +1,8 @@
 return {
 	{
 		"akinsho/toggleterm.nvim",
-		event = "VimEnter",
+		event = "VeryLazy",
 		version = "*",
-		opts = { open_mapping = [[<c-\>]], direction = "float" },
+		opts = { open_mapping = [[<c-\>]], direction = "horizontal", shading_factor = 0 },
 	},
 }

@@ -1,52 +1,60 @@
 local checkRemoteHost = function()
 	local remoteHost = {}
 	local handle = io.popen("git config --get remote.origin.url")
-	local gitRemoteUrl = handle:read("*a")
-	handle:close()
 
-	local normalizedGitRemoteUrl = string.gsub(gitRemoteUrl, "%s+", "")
+	if handle ~= nil then
+		local gitRemoteUrl = handle:read("*a")
+		handle:close()
 
-	if string.find(normalizedGitRemoteUrl, "github") then
-		remoteHost["name"] = "github"
-		remoteHost["remoteUrl"] = string.gsub(normalizedGitRemoteUrl, "%.git", "")
-		return remoteHost
-	end
+		local normalizedGitRemoteUrl = string.gsub(gitRemoteUrl, "%s+", "")
 
-	if string.find(normalizedGitRemoteUrl, "bitbucket") then
-		local urlRemovedPrefix = string.gsub(normalizedGitRemoteUrl, ".*@", "")
-		local urlColonReplace = string.gsub(urlRemovedPrefix, "%:", "/")
-		local url = "https://" .. urlColonReplace
+		if string.find(normalizedGitRemoteUrl, "github") then
+			remoteHost["name"] = "github"
+			remoteHost["remoteUrl"] = string.gsub(normalizedGitRemoteUrl, "%.git", "")
+			return remoteHost
+		end
 
-		remoteHost["name"] = "bitbucket"
-		remoteHost["remoteUrl"] = url
+		if string.find(normalizedGitRemoteUrl, "bitbucket") then
+			local urlRemovedPrefix = string.gsub(normalizedGitRemoteUrl, ".*@", "")
+			local urlColonReplace = string.gsub(urlRemovedPrefix, "%:", "/")
+			local url = "https://" .. urlColonReplace
 
-		return remoteHost
-	end
+			remoteHost["name"] = "bitbucket"
+			remoteHost["remoteUrl"] = url
 
-	if string.find(normalizedGitRemoteUrl, "azure") then
-		remoteHost["name"] = "azure"
-		remoteHost["remoteUrl"] = "https://" .. string.gsub(normalizedGitRemoteUrl, ".*@", "")
+			return remoteHost
+		end
 
-		return remoteHost
+		if string.find(normalizedGitRemoteUrl, "azure") then
+			remoteHost["name"] = "azure"
+			remoteHost["remoteUrl"] = "https://" .. string.gsub(normalizedGitRemoteUrl, ".*@", "")
+
+			return remoteHost
+		end
 	end
 end
 
 local getSourceRef = function()
 	local handle = io.popen("git branch --show-current")
-	local sourceRef = handle:read("*a")
-	handle:close()
+	if handle ~= nil then
+		local sourceRef = handle:read("*a")
+		handle:close()
 
-	return sourceRef
+		return sourceRef
+	end
 end
 
 local getTicketNumber = function()
 	local handle = io.popen("git branch --show-current")
-	local sourceRef = handle:read("*a")
-	handle:close()
 
-	local number = string.match(sourceRef, "%d+")
+	if handle ~= nil then
+		local sourceRef = handle:read("*a")
+		handle:close()
 
-	return number
+		local number = string.match(sourceRef, "%d+")
+
+		return number
+	end
 end
 
 vim.api.nvim_create_user_command("DVGetTicketNumber", function()
@@ -98,9 +106,11 @@ end, {})
 
 vim.api.nvim_create_user_command("DVOpenCurrentRepo", function()
 	local handle = io.popen("git config --get remote.origin.url")
-	local gitRemoteUrl = handle:read("*a")
-	handle:close()
+	if handle ~= nil then
+		local gitRemoteUrl = handle:read("*a")
+		handle:close()
 
-	local executionString = 'open -a "Google chrome" ' .. gitRemoteUrl
-	os.execute(executionString)
+		local executionString = 'open -a "Google chrome" ' .. gitRemoteUrl
+		os.execute(executionString)
+	end
 end, {})

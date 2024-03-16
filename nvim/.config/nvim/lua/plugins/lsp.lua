@@ -20,13 +20,6 @@ return {
 
 					vim.keymap.set(
 						"n",
-						"gi",
-						vim.lsp.buf.implementation,
-						bufopts,
-						{ desc = "[G]o to [I]mplementation" }
-					)
-					vim.keymap.set(
-						"n",
 						"[d",
 						vim.diagnostic.goto_prev,
 						bufopts,
@@ -191,6 +184,12 @@ return {
 		"folke/trouble.nvim",
 		event = "BufReadPost",
 		dependencies = "kyazdani42/nvim-web-devicons",
+		opts = {},
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		event = "BufReadPost",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
 }

@@ -41,16 +41,6 @@ brew services start yabai && brew services start skhd && brew services start ske
 
 ```
 
-Only thing left is open neovim and install packer packes.
-
-```
-:PackerCompile
-```
-
-```
-:PackerInstall
-```
-
 ## 🔧 Manual installation steps
 
 - Set capslock key to escape key.

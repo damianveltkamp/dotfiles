@@ -33,6 +33,12 @@ return {
 			return
 		end
 
+		local utils_status_ok, utils = pcall(require, "telescope.utils")
+		if not utils_status_ok then
+			vim.notify("Not able to load in telescope utils", "error")
+			return
+		end
+
 		local previewers_status_ok, previewers = pcall(require, "telescope.previewers")
 		if not previewers_status_ok then
 			vim.notify("Not able to load in telescope previewers", "error")
@@ -122,5 +128,52 @@ return {
 				previewer = false,
 			}))
 		end, {})
+
+		-- Telescope
+		vim.keymap.set(
+			"n",
+			"<leader>ff",
+			'<cmd> lua require("telescope.builtin").find_files() <CR>',
+			{ desc = "[F]ind [F]iles" }
+		)
+		vim.keymap.set("n", "<leader>fd", function()
+			builtin.find_files({ cwd = utils.buffer_dir() })
+		end, { desc = "[F]ind file in current [D]irectory" })
+		vim.keymap.set(
+			"n",
+			"<leader>sp",
+			'<cmd> lua require("telescope.builtin").live_grep() <CR>',
+			{ desc = "[S]earch [P]roject" }
+		)
+		vim.keymap.set("n", "<leader>swp", function()
+			local word = vim.fn.expand("<cword>")
+			builtin.grep_string({ search = word })
+		end, { desc = "[S]earch [W]ord inside [P]roject" })
+		vim.keymap.set("n", "<leader>sWp", function()
+			local word = vim.fn.expand("<cWORD>")
+			builtin.grep_string({ search = word })
+		end, { desc = "[S]earch [W]ord inside [P]roject" })
+		vim.keymap.set("n", "<leader>swa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+		vim.keymap.set(
+			"n",
+			"<leader>fb",
+			'<cmd> lua require("telescope.builtin").buffers() <CR>',
+			{ desc = "[F]ind [B]uffer" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>sh",
+			'<cmd> lua require("telescope.builtin").help_tags()<CR>',
+			{ desc = "[S]earch [H]elp" }
+		)
+		vim.keymap.set("n", "<leader>fn", "<cmd> FindNotes <CR>", { desc = "[F]ind [N]otes" })
+		vim.keymap.set("n", "<leader>sn", "<cmd> SearchNotes <CR>", { desc = "[S]earch [N]otes" })
+		vim.keymap.set("n", "<leader>sb", "<cmd> SearchBuffer <CR>", { desc = "[S]earch [B]uffer" })
+		vim.keymap.set(
+			"n",
+			"<leader>sk",
+			'<cmd> lua require("telescope.builtin").keymaps() <CR>',
+			{ desc = "[S]earch [K]eymaps" }
+		)
 	end,
 }
