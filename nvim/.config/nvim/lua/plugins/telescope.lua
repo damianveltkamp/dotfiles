@@ -123,10 +123,7 @@ return {
 			})
 		end, {})
 		vim.api.nvim_create_user_command("SearchBuffer", function()
-			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-				winblend = 10,
-				previewer = false,
-			}))
+			builtin.current_buffer_fuzzy_find()
 		end, {})
 
 		-- Telescope
