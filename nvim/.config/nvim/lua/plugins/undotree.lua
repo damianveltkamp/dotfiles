@@ -1,3 +1,3 @@
 return {
-	{ "mbbill/undotree", event = "BufReadPost" },
+  { 'mbbill/undotree', event = 'BufReadPost' },
 }

@@ -1,3 +1,3 @@
 return {
-	{ "tpope/vim-surround", event = "BufReadPost" },
+  { 'tpope/vim-surround', event = 'BufReadPost' },
 }

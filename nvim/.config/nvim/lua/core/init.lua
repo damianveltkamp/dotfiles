@@ -1,5 +1,5 @@
-require("utils/git")
-require("utils/silicon")
-require("core.options")
-require("core.keymaps")
-require("core.plugins")
+require 'utils/git'
+require 'utils/silicon'
+require 'core.options'
+require 'core.keymaps'
+require 'core.plugins'

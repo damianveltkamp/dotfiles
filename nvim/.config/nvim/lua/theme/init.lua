@@ -1,1 +1,1 @@
-require("theme/catppuccin")
+require 'theme/catppuccin'

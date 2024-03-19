@@ -1,3 +1,3 @@
-require("core")
-require("theme")
-require("lsp/diagnostics")
+require 'core'
+require 'theme'
+require 'lsp/diagnostics'
