@@ -1,5 +1,4 @@
 return {
-  { 'jxnblk/vim-mdx-js', event = 'BufReadPost', ft = { 'markdown.mdx' } },
   {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && npm install',

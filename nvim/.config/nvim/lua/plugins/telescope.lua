@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  event = 'VimEnter',
+  keys = { '<leader>' },
   dependencies = {
     { 'nvim-lua/popup.nvim' },
     { 'nvim-lua/plenary.nvim' },

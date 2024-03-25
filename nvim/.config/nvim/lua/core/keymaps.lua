@@ -51,20 +51,23 @@ vim.keymap.set('', '<F6>', '<cmd> set spelllang=nl<CR>', { desc = 'Set spellchec
 vim.keymap.set('', '<F7>', '<cmd> set spelllang=en_us<CR>', { desc = 'Set spellcheck to EN' })
 
 -- Remove highlighting from previous search
-vim.keymap.set('n', '<Space>', '<cmd> noh <CR>', { desc = 'Remove search highlight' })
+vim.keymap.set('n', '<leader><leader>', '<cmd> noh <CR>', { desc = 'Remove search highlight' })
 
 -- Git keybindings
 vim.keymap.set('n', '<leader>gs', '<cmd> Git <CR>', { desc = '[G]it [S]tage' })
 vim.keymap.set('n', '<leader>gc', '<cmd> Git commit <CR>', { desc = '[G]it [C]ommit' })
-vim.keymap.set('n', '<leader>ga', '<cmd> !git ammend <CR>', { desc = '[G]it [A]mmend' })
-vim.keymap.set('n', '<leader>gp', "<cmd> TermExec cmd='git push' <CR>", { desc = '[G]it [P]ush' })
-vim.keymap.set('n', '<leader>gsu', "<cmd> TermExec cmd='git su' <CR>", { desc = '[G]it [S]et [U]pstream' })
+vim.keymap.set('n', '<leader>ga', '<cmd> TermExec cmd="git ammend" go_back=0 <CR>', { desc = '[G]it [A]mmend' })
+vim.keymap.set('n', '<leader>gp', '<cmd> TermExec cmd="git push" go_back=0 <CR>', { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>gsu', '<cmd> TermExec cmd="git su" go_back=0 <CR>', { desc = '[G]it [S]et [U]pstream' })
 vim.keymap.set('n', '<leader>gj', '<cmd> diffget //3 <CR>', { desc = 'Accept left git changes' })
 vim.keymap.set('n', '<leader>gf', '<cmd> diffget //2 <CR>', { desc = 'Accept right git changes' })
 vim.keymap.set('n', '<leader>gb', '<cmd> lua require"gitsigns".blame_line{full=true} <CR>', { desc = '[G]it [B]lame' })
 vim.keymap.set('n', '<leader>gpr', '<cmd> DVOpenNewPullRequest <CR>', { desc = '[G]it [P]ull [R]equest' })
 vim.keymap.set('n', '<leader>gor', '<cmd> DVOpenCurrentRepo <CR>', { desc = '[G]it [O]pen [R]epo' })
 vim.keymap.set('n', '<leader>gtn', '<cmd> DVGetTicketNumber<CR>', { desc = '[G]it [T]icket [N]umber' })
+
+-- Search MDN
+vim.keymap.set('n', '<leader>mdn', '<cmd> DVSearchMDNCss<CR>', { desc = '[G]it [T]icket [N]umber' })
 
 -- Undotree bindings
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeShow <CR>', { desc = '[U]ndo' })

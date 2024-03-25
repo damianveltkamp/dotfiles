@@ -22,10 +22,10 @@ return {
 
           vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = '[G]o to [D]efinition' })
           vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]o to [R]eference' })
-          vim.keymap.set('n', 'gI', require('telescope.builtin').lsp_implementations, { desc = '[G]o to [I]mplementation' })
-          vim.keymap.set('n', 'gh', '<cmd>Lspsaga hover_doc <CR>', { desc = '[G]et [H]over documentation' })
-          vim.keymap.set('n', 'rn', '<cmd>Lspsaga rename<CR>', { desc = '[R]e[N]ame' })
-          vim.keymap.set('n', '<leader>ca', '<cmd> Lspsaga code_action <CR>', { desc = '[C]ode [A]ction' })
+          vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { desc = '[G]o to [I]mplementation' })
+          vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]over documentation' })
+          vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
+          vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
         end,
       })
 
@@ -124,9 +124,13 @@ return {
     end,
   },
   { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufReadPost' },
-  { 'tami5/lspsaga.nvim', event = 'BufReadPost' },
+  -- { 'nvimdev/lspsaga.nvim', event = 'BufReadPost', opts = { enable = false } },
   {
     'nvim-treesitter/nvim-treesitter',
+    event = 'BufReadPost',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     opts = {
       highlight = {
         enable = true,
@@ -151,18 +155,37 @@ return {
         'scss',
         'css',
       },
+      textobjects = {
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            [']k'] = { query = '@block.outer', desc = 'Next block start' },
+            [']f'] = { query = '@function.outer', desc = 'Next function start' },
+            [']a'] = { query = '@parameter.inner', desc = 'Next argument start' },
+          },
+          goto_next_end = {
+            [']K'] = { query = '@block.outer', desc = 'Next block end' },
+            [']F'] = { query = '@function.outer', desc = 'Next function end' },
+            [']A'] = { query = '@parameter.inner', desc = 'Next argument end' },
+          },
+          goto_previous_start = {
+            ['[k'] = { query = '@block.outer', desc = 'Previous block start' },
+            ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
+            ['[a'] = { query = '@parameter.inner', desc = 'Previous argument start' },
+          },
+          goto_previous_end = {
+            ['[K'] = { query = '@block.outer', desc = 'Previous block end' },
+            ['[F'] = { query = '@function.outer', desc = 'Previous function end' },
+            ['[A'] = { query = '@parameter.inner', desc = 'Previous argument end' },
+          },
+        },
+      },
     },
-    event = 'BufReadPost',
     run = ':TSUpdate',
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
-  },
-  {
-    'folke/trouble.nvim',
-    event = 'BufReadPost',
-    dependencies = 'kyazdani42/nvim-web-devicons',
-    opts = {},
   },
   {
     'pmizio/typescript-tools.nvim',

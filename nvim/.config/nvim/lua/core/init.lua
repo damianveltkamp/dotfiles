@@ -1,4 +1,5 @@
 require 'utils/git'
+require 'utils/mdn'
 require 'utils/silicon'
 require 'core.options'
 require 'core.keymaps'
