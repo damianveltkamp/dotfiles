@@ -124,7 +124,6 @@ return {
     end,
   },
   { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufReadPost' },
-  -- { 'nvimdev/lspsaga.nvim', event = 'BufReadPost', opts = { enable = false } },
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufReadPost',
