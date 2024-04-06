@@ -145,7 +145,7 @@ return {
     vim.keymap.set('n', '<leader>sh', '<cmd> lua require("telescope.builtin").help_tags()<CR>', { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>fn', '<cmd> FindNotes <CR>', { desc = '[F]ind [N]otes' })
     vim.keymap.set('n', '<leader>sn', '<cmd> SearchNotes <CR>', { desc = '[S]earch [N]otes' })
-    vim.keymap.set('n', '/', '<cmd> SearchBuffer <CR>', { desc = '[S]earch [B]uffer' })
+    vim.keymap.set('n', '<leader>sb', '<cmd> SearchBuffer <CR>', { desc = '[S]earch [B]uffer' })
     vim.keymap.set('n', '<leader>sk', '<cmd> lua require("telescope.builtin").keymaps() <CR>', { desc = '[S]earch [K]eymaps' })
   end,
 }

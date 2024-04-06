@@ -6,9 +6,6 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -53,11 +50,11 @@ return {
         html = {},
         cssls = {},
         yamlls = {},
-        tsserver = {
-          on_attach = function(client)
-            client.server_capabilities.document_formatting = false
-          end,
-        },
+        -- tsserver = {
+        --   on_attach = function(client)
+        --     client.server_capabilities.document_formatting = false
+        --   end,
+        -- },
       }
 
       -- Ensure the servers and tools above are installed
@@ -140,6 +137,9 @@ return {
           end
         end,
       },
+      indent = {
+        enable = true,
+      },
       context_commentstring = {
         enable = true,
         enable_autocmd = false,
@@ -161,22 +161,22 @@ return {
           goto_next_start = {
             [']k'] = { query = '@block.outer', desc = 'Next block start' },
             [']f'] = { query = '@function.outer', desc = 'Next function start' },
-            [']a'] = { query = '@parameter.inner', desc = 'Next argument start' },
+            [']a'] = { query = '@parameter.outer', desc = 'Next argument start' },
           },
           goto_next_end = {
             [']K'] = { query = '@block.outer', desc = 'Next block end' },
             [']F'] = { query = '@function.outer', desc = 'Next function end' },
-            [']A'] = { query = '@parameter.inner', desc = 'Next argument end' },
+            [']A'] = { query = '@parameter.outer', desc = 'Next argument end' },
           },
           goto_previous_start = {
             ['[k'] = { query = '@block.outer', desc = 'Previous block start' },
             ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
-            ['[a'] = { query = '@parameter.inner', desc = 'Previous argument start' },
+            ['[a'] = { query = '@parameter.outer', desc = 'Previous argument start' },
           },
           goto_previous_end = {
             ['[K'] = { query = '@block.outer', desc = 'Previous block end' },
             ['[F'] = { query = '@function.outer', desc = 'Previous function end' },
-            ['[A'] = { query = '@parameter.inner', desc = 'Previous argument end' },
+            ['[A'] = { query = '@parameter.outer', desc = 'Previous argument end' },
           },
         },
       },
