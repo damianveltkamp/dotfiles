@@ -20,6 +20,7 @@ local options = {
   relativenumber = true, -- Enables relative line numbers.
   inccommand = 'split', -- Shows effects of a command in a preview window.
   ignorecase = true, -- Search case insensative.
+  smartcase = true, -- Search case sensitive when there is capital letters inside search term.
   clipboard = 'unnamedplus', -- Enables system clipboard integration.
   expandtab = true, -- Enables appropriate number of spaces to insert a tab in INSERT mode.
   tabstop = 2, -- Defines the number of spaces that a <Tab> in a file counts for.
