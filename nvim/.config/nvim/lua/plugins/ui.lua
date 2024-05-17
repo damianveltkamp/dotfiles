@@ -25,12 +25,8 @@ return {
       require('colorizer').setup()
     end,
   },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'BufReadPost',
-    main = 'ibl',
-    opts = { scope = { enabled = false } },
-  },
+  -- TODO: uncomment after the breaking change has been fixed
+  -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'lambdalisue/nerdfont.vim', event = 'VimEnter' },
   { 'lambdalisue/glyph-palette.vim', event = 'VimEnter' },
   { 'kyazdani42/nvim-web-devicons', event = 'VimEnter' },

@@ -1,4 +1,5 @@
 return {
+  { 'folke/trouble.nvim', event = 'BufReadPost', dependencies = { 'nvim-tree/nvim-web-devicons' }, opts = {} },
   {
     'neovim/nvim-lspconfig',
     dependencies = {

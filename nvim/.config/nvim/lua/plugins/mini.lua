@@ -12,6 +12,12 @@ return {
       require('mini.ai').setup { n_lines = 500 }
 
       require('mini.tabline').setup {}
+      require('mini.splitjoin').setup {}
+      require('mini.indentscope').setup { draw = {
+        animation = function()
+          return 0
+        end,
+      } }
     end,
   },
 }
