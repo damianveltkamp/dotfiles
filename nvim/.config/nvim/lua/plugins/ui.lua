@@ -29,7 +29,7 @@ return {
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'lambdalisue/nerdfont.vim', event = 'VimEnter' },
   { 'lambdalisue/glyph-palette.vim', event = 'VimEnter' },
-  { 'kyazdani42/nvim-web-devicons', event = 'VimEnter' },
+  { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },
   {
     'xiyaowong/transparent.nvim',
     event = 'VimEnter',

@@ -28,7 +28,6 @@ local options = {
   softtabstop = 2, -- Number of spaces inserted for each indent during editing operations.
   breakindent = true, -- Every wrapped line will continue visually indented.
   showmode = false, -- Disable showing current mode on last line.
-  termguicolors = true, -- Enables 24-bit RGB colors in the TUI.
   updatetime = 300, -- Time till command is executed after typing last character.
   wrap = false, -- Disable wrapping.
   backup = false, -- Disable writing of backup files.

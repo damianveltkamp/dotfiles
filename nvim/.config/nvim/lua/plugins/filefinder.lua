@@ -3,7 +3,7 @@ return {
   -- event = 'VeryLazy',
   cmd = { 'NvimTreeFindFileToggle' },
   dependencies = {
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
   },
   config = function()
     vim.g.loaded_netrw = 1
