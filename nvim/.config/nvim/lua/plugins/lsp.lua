@@ -8,6 +8,9 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
+    opts = {
+      inlay_hints = { enabled = true },
+    },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
@@ -15,8 +18,10 @@ return {
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
-          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts, { desc = 'Go to previous [D]iagnostic message' })
-          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts, { desc = 'Go to next [D]iagnostic message' })
+          -- NOTE: I think we no longer need to define these mappings, since they are default mappings now. Keeping them in
+          -- until I am ceartain.
+          -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts, { desc = 'Go to previous [D]iagnostic message' })
+          -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts, { desc = 'Go to next [D]iagnostic message' })
 
           vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = '[G]o to [D]efinition' })
           vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]o to [R]eference' })
@@ -24,6 +29,13 @@ return {
           vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]over documentation' })
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
           vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
+
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+            vim.keymap.set('n', '<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            end, { desc = '[T]oggle Inlay [H]ints' })
+          end
         end,
       })
 
@@ -51,11 +63,38 @@ return {
         html = {},
         cssls = {},
         yamlls = {},
-        -- tsserver = {
-        --   on_attach = function(client)
-        --     client.server_capabilities.document_formatting = false
-        --   end,
-        -- },
+        tsserver = {
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayVariableTypeHints = true,
+
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+          on_attach = function(client)
+            client.server_capabilities.document_formatting = false
+          end,
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -187,10 +226,10 @@ return {
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    event = 'BufReadPost',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   event = 'BufReadPost',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {},
+  -- },
 }
