@@ -40,6 +40,7 @@ local options = {
   laststatus = 3, -- Enables global statusline
   cursorline = true, -- Enables cursor line
   cursorcolumn = true, -- Enables vertical cursor line
+  cmdheight = 0, -- Removes the command line height
 }
 
 for k, v in pairs(options) do
