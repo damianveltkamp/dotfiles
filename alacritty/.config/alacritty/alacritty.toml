@@ -13,7 +13,7 @@ foreground = "#D8DEE9"
 unfocused_hollow = true
 
 [font]
-size = 24.0
+size = 27.0
 
 [font.bold]
 family = "Hack Nerd Font"

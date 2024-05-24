@@ -6,12 +6,12 @@ vim.cmd 'syntax on'
 vim.cmd 'set noswapfile'
 vim.cmd 'set cindent'
 vim.cmd 'set showmatch'
-vim.cmd 'set jumpoptions+=stack'
 
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 vim.g.skip_ts_context_commentstring_module = true
 
 local options = {
+  jumpoptions = 'stack',
   timeoutlen = 500,
   encoding = 'utf-8', -- Sets encoding to utf-8 for RPC communication.
   fileencoding = 'utf-8', -- Sets encoding to utf-8 for file content for the current buffer.
@@ -38,7 +38,6 @@ local options = {
   splitright = true, -- When splitting a window will put the new window on the right of the current one.
   signcolumn = 'yes:2', -- Sets 2 columns for signcolumn.
   laststatus = 3, -- Enables global statusline
-  cursorline = true, -- Enables cursor line
   cursorcolumn = true, -- Enables vertical cursor line
   cmdheight = 0, -- Removes the command line height
 }
@@ -50,6 +49,18 @@ end
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
   command = 'silent! EslintFixAll',
+})
+
+vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+  command = 'clearjumps',
+})
+
+vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter' }, {
+  command = 'setlocal cursorline | setlocal cursorcolumn',
+})
+
+vim.api.nvim_create_autocmd({ 'WinLeave' }, {
+  command = 'setlocal nocursorline | setlocal nocursorcolumn',
 })
 
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
@@ -66,22 +77,3 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
     vim.highlight.on_yank { timeout = 200 }
   end,
 })
-
--- Return to the same line you left off at
-vim.api.nvim_command [[
-augroup line_return
-  au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \	execute 'normal! g`"zvzz' |
-        \ endif
-augroup END
-]]
-
-vim.api.nvim_command [[
-augroup Cursorline
-    au VimEnter * setlocal cursorline
-    au WinEnter * setlocal cursorline
-    au BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-augroup END
-]]
