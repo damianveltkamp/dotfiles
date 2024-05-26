@@ -117,3 +117,6 @@ vim.keymap.set('n', '<leader>q', '<cmd>q <CR>', { desc = 'Quit Neovim' })
 
 -- Remove default bindings
 vim.keymap.set('n', 's', '<Nop>')
+
+-- Toggle Trouble window
+vim.keymap.set('n', '<leader>tb', '<cmd>TroubleToggle <CR>')

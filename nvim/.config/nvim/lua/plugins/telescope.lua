@@ -8,10 +8,10 @@ return {
       'nvim-telescope/telescope-fzy-native.nvim',
     },
     {
+      'nvim-telescope/telescope-ui-select.nvim',
+    },
+    {
       'nvim-telescope/telescope-live-grep-args.nvim',
-      -- This will not install any breaking changes.
-      -- For major updates, this must be adjusted manually.
-      version = '^1.0.0',
     },
   },
   config = function()
@@ -86,6 +86,9 @@ return {
         },
       },
       extensions = {
+        ['ui-select'] = {
+          require('telescope.themes').get_dropdown {},
+        },
         fzy_native = {
           override_generic_sorter = false,
           override_file_sorter = true,
@@ -103,6 +106,7 @@ return {
     }
 
     telescope.load_extension 'fzy_native'
+    telescope.load_extension 'ui-select'
 
     vim.api.nvim_create_user_command('SearchDotfiles', function()
       builtin.find_files {

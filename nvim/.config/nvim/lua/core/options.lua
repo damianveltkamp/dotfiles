@@ -38,7 +38,6 @@ local options = {
   splitright = true, -- When splitting a window will put the new window on the right of the current one.
   signcolumn = 'yes:2', -- Sets 2 columns for signcolumn.
   laststatus = 3, -- Enables global statusline
-  cursorcolumn = true, -- Enables vertical cursor line
   cmdheight = 0, -- Removes the command line height
 }
 
@@ -56,11 +55,11 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter' }, {
-  command = 'setlocal cursorline | setlocal cursorcolumn',
+  command = 'setlocal cursorline',
 })
 
 vim.api.nvim_create_autocmd({ 'WinLeave' }, {
-  command = 'setlocal nocursorline | setlocal nocursorcolumn',
+  command = 'setlocal nocursorline',
 })
 
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
