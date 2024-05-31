@@ -45,11 +45,6 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-  command = 'silent! EslintFixAll',
-})
-
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
   command = 'clearjumps',
 })

@@ -1,5 +1,18 @@
 return {
-  { 'folke/trouble.nvim', event = 'BufReadPost', dependencies = { 'nvim-tree/nvim-web-devicons' }, opts = {} },
+  {
+    'folke/trouble.nvim',
+    event = 'BufReadPost',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      modes = {
+        diagnostics = {
+          groups = {
+            { 'filename', format = '{file_icon} {basename:Title} {count}' },
+          },
+        },
+      },
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -108,6 +121,12 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
+        'css-lsp',
+        'prettier',
+        'prettierd',
+        'typescript-language-server',
+        'yaml-language-server',
+        'html-lsp',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
