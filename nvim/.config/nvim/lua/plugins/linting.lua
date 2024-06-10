@@ -9,18 +9,6 @@ return {
 
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
-      -- javascript = {
-      --   'eslint',
-      -- },
-      -- typescript = {
-      --   'eslint',
-      -- },
-      -- javascriptreact = {
-      --   'eslint',
-      -- },
-      -- typescriptreact = {
-      --   'eslint',
-      -- },
     }
   end,
 }
