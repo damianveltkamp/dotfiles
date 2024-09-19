@@ -1,3 +1,4 @@
+export PATH=./node_modules/.bin:$PATH
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -26,7 +27,7 @@ alias enableDesktop="defaults write com.apple.finder CreateDesktop true; killall
 export EDITOR=nvim
 
 # Variables
-export NOTES_DIR="$HOME/Documents/notes"
+export NOTES_DIR="$HOME/Documents/development/2nd-brain"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
 [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
@@ -81,7 +82,7 @@ function development_directory() {
 
 # CD into notes directory
 function notes_directory() {
-  BUFFER="cd ~/Documents/notes"
+  BUFFER="cd ~/Documents/development/2nd-brain"
   zle accept-line
 }
 
