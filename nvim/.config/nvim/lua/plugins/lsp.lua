@@ -30,16 +30,16 @@ return {
           local bufopts = { noremap = true, silent = true, buffer = event.buf }
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-
-          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts, { desc = 'Go to previous [D]iagnostic message' })
-          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts, { desc = 'Go to next [D]iagnostic message' })
-
-          vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = '[G]o to [D]efinition' })
-          vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]o to [R]eference' })
-          vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { desc = '[G]o to [I]mplementation' })
+          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+          -- vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = '[G]o to [D]efinition' })
+          -- vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]o to [R]eference' })
+          -- vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { desc = '[G]o to [I]mplementation' })
           vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]over documentation' })
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
           vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
+
+          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts, { desc = 'Go to previous [D]iagnostic message' })
+          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts, { desc = 'Go to next [D]iagnostic message' })
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
@@ -71,10 +71,36 @@ return {
             })
           end,
         },
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              validate = true,
+              classAttributes = {
+                'class',
+                'className',
+                'class:list',
+                'classList',
+                'ngClass',
+                'styles',
+                'style',
+              },
+              experimental = {
+                classRegex = {
+                  { 'cva\\(([^)]*)\\)', '["\'`]([^"\'`]*).*?["\'`]' },
+                  { 'cx\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  { 'tailwindMerge\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                },
+              },
+            },
+          },
+        },
         html = {},
         cssls = {},
+        cssmodules_ls = {},
         yamlls = {},
-        tsserver = {
+        jsonls = {},
+        markdownlint = {},
+        ts_ls = {
           settings = {
             typescript = {
               inlayHints = {
@@ -136,7 +162,7 @@ return {
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
@@ -187,12 +213,6 @@ return {
     opts = {
       highlight = {
         enable = true,
-        disable = function()
-          local filetype = vim.bo.filetype
-          if filetype == 'help' then
-            return true
-          end
-        end,
       },
       indent = {
         enable = true,
@@ -243,10 +263,4 @@ return {
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
-  -- {
-  --   'pmizio/typescript-tools.nvim',
-  --   event = 'BufReadPost',
-  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-  --   opts = {},
-  -- },
 }

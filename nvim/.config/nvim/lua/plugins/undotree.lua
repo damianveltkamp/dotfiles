@@ -1,3 +1,3 @@
 return {
-  { 'mbbill/undotree', keys = { '<leader>' } },
+  { 'mbbill/undotree', cmd = { 'UndotreeShow' } },
 }

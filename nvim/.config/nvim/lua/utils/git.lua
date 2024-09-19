@@ -104,8 +104,9 @@ vim.api.nvim_create_user_command('DVOpenCurrentRepo', function()
   if handle ~= nil then
     local gitRemoteUrl = handle:read '*a'
     handle:close()
+    local sanitizedUrl = gitRemoteUrl:gsub('%.git', '')
 
-    local executionString = 'open -a "Google chrome" ' .. gitRemoteUrl
+    local executionString = 'open -a "Google chrome" ' .. sanitizedUrl
     os.execute(executionString)
   end
 end, {})

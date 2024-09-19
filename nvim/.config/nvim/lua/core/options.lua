@@ -37,7 +37,6 @@ local options = {
   splitright = true, -- When splitting a window will put the new window on the right of the current one.
   signcolumn = 'yes:2', -- Sets 2 columns for signcolumn.
   laststatus = 3, -- Enables global statusline
-  cmdheight = 0, -- Removes the command line height
 }
 
 for k, v in pairs(options) do

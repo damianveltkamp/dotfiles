@@ -19,11 +19,13 @@ return {
     event = 'VimEnter',
   },
   {
-    'norcalli/nvim-colorizer.lua',
+    'NvChad/nvim-colorizer.lua',
     event = 'BufReadPost',
-    config = function()
-      require('colorizer').setup()
-    end,
+    opts = {
+      user_default_options = {
+        tailwind = true,
+      },
+    },
   },
   -- TODO: uncomment after the breaking change has been fixed
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },

@@ -55,7 +55,6 @@ vim.keymap.set('n', '<leader><leader>', '<cmd> noh <CR>', { desc = 'Remove searc
 
 -- Git keybindings
 vim.keymap.set('n', '<leader>gs', '<cmd> Neogit <CR>', { desc = '[G]it [S]tage' })
-vim.keymap.set('n', '<leader>gc', '<cmd> Neogit commit <CR>', { desc = '[G]it [C]ommit' })
 vim.keymap.set('n', '<leader>ga', '<cmd> TermExec cmd="git ammend" go_back=0 <CR>', { desc = '[G]it [A]mmend' })
 -- vim.keymap.set('n', '<leader>gp', '<cmd> TermExec cmd="git push" go_back=0 <CR>', { desc = '[G]it [P]ush' })
 vim.keymap.set('n', '<leader>gsu', '<cmd> TermExec cmd="git su" go_back=0 <CR>', { desc = '[G]it [S]et [U]pstream' })
@@ -97,9 +96,6 @@ vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement number' })
 -- Select all
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select everything in buffer' })
 
--- Markdown preview
-vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreview<CR>', { desc = '[M]arkdown [P]review' })
-
 -- Resource luasnips
 vim.keymap.set('n', '<leader><leader>s', '<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>')
 
@@ -118,3 +114,6 @@ vim.keymap.set('n', 's', '<Nop>')
 
 -- Toggle Trouble window
 vim.keymap.set('n', '<leader>tb', '<cmd>Trouble diagnostics toggle focus=true<CR>')
+
+-- Fold tailwind classes
+vim.keymap.set('n', '<leader>tf', '<cmd>TailwindFoldToggle<CR>')

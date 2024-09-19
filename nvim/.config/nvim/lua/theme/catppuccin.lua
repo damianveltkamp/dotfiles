@@ -49,9 +49,20 @@ vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = catppuccinColors.blue })
 vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = catppuccinColors.blue })
 
 -- Mini tabline
-vim.api.nvim_set_hl(0, 'MiniTablineModifiedVisible', { fg = catppuccinColors.peach })
-vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { fg = catppuccinColors.peach })
-vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { fg = catppuccinColors.peach })
+-- * `MiniTablineCurrent` - buffer is current (has cursor in it).
+-- * `MiniTablineVisible` - buffer is visible (displayed in some window).
+-- * `MiniTablineHidden` - buffer is hidden (not displayed).
+-- * `MiniTablineModifiedCurrent` - buffer is modified and current.
+-- * `MiniTablineModifiedVisible` - buffer is modified and visible.
+-- * `MiniTablineModifiedHidden` - buffer is modified and hidden.
+-- * `MiniTablineFill` - unused right space of tabline.
+-- * `MiniTablineTabpagesection` - section with tabpage information.
+-- MiniTablineVisible
+vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'MiniTablineVisible', { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { fg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedVisible', { fg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { fg = catppuccinColors.red })
 
 -- Nvim tree
 vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { bg = nil, fg = nil })

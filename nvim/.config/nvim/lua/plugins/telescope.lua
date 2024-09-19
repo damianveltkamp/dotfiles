@@ -61,6 +61,9 @@ return {
 
     telescope.setup {
       defaults = {
+        preview = {
+          treesitter = false,
+        },
         file_sorter = sorters.get_fzy_sorter,
         prompt_prefix = ' 🔍 ',
         color_devicons = true,

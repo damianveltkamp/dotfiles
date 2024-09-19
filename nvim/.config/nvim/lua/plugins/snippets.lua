@@ -41,7 +41,7 @@ return {
 
     luasnip.add_snippets(nil, {
       typescriptreact = {
-        luasnip.parser.parse_snippet('component', 'export type $1 = { \n $2 \n}\n\nexport const $3 = ({$4}: $5) => { \n};'),
+        luasnip.parser.parse_snippet('component', 'export type $1 = HTMLAttributes<HTMLElement> { \n $2 \n}\n\nexport const $3 = ({$4}: $5) => { \n};'),
         luasnip.parser.parse_snippet('lookuptable', 'const $1 = ($2) => ({\n$3\n});'),
         luasnip.parser.parse_snippet('styles', 'import * as styles from "./styles.css"'),
       },
