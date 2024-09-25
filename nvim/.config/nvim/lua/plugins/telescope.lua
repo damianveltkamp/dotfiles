@@ -60,6 +60,9 @@ return {
     telescope.load_extension 'live_grep_args'
 
     telescope.setup {
+      pickers = {
+        colorscheme = { enable_preview = true },
+      },
       defaults = {
         preview = {
           treesitter = false,

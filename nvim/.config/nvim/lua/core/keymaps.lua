@@ -85,7 +85,7 @@ vim.keymap.set('n', '<C-k>', '<cmd> :m .-2 <CR> ==', { desc = 'Move current line
 vim.keymap.set('n', 'x', '"_x', { desc = 'Cut to blackhole register' })
 
 -- Better paste
-vim.keymap.set('n', 'p', '"_dP', { desc = '[P]aste from blackhole register' })
+vim.keymap.set('v', 'p', '"_dP', { desc = '[P]aste from blackhole register' })
 
 -- Increment/decrement
 vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment number' })
