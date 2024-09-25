@@ -151,6 +151,7 @@ return {
             },
           },
           on_attach = function(client)
+            vim.notify 'Notification'
             client.server_capabilities.document_formatting = false
           end,
         },
