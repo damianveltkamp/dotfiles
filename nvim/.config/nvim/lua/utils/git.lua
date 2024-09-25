@@ -20,7 +20,7 @@ local checkRemoteHost = function()
       local url = 'https://' .. urlColonReplace
 
       remoteHost['name'] = 'bitbucket'
-      remoteHost['remoteUrl'] = url
+      remoteHost['remoteUrl'] = string.gsub(url, '%.git', '')
 
       return remoteHost
     end

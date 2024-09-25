@@ -1,5 +1,18 @@
 return {
   {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+  { 'Bilal2453/luvit-meta', lazy = true },
+  {
     'folke/trouble.nvim',
     event = 'BufReadPost',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -20,6 +33,12 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+      -- LSP Status updater
+      { 'j-hui/fidget.nvim', event = 'BufReadPost', opts = {} },
+
+      -- Allows extra capabilities provided by nvim-cmp
+      'hrsh7th/cmp-nvim-lsp',
     },
     opts = {
       inlay_hints = { enabled = true },
@@ -102,6 +121,9 @@ return {
         markdownlint = {},
         ts_ls = {
           settings = {
+            completions = {
+              completeFunctionCalls = true,
+            },
             typescript = {
               inlayHints = {
                 includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'

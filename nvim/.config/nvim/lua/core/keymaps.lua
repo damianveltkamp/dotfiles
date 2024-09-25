@@ -36,12 +36,6 @@ vim.keymap.set('n', '<leader>cab', '<cmd> %bd|e#|bd# <CR>', { desc = '[C]lose [A
 -- Closes current buffer
 vim.keymap.set('n', '<leader>cb', '<cmd> bd <CR>', { desc = '[C]lose [B]uffer' })
 
--- Paste from blackhole register
-vim.keymap.set('v', '<leader>p', '"_dP', { desc = '[P]aste from blackhole register' })
-
--- Delete to blackhole register
-vim.keymap.set('v', '<leader>d', '"_d', { desc = '[D]elete to blackhole register' })
-
 -- Better tabbing
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent current line to the left' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent current line to the right' })
@@ -56,7 +50,7 @@ vim.keymap.set('n', '<leader><leader>', '<cmd> noh <CR>', { desc = 'Remove searc
 -- Git keybindings
 vim.keymap.set('n', '<leader>gs', '<cmd> Neogit <CR>', { desc = '[G]it [S]tage' })
 vim.keymap.set('n', '<leader>ga', '<cmd> TermExec cmd="git ammend" go_back=0 <CR>', { desc = '[G]it [A]mmend' })
--- vim.keymap.set('n', '<leader>gp', '<cmd> TermExec cmd="git push" go_back=0 <CR>', { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>gp', '<cmd> TermExec cmd="git push" go_back=0 <CR>', { desc = '[G]it [P]ush' })
 vim.keymap.set('n', '<leader>gsu', '<cmd> TermExec cmd="git su" go_back=0 <CR>', { desc = '[G]it [S]et [U]pstream' })
 vim.keymap.set('n', '<leader>gb', '<cmd> lua require"gitsigns".blame_line{full=true} <CR>', { desc = '[G]it [B]lame' })
 vim.keymap.set('n', '<leader>gpr', '<cmd> DVOpenNewPullRequest <CR>', { desc = '[G]it [P]ull [R]equest' })
@@ -69,6 +63,7 @@ vim.keymap.set('n', '<leader>mdn', '<cmd> DVSearchMDNCss<CR>', { desc = '[G]it [
 -- Undotree bindings
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeShow <CR>', { desc = '[U]ndo' })
 
+-- Open file tree
 vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeFindFileToggle <CR>', { desc = 'Open file tree' })
 
 -- Keymappings for quickfix list
@@ -87,7 +82,10 @@ vim.keymap.set('n', '<C-j>', '<cmd> :m .+1 <CR> ==', { desc = 'Move current line
 vim.keymap.set('n', '<C-k>', '<cmd> :m .-2 <CR> ==', { desc = 'Move current line upwards' })
 
 -- Don't yank with x
-vim.keymap.set('n', 'x', '"_x')
+vim.keymap.set('n', 'x', '"_x', { desc = 'Cut to blackhole register' })
+
+-- Better paste
+vim.keymap.set('n', 'p', '"_dP', { desc = '[P]aste from blackhole register' })
 
 -- Increment/decrement
 vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment number' })

@@ -20,7 +20,6 @@ local options = {
   inccommand = 'split', -- Shows effects of a command in a preview window.
   ignorecase = true, -- Search case insensative.
   smartcase = true, -- Search case sensitive when there is capital letters inside search term.
-  clipboard = 'unnamedplus', -- Enables system clipboard integration.
   expandtab = true, -- Enables appropriate number of spaces to insert a tab in INSERT mode.
   tabstop = 2, -- Defines the number of spaces that a <Tab> in a file counts for.
   shiftwidth = 2, -- Number of spaces inserted for each indent.
@@ -37,11 +36,16 @@ local options = {
   splitright = true, -- When splitting a window will put the new window on the right of the current one.
   signcolumn = 'yes:2', -- Sets 2 columns for signcolumn.
   laststatus = 3, -- Enables global statusline
+  pumheight = 10, -- Sets high of popup window
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
   command = 'clearjumps',
