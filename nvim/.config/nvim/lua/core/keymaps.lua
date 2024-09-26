@@ -27,8 +27,21 @@ vim.keymap.set('n', '<leader>l', '<cmd> wincmd l <CR>', { desc = 'Focus window o
 vim.keymap.set('n', '<TAB>', '<cmd> bnext <CR>', { desc = 'Focus on the next buffer' })
 vim.keymap.set('n', '<S-TAB>', '<cmd> bprevious <CR>', { desc = 'Focus on the previous buffer' })
 
--- Search replace
-vim.keymap.set('n', '<leader>rw', 'yiw :%s/<C-r>"/', { desc = '[R]ename [W]ord under cursor' })
+-- Search replace word under cursor
+vim.keymap.set('n', '<leader>rw', function()
+  local word = vim.fn.expand '<cword>'
+  vim.api.nvim_feedkeys(':%s/' .. word .. '/', 'n', false)
+end, { desc = '[R]ename [W]ord under cursor' })
+vim.keymap.set('n', '<leader>rW', function()
+  local word = vim.fn.expand '<cWORD>'
+  vim.api.nvim_feedkeys(':%s/' .. word .. '/', 'n', false)
+end, { desc = '[R]ename [W]ORD under cursor' })
+
+-- Search replace word under cursord with capture group
+vim.keymap.set('n', '<leader>cg', function()
+  local word = vim.fn.expand '<cWORD>'
+  vim.api.nvim_feedkeys(':s/\\(' .. word .. '\\)/', 'n', false)
+end, { desc = 'Find and replace current word with capture group' })
 
 -- Closes all buffers except current one
 vim.keymap.set('n', '<leader>cab', '<cmd> %bd|e#|bd# <CR>', { desc = '[C]lose [A]ll other [B]uffers' })

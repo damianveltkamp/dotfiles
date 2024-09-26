@@ -1,1 +1,1 @@
-set winfixbuf
+vim.opt.winfixbuf = true
