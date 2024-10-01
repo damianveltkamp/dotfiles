@@ -35,7 +35,17 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- LSP Status updater
-      { 'j-hui/fidget.nvim', event = 'BufReadPost', opts = {} },
+      {
+        'j-hui/fidget.nvim',
+        event = 'BufReadPost',
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
+      },
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',

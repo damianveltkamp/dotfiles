@@ -1,11 +1,6 @@
 vim.loader.enable()
 vim.scriptencoding = 'utf-8'
 
-vim.cmd 'filetype plugin indent on'
-vim.cmd 'set noswapfile'
-vim.cmd 'set cindent'
-vim.cmd 'set showmatch'
-
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 vim.g.skip_ts_context_commentstring_module = true
 
@@ -14,6 +9,7 @@ local options = {
   timeoutlen = 500, -- Time in milliseconds to wait for a mapped sequence to complete.
   encoding = 'utf-8', -- Sets encoding to utf-8 for RPC communication.
   fileencoding = 'utf-8', -- Sets encoding to utf-8 for file content for the current buffer.
+  shortmess = 'I',
   mouse = 'a', -- Enables mouse support.
   number = true, -- Enables line numbers.
   relativenumber = true, -- Enables relative line numbers.

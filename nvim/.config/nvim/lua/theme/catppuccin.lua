@@ -33,7 +33,7 @@ vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { fg = catppuccinColors.crus
 
 -- Telescope
 vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = '#ffffff', bold = true })
-vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = catppuccinColors.green })
+vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = catppuccinColors.red })
 vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = catppuccinColors.blue })
 vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = catppuccinColors.blue })
 vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = catppuccinColors.blue })
@@ -48,12 +48,13 @@ vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = catppuccinColors.blue })
 -- * `MiniTablineModifiedHidden` - buffer is modified and hidden.
 -- * `MiniTablineFill` - unused right space of tabline.
 -- * `MiniTablineTabpagesection` - section with tabpage information.
--- MiniTablineVisible
-vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = nil, fg = catppuccinColors.peach })
 vim.api.nvim_set_hl(0, 'MiniTablineVisible', { fg = catppuccinColors.blue })
 vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { fg = catppuccinColors.red })
 vim.api.nvim_set_hl(0, 'MiniTablineModifiedVisible', { fg = catppuccinColors.red })
 vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { fg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = nil })
+vim.api.nvim_set_hl(0, 'MiniTablineHidden', { bg = nil, fg = '#ffffff' })
 
 -- Nvim tree
 vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { bg = nil, fg = nil })
