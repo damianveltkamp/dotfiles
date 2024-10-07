@@ -56,7 +56,9 @@ return {
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
-          local bufopts = { noremap = true, silent = true, buffer = event.buf }
+          local bufopts = function(desc)
+            return { noremap = true, silent = true, buffer = event.buf, desc = desc }
+          end
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -67,8 +69,8 @@ return {
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
           vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
 
-          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts, { desc = 'Go to previous [D]iagnostic message' })
-          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts, { desc = 'Go to next [D]iagnostic message' })
+          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts 'Go to previous [D]iagnostic message')
+          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts 'Go to next [D]iagnostic message')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
@@ -129,6 +131,7 @@ return {
         yamlls = {},
         jsonls = {},
         markdownlint = {},
+        graphql = {},
         ts_ls = {
           settings = {
             completions = {
