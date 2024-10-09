@@ -205,7 +205,6 @@ return {
       }
     end,
   },
-  { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' },
   {
     'onsails/lspkind-nvim',
     opts = {
