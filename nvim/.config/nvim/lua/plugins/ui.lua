@@ -24,11 +24,10 @@ return {
     opts = {
       user_default_options = {
         tailwind = true,
+        names = false,
       },
     },
   },
-  -- TODO: uncomment after the breaking change has been fixed
-  -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'lambdalisue/nerdfont.vim', event = 'VimEnter' },
   { 'lambdalisue/glyph-palette.vim', event = 'VimEnter' },
   { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },

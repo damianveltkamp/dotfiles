@@ -6,11 +6,11 @@ vim.g.skip_ts_context_commentstring_module = true
 
 local options = {
   swapfile = false,
-  jumpoptions = 'stack', -- Make the jumplist behave like the tagstack
+  jumpoptions = 'clean', -- Make the jumplist behave like the tagstack
   timeoutlen = 500, -- Time in milliseconds to wait for a mapped sequence to complete.
   encoding = 'utf-8', -- Sets encoding to utf-8 for RPC communication.
   fileencoding = 'utf-8', -- Sets encoding to utf-8 for file content for the current buffer.
-  shortmess = 'I',
+  shortmess = 'ltToOCFI', -- Disable annoying messages.
   mouse = 'a', -- Enables mouse support.
   number = true, -- Enables line numbers.
   relativenumber = true, -- Enables relative line numbers.

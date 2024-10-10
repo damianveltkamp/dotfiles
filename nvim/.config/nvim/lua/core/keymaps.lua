@@ -77,7 +77,7 @@ vim.keymap.set('n', '<leader>mdn', '<cmd> DVSearchMDNCss<CR>', { desc = '[G]it [
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeShow <CR>', { desc = '[U]ndo' })
 
 -- Open file tree
-vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeFindFileToggle <CR>', { desc = 'Open file tree' })
+vim.keymap.set('n', '<C-n>', '<cmd>Neotree <CR>', { desc = 'Open file tree' })
 
 -- Keymappings for quickfix list
 vim.keymap.set('n', '<leader>qo', '<cmd> copen <CR>', { desc = '[Q]uickfixlist [O]pen' })

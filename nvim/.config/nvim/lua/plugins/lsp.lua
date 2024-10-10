@@ -59,9 +59,9 @@ return {
           local bufopts = function(desc)
             return { noremap = true, silent = true, buffer = event.buf, desc = desc }
           end
-          vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+          vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts '[G]o to [I]mplementation')
+          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts '[G]o to [R]eference')
+          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts '[G]o to [D]efinition')
           -- vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = '[G]o to [D]efinition' })
           -- vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]o to [R]eference' })
           -- vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { desc = '[G]o to [I]mplementation' })
@@ -237,7 +237,6 @@ return {
       require('lspkind').init(opts)
     end,
   },
-  { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufReadPost' },
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufReadPost',
