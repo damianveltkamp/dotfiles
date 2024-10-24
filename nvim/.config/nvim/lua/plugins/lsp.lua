@@ -131,7 +131,9 @@ return {
         yamlls = {},
         jsonls = {},
         markdownlint = {},
-        graphql = {},
+        graphql = {
+          filetypes = { 'graphql', 'typescriptreact', 'javascriptreact', 'typescript' },
+        },
         ts_ls = {
           settings = {
             completions = {
@@ -188,6 +190,7 @@ return {
         'typescript-language-server',
         'yaml-language-server',
         'html-lsp',
+        'graphql-language-service-cli',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
