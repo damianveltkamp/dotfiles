@@ -1,0 +1,1 @@
+-- TODO: add function that lets you remove item from quickfix list by pressing dd

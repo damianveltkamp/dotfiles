@@ -220,4 +220,12 @@ nvi() {
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
 
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+
+  alias cd='z'
+  # Alias below is same as 'cd -', takes to the previous directory
+  alias cdd='z -'
+fi
+
 eval "$(starship init zsh)"
