@@ -91,6 +91,10 @@ echo "---------------------------------------------------------"
 # Remove all icons from dock
 echo "Removing all app icons from dock"
 defaults write com.apple.dock persistent-apps -array
+echo "---------------------------------------------------------"
+
+echo "Removing suggested app icons from dock"
+defaults write com.apple.dock show-recents -bool FALSE
 killall Dock
 echo "---------------------------------------------------------"
 
