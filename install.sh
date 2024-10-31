@@ -12,6 +12,7 @@ else
 fi
 
 packages=(
+"stow"
 "git"
 "node"
 "tmux"
