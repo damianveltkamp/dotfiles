@@ -40,6 +40,7 @@ casks=(
 "discord"
 "postman"
 "raycast"
+"whatsapp"
 "basictex"
 "font-hack-nerd-font"
 )
