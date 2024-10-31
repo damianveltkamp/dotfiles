@@ -26,6 +26,7 @@ packages=(
 "starship"
 "yarn"
 "ninja"
+"silicon"
 "koekeishiya/formulae/yabai"
 "koekeishiya/formulae/skhd"
 )
