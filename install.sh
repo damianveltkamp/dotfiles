@@ -94,7 +94,7 @@ tmuxPlugins=(
 
 echo "Cloning all dotfiles"
 mkdir -p ~/Documents/development/dotfiles
-git clone https://github.com/damianveltkamp/dotfiles.git ~/Documents/development/dotfile
+git clone https://github.com/damianveltkamp/dotfiles.git ~/Documents/development/dotfiles
 echo "---------------------------------------------------------"
 
 echo "Symlinking all config files"
