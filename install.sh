@@ -1,13 +1,14 @@
-brew="/usr/local/bin/brew"
+brew="/opt/homebrew/bin/brew"
 
 if [ -f "$brew" ]
 then
+  echo $brew
   echo "Homebrew is installed, nothing to do here"
 else
   echo "Homebrew is not installed, installing now"
   echo "This may take a while"
   echo "Homebrew requires osx command lines tools, please download xcode first"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 packages=(
@@ -25,18 +26,28 @@ packages=(
 "starship"
 "yarn"
 "ninja"
+"koekeishiya/formulae/yabai"
+"koekeishiya/formulae/skhd"
 )
 
 casks=(
-"spotify"
 "alacritty"
 "slack"
+"spotify"
 "google-chrome"
 "brave-browser"
-"postman"
 "firefox"
-"alfred"
+"discord"
+"postman"
+"raycast"
 "basictex"
+"font-hack-nerd-font"
+)
+
+tmuxPlugins=(
+"https://github.com/catppuccin/tmux"
+"https://github.com/tmux-plugins/tmux-sensible"
+"https://github.com/tmux-plugins/tmux-yank"
 )
 
 for i in "${packages[@]}"
@@ -51,38 +62,24 @@ do
   echo "---------------------------------------------------------"
 done
 
-# Install yabai from custom formula
-brew install koekeishiya/formulae/yabai
-echo "---------------------------------------------------------"
+for i in "${tmuxPlugins[@]}"
+do
+  mkdir -p ~/.config/tmux/plugins
 
-# Install skhd from custom formula
-brew install koekeishiya/formulae/skhd
-echo "---------------------------------------------------------"
+  if [[$i == "https://github.com/catppuccin/tmux"]]; then
+    git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin
+  elif [[ $i == "https://github.com/tmux-plugins/tmux-sensible" ]]; then
+    git clone https://github.com/tmux-plugins/tmux-sensible ~/.config/tmux/plugins/tmux-sensible
+    elif [[ $i == "https://github.com/tmux-plugins/tmux-yank" ]]; then
+      git clone https://github.com/tmux-plugins/tmux-yank ~/.config/tmux/plugins/tmux-yank
+  fi
 
-# Install tmux plugins
-# https://github.com/catppuccin/tmux
-# https://github.com/tmux-plugins/tmux-sensible
-# https://github.com/tmux-plugins/tmux-yank
+  echo "---------------------------------------------------------"
+done
 
-# Clone citation styles for use in pandoc
-git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc
-echo "---------------------------------------------------------"
-
-# Install hack font
-brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
-echo "---------------------------------------------------------"
-
-# Install all global yarn packages
-yarn global add typescript eslint_d prettier vim-language-server vscode-langservers-extracted yaml-language-server typescript-language-server
-echo "---------------------------------------------------------"
-
-# Install needed tex packages to create pdf's
-sudo tlmgr install glossaries mfirstuc datatools
-echo "---------------------------------------------------------"
 
 echo "Changing to zsh"
 chsh -s $(which zsh)
-
 echo "You'll need to log out for this to take effect"
 echo "---------------------------------------------------------"
 
