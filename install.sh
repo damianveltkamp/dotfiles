@@ -19,20 +19,12 @@ packages=(
 "ripgrep"
 "nvm"
 "fzf"
-"efm-langserver"
 "fd"
+"zoxide"
 "zplug"
 "starship"
-"efm-langserver"
 "yarn"
 "ninja"
-"lerna"
-"pandoc"
-"pandoc-crossref"
-"stylua"
-"jsonlint"
-"lua-language-server"
-"sketchybar"
 )
 
 casks=(
@@ -40,6 +32,8 @@ casks=(
 "alacritty"
 "slack"
 "google-chrome"
+"brave-browser"
+"postman"
 "firefox"
 "alfred"
 "basictex"
@@ -65,9 +59,10 @@ echo "---------------------------------------------------------"
 brew install koekeishiya/formulae/skhd
 echo "---------------------------------------------------------"
 
-# Install tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo "---------------------------------------------------------"
+# Install tmux plugins
+# https://github.com/catppuccin/tmux
+# https://github.com/tmux-plugins/tmux-sensible
+# https://github.com/tmux-plugins/tmux-yank
 
 # Clone citation styles for use in pandoc
 git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc

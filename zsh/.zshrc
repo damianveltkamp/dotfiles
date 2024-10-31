@@ -1,6 +1,7 @@
 export PATH=./node_modules/.bin:$PATH
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
+source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
