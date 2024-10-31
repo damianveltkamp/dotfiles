@@ -16,24 +16,6 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/damianveltkamp/dotfiles/master/install.sh)"
 ```
 
-### Clone this repository onto your machine
-
-```bash
-git clone https://github.com/damianveltkamp/dotfiles.git ~/Documents/development/dotfiles
-```
-
-### Create a config directory on your machine on your home path if you don't already have one
-
-```bash
-mkdir -p ~/.config
-```
-
-### Make simlinks for all dotfiles and config files
-
-```bash
-cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd starship
-```
-
 ### Start yabai, skhd
 
 ```bash
@@ -42,38 +24,6 @@ yabai --start-service
 
 ```bash
 skhd --start-service
-```
-
-### Tmux plugins
-
-#### Tmux sensible
-
-```bash
-mkdir -p ~/.config/tmux/plugins
-git clone https://github.com/tmux-plugins/tmux-sensible ~/.config/tmux/plugins/tmux-sensible
-```
-
-#### Catppuccin
-
-```bash
-git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin
-```
-
-#### Tmux yank
-
-```bash
-git clone https://github.com/tmux-plugins/tmux-yank ~/.config/tmux/plugins/tmux-yank
-```
-
-### Setup catppuccin themeing
-
-#### Zsh syntax highlighting
-
-```bash
-mkdir -p ~/.config/zsh/plugins
-cd ~/.config/zsh/plugins
-git clone https://github.com/catppuccin/zsh-syntax-highlighting.git
-cp -v catppuccin_macchiato-zsh-syntax-highlighting.zsh ~/.config/zsh/
 ```
 
 ### Pandoc

@@ -81,6 +81,12 @@ do
   echo "---------------------------------------------------------"
 done
 
+echo "Cloning catppuccin syntax highlighting for zsh"
+mkdir -p ~/.config/zsh/plugins
+git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ~/.config/zsh/plugins
+cp -v ~/.config/zsh/plugins/zsh-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh ~/.config/zsh/
+echo "---------------------------------------------------------"
+
 # Remove all icons from dock
 echo "Removing all app icons from dock"
 defaults write com.apple.dock persistent-apps -array
