@@ -50,47 +50,47 @@ tmuxPlugins=(
 "https://github.com/tmux-plugins/tmux-yank"
 )
 
-# echo "Installing all brew packages"
-# for i in "${packages[@]}"
-# do
-#   brew install $i
-#   echo "---------------------------------------------------------"
-# done
-#
-# echo "Installing all brew casks"
-# for i in "${casks[@]}"
-# do
-#   brew install --cask $i
-#   echo "---------------------------------------------------------"
-# done
-#
-# echo "Cloning all tmux plugins"
-# for i in "${tmuxPlugins[@]}"
-# do
-#   mkdir -p ~/.config/tmux/plugins
-#
-#   if [[$i == "https://github.com/catppuccin/tmux"]]; then
-#     git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin
-#   elif [[ $i == "https://github.com/tmux-plugins/tmux-sensible" ]]; then
-#     git clone https://github.com/tmux-plugins/tmux-sensible ~/.config/tmux/plugins/tmux-sensible
-#     elif [[ $i == "https://github.com/tmux-plugins/tmux-yank" ]]; then
-#       git clone https://github.com/tmux-plugins/tmux-yank ~/.config/tmux/plugins/tmux-yank
-#   fi
-#
-#   echo "---------------------------------------------------------"
-# done
-#
-# # Remove all icons from dock
-# echo "Removing all app icons from dock"
-# defaults write com.apple.dock persistent-apps -array
-# killall Dock
-# echo "---------------------------------------------------------"
-#
-# # Remove all icons from desktop
-# echo "Removing all app icons from desktop"
-# defaults write com.apple.finder CreateDesktop false
-# killall Finder
-# echo "---------------------------------------------------------"
+echo "Installing all brew packages"
+for i in "${packages[@]}"
+do
+  brew install $i
+  echo "---------------------------------------------------------"
+done
+
+echo "Installing all brew casks"
+for i in "${casks[@]}"
+do
+  brew install --cask $i
+  echo "---------------------------------------------------------"
+done
+
+echo "Cloning all tmux plugins"
+for i in "${tmuxPlugins[@]}"
+do
+  mkdir -p ~/.config/tmux/plugins
+
+  if [[$i == "https://github.com/catppuccin/tmux"]]; then
+    git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin
+  elif [[ $i == "https://github.com/tmux-plugins/tmux-sensible" ]]; then
+    git clone https://github.com/tmux-plugins/tmux-sensible ~/.config/tmux/plugins/tmux-sensible
+    elif [[ $i == "https://github.com/tmux-plugins/tmux-yank" ]]; then
+      git clone https://github.com/tmux-plugins/tmux-yank ~/.config/tmux/plugins/tmux-yank
+  fi
+
+  echo "---------------------------------------------------------"
+done
+
+# Remove all icons from dock
+echo "Removing all app icons from dock"
+defaults write com.apple.dock persistent-apps -array
+killall Dock
+echo "---------------------------------------------------------"
+
+# Remove all icons from desktop
+echo "Removing all app icons from desktop"
+defaults write com.apple.finder CreateDesktop false
+killall Finder
+echo "---------------------------------------------------------"
 
 echo "Cloning all dotfiles"
 mkdir -p ~/Documents/development
