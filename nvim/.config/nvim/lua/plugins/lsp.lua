@@ -266,6 +266,7 @@ return {
         'json',
         'scss',
         'css',
+        'graphql',
       },
       textobjects = {
         move = {
