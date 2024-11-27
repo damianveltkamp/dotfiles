@@ -95,6 +95,12 @@ return {
           },
         },
         eslint = {
+          settings = {
+            experimental = {
+              useFlatConfig = true,
+            },
+            workingDirectories = { mode = 'auto' },
+          },
           on_attach = function(_, bufnr)
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = bufnr,
@@ -120,6 +126,7 @@ return {
                   { 'cva\\(([^)]*)\\)', '["\'`]([^"\'`]*).*?["\'`]' },
                   { 'cx\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
                   { 'tailwindMerge\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  { 'twMerge\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
                 },
               },
             },
@@ -184,7 +191,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'css-lsp',
+        -- 'css-lsp',
         'prettier',
         'prettierd',
         'typescript-language-server',
