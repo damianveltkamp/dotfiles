@@ -142,6 +142,9 @@ return {
       builtin.find_files { cwd = utils.buffer_dir() }
     end, { desc = '[F]ind file in current [D]irectory' })
     vim.keymap.set('n', '<leader>sp', '<cmd> lua require("telescope.builtin").live_grep() <CR>', { desc = '[S]earch [P]roject' })
+    vim.keymap.set('n', '<leader>sd', function()
+      builtin.grep_string { cwd = utils.buffer_dir() }
+    end, { desc = '[S]earch [W]ord inside [P]roject' })
     vim.keymap.set('n', '<leader>swp', function()
       local word = vim.fn.expand '<cword>'
       builtin.grep_string { search = word }

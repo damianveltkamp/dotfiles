@@ -48,7 +48,7 @@ return {
       },
 
       -- Allows extra capabilities provided by nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
+      'blink.cmp',
     },
     opts = {
       inlay_hints = { enabled = true },
@@ -82,7 +82,7 @@ return {
       })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
       local servers = {
         lua_ls = {
@@ -97,7 +97,7 @@ return {
         eslint = {
           settings = {
             experimental = {
-              useFlatConfig = true,
+              -- useFlatConfig = true,
             },
             workingDirectories = { mode = 'auto' },
           },
