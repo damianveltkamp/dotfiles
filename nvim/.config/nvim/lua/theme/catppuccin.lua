@@ -31,23 +31,23 @@ vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextHint', { fg = catppuccinColors.crus
 vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextWarn', { fg = catppuccinColors.crust, bg = catppuccinColors.yellow })
 vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { fg = catppuccinColors.crust, bg = catppuccinColors.green })
 
--- Telescope
-vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = '#ffffff', bold = true })
-vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = catppuccinColors.red })
-vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = catppuccinColors.blue })
-vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = catppuccinColors.blue })
-vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { fg = catppuccinColors.blue })
-vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = catppuccinColors.blue })
+-- Fzf
+vim.api.nvim_set_hl(0, 'FzfLuaNormal', { link = 'NormalFloat' })
+vim.api.nvim_set_hl(0, 'FzfLuaTitle', { fg = catppuccinColors.text })
+vim.api.nvim_set_hl(0, 'FzfLuaBorder', { link = 'FloatBorder' })
+vim.api.nvim_set_hl(0, 'FzfLuaHeaderBind', { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'FzfLuaHeaderText', { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'FzfLuaPathColNr', { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, 'FzfLuaPathLineNr', { fg = catppuccinColors.green })
+vim.api.nvim_set_hl(0, 'FzfLuaBufName', { fg = catppuccinColors.mauve })
+vim.api.nvim_set_hl(0, 'FzfLuaBufNr', { fg = catppuccinColors.yellow })
+vim.api.nvim_set_hl(0, 'FzfLuaBufFlagCur', { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'FzfLuaBufFlagAlt', { fg = catppuccinColors.blue })
+vim.api.nvim_set_hl(0, 'FzfLuaTabTitle', { fg = catppuccinColors.sky })
+vim.api.nvim_set_hl(0, 'FzfLuaTabMarker', { fg = catppuccinColors.yellow })
+vim.api.nvim_set_hl(0, 'FzfLuaLiveSym', { fg = catppuccinColors.peach })
 
 -- Mini tabline
--- * `MiniTablineCurrent` - buffer is current (has cursor in it).
--- * `MiniTablineVisible` - buffer is visible (displayed in some window).
--- * `MiniTablineHidden` - buffer is hidden (not displayed).
--- * `MiniTablineModifiedCurrent` - buffer is modified and current.
--- * `MiniTablineModifiedVisible` - buffer is modified and visible.
--- * `MiniTablineModifiedHidden` - buffer is modified and hidden.
--- * `MiniTablineFill` - unused right space of tabline.
--- * `MiniTablineTabpagesection` - section with tabpage information.
 vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = nil, fg = catppuccinColors.peach })
 vim.api.nvim_set_hl(0, 'MiniTablineVisible', { fg = catppuccinColors.blue })
 vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { fg = catppuccinColors.red })
