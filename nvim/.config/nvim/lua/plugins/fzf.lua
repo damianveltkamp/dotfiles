@@ -10,7 +10,9 @@ return {
         return
       end
 
-      fzf.setup { 'telescope', defaults = { file_icons = true } }
+      fzf.setup {
+        'telescope',
+      }
       vim.keymap.set('n', '<leader>ff', function()
         fzf.files()
       end, { desc = '[F]ind [F]iles' })
