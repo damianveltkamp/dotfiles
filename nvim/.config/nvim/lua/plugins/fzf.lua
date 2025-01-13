@@ -12,6 +12,18 @@ return {
 
       fzf.setup {
         'telescope',
+        files = {
+          prompt = '🔍 ',
+          cwd_prompt = false,
+        },
+        grep = {
+          prompt = '🔍 ',
+        },
+        winopts = {
+          preview = {
+            layout = 'horizontal',
+          },
+        },
       }
       vim.keymap.set('n', '<leader>ff', function()
         fzf.files()

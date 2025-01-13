@@ -1,0 +1,15 @@
+# Terminal styling
+background = 24273A
+foreground = D8DEE9
+background-opacity = 0.95
+background-blur-radius = 15
+
+# Typography
+font-family = Hack Nerd Font
+font-size = 27
+
+copy-on-select = true
+
+mouse-scroll-multiplier = 10
+
+theme = catppuccin-macchiato

@@ -32,9 +32,10 @@ vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextWarn', { fg = catppuccinColors.crus
 vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { fg = catppuccinColors.crust, bg = catppuccinColors.green })
 
 -- Fzf
-vim.api.nvim_set_hl(0, 'FzfLuaNormal', { link = 'NormalFloat' })
-vim.api.nvim_set_hl(0, 'FzfLuaTitle', { fg = catppuccinColors.text })
+
+vim.api.nvim_set_hl(0, 'FzfLuaNormal', { fg = '#ffffff' })
 vim.api.nvim_set_hl(0, 'FzfLuaBorder', { link = 'FloatBorder' })
+vim.api.nvim_set_hl(0, 'FzfLuaTitle', { fg = catppuccinColors.text })
 vim.api.nvim_set_hl(0, 'FzfLuaHeaderBind', { fg = catppuccinColors.peach })
 vim.api.nvim_set_hl(0, 'FzfLuaHeaderText', { fg = catppuccinColors.peach })
 vim.api.nvim_set_hl(0, 'FzfLuaPathColNr', { fg = catppuccinColors.blue })
@@ -46,6 +47,7 @@ vim.api.nvim_set_hl(0, 'FzfLuaBufFlagAlt', { fg = catppuccinColors.blue })
 vim.api.nvim_set_hl(0, 'FzfLuaTabTitle', { fg = catppuccinColors.sky })
 vim.api.nvim_set_hl(0, 'FzfLuaTabMarker', { fg = catppuccinColors.yellow })
 vim.api.nvim_set_hl(0, 'FzfLuaLiveSym', { fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'FzfLuaSearch', { fg = catppuccinColors.yellow })
 
 -- Mini tabline
 vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = nil, fg = catppuccinColors.peach })
