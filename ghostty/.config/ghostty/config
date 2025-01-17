@@ -10,6 +10,4 @@ font-size = 27
 
 copy-on-select = true
 
-mouse-scroll-multiplier = 10
-
 theme = catppuccin-macchiato
