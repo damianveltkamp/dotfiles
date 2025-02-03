@@ -1,8 +1,7 @@
 # Terminal styling
 background = 24273A
 foreground = D8DEE9
-background-opacity = 0.95
-background-blur-radius = 15
+background-opacity = 1
 
 # Typography
 font-family = Hack Nerd Font

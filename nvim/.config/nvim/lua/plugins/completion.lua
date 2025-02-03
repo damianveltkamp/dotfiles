@@ -27,6 +27,24 @@ return {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
         cmdline = {},
       },
+      snippets = {
+        preset = 'luasnip',
+        -- This comes from the luasnip extra, if you don't add it, won't be able to
+        -- jump forward or backward in luasnip snippets
+        -- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
+        expand = function(snippet)
+          require('luasnip').lsp_expand(snippet)
+        end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require('luasnip').jumpable(filter.direction)
+          end
+          return require('luasnip').in_snippet()
+        end,
+        jump = function(direction)
+          require('luasnip').jump(direction)
+        end,
+      },
       signature = { enabled = true },
     },
   },
