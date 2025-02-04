@@ -31,17 +31,19 @@ return {
   { 'lambdalisue/nerdfont.vim', event = 'VimEnter' },
   { 'lambdalisue/glyph-palette.vim', event = 'VimEnter' },
   { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },
-  {
-    'xiyaowong/transparent.nvim',
-    event = 'VimEnter',
-    opts = {
-      extra_groups = {
-        'NvimTreeNormal', -- NvimTree
-        'CursorColumn',
-      },
-      exclude_groups = {
-        'CursorLineNr',
-      },
-    },
-  },
+  -- NOTE: no longer using transparent terminal, will keep this commented until
+  -- I use transparent term again
+  -- {
+  --   'xiyaowong/transparent.nvim',
+  --   event = 'VimEnter',
+  --   opts = {
+  --     extra_groups = {
+  --       'NvimTreeNormal', -- NvimTree
+  --       'CursorColumn',
+  --     },
+  --     exclude_groups = {
+  --       'CursorLineNr',
+  --     },
+  --   },
+  -- },
 }

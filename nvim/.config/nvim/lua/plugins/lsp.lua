@@ -11,7 +11,6 @@ return {
       },
     },
   },
-  { 'Bilal2453/luvit-meta', lazy = true },
   {
     'folke/trouble.nvim',
     event = 'BufReadPost',
