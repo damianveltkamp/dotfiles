@@ -3,12 +3,13 @@ return {
     'rcarriga/nvim-notify',
     event = 'VimEnter',
     config = function()
-      require('notify').setup {
+      local notify = require 'notify'
+      notify.setup {
         timeout = 1000,
-        max_width = 1500,
+        max_width = 500,
         fps = 30,
       }
-      vim.notify = require 'notify'
+      vim.notify = notify
     end,
   },
 }
