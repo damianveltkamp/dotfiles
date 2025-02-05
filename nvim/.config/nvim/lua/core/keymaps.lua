@@ -69,6 +69,13 @@ vim.keymap.set('n', '<leader>gb', '<cmd> lua require"gitsigns".blame_line{full=t
 vim.keymap.set('n', '<leader>gpr', '<cmd> DVOpenNewPullRequest <CR>', { desc = '[G]it [P]ull [R]equest' })
 vim.keymap.set('n', '<leader>gor', '<cmd> DVOpenCurrentRepo <CR>', { desc = '[G]it [O]pen [R]epo' })
 vim.keymap.set('n', '<leader>gtn', '<cmd> DVGetTicketNumber<CR>', { desc = '[G]it [T]icket [N]umber' })
+vim.keymap.set('n', '<leader>dv', function()
+  if next(require('diffview.lib').views) == nil then
+    vim.cmd 'DiffviewOpen'
+  else
+    vim.cmd 'DiffviewClose'
+  end
+end, { desc = 'Toggle [D]iff [V]iew' })
 
 -- Search MDN
 vim.keymap.set('n', '<leader>mdn', '<cmd> DVSearchMDNCss<CR>', { desc = '[G]it [T]icket [N]umber' })

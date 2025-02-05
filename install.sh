@@ -33,7 +33,7 @@ packages=(
 )
 
 casks=(
-"alacritty"
+"ghostty"
 "slack"
 "spotify"
 "google-chrome"
