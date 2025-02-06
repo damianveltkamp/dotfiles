@@ -32,7 +32,6 @@ vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextWarn', { fg = catppuccinColors.crus
 vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { fg = catppuccinColors.crust, bg = catppuccinColors.green })
 
 -- Fzf
-
 vim.api.nvim_set_hl(0, 'FzfLuaNormal', { fg = '#ffffff' })
 vim.api.nvim_set_hl(0, 'FzfLuaBorder', { link = 'FloatBorder' })
 vim.api.nvim_set_hl(0, 'FzfLuaTitle', { fg = catppuccinColors.text })
