@@ -1,3 +1,3 @@
 return {
-  { 'mbbill/undotree', cmd = { 'UndotreeShow' } },
+  { 'mbbill/undotree', cmd = { 'UndotreeToggle' } },
 }

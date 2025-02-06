@@ -81,7 +81,7 @@ end, { desc = 'Toggle [D]iff [V]iew' })
 vim.keymap.set('n', '<leader>mdn', '<cmd> DVSearchMDNCss<CR>', { desc = '[G]it [T]icket [N]umber' })
 
 -- Undotree bindings
-vim.keymap.set('n', '<leader>u', '<cmd> UndotreeShow <CR>', { desc = '[U]ndo' })
+vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = '[U]ndo' })
 
 -- Open file tree
 vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle<CR>', { desc = 'Open file tree' })
