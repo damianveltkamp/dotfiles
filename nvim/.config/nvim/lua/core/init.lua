@@ -1,6 +1,7 @@
 require 'utils/git'
 require 'utils/mdn'
 require 'utils/silicon'
+require 'utils/typescript'
 require 'core.options'
 require 'core.keymaps'
 require 'core.plugins'

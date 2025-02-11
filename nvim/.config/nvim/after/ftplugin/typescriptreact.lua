@@ -1,3 +1,5 @@
+vim.keymap.set('i', 't', '<cmd>DVAddAsync <CR>', { buffer = true })
+
 vim.keymap.set(
   'n',
   '<leader>csd',
