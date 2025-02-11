@@ -46,4 +46,25 @@ local function add_async()
   vim.api.nvim_buf_set_text(buffer, start_row, start_col, start_row, start_col, { 'async ' })
 end
 
+local function remove_async()
+  local buffer = vim.fn.bufnr()
+
+  -- ignore_injections = false makes this snippet work in filetypes where JS is injected
+  -- into other languages
+  local current_node = vim.treesitter.get_node { ignore_injections = false }
+  local function_node = find_node_ancestor({ 'arrow_function', 'function_declaration', 'function', 'method_definition' }, current_node)
+  if not function_node then
+    return
+  end
+
+  local function_text = vim.treesitter.get_node_text(function_node, 0)
+  if not vim.startswith(function_text, 'async') then
+    return
+  end
+
+  local start_row, start_col = function_node:start()
+  vim.api.nvim_buf_set_text(buffer, start_row, start_col, start_row, start_col + 6, { '' })
+end
+
 vim.api.nvim_create_user_command('DVAddAsync', add_async, {})
+vim.api.nvim_create_user_command('DVRemoveAsync', remove_async, {})
