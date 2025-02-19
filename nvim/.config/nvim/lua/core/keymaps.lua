@@ -87,7 +87,22 @@ vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = '[U]ndo' 
 vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle<CR>', { desc = 'Open file tree' })
 
 -- Keymappings for quickfix list
-vim.keymap.set('n', '<leader>qo', '<cmd> copen <CR>', { desc = '[Q]uickfixlist [O]pen' })
+vim.keymap.set('n', '<leader>qo', function()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win['quickfix'] == 1 then
+      qf_exists = true
+    end
+  end
+  if qf_exists == true then
+    vim.cmd 'cclose'
+    return
+  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then
+    vim.cmd 'copen'
+  end
+end, { desc = '[Q]uickfixlist [O]pen' })
+
 vim.keymap.set('n', '<leader>qc', '<cmd> cexpr []<CR>', { desc = '[Q]uickfixlist [C]lean' })
 vim.keymap.set('n', '<leader>qn', '<cmd> cn <CR>', { desc = '[Q]uickfixlist [N]ext' })
 vim.keymap.set('n', '<leader>qp', '<cmd> cp <CR>', { desc = '[Q]uickfixlist [P]revious' })
@@ -132,6 +147,7 @@ vim.keymap.set('n', 's', '<Nop>')
 
 -- Toggle Trouble window
 vim.keymap.set('n', '<leader>tb', '<cmd>Trouble diagnostics toggle focus=true<CR>')
+vim.keymap.set('n', '<leader>td', '<cmd>Trouble todo filter = {tag = {TODO,FIX,FIXME}} focus=true<CR>')
 
 -- Fold tailwind classes
 vim.keymap.set('n', '<leader>tf', '<cmd>TailwindFoldToggle<CR>')

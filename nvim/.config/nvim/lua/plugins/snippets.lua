@@ -52,6 +52,9 @@ return {
 
         -- Tanstack
         luasnip.parser.parse_snippet('tanstackQuery', 'const { data, error } = useQuery({\n  queryKey: [$1],\n  queryFn: () => $2,\n});\n$3'),
+
+        -- Component doc
+        luasnip.parser.parse_snippet('doc', '/**\n * $1\n */'),
       },
       typescript = {
         -- Generic javascript snippets
@@ -67,6 +70,9 @@ return {
         luasnip.parser.parse_snippet('ve:selectors', "selectors: {\n'$1': {\n $2 \n}\n},"),
         luasnip.parser.parse_snippet('ve:boolean', '$1: {\n  true: {\n    $2 \n  },\n  false: {\n    $3 \n  }\n},'),
         luasnip.parser.parse_snippet('ve:font', '...theme.fonts.$1'),
+
+        -- Component doc
+        luasnip.parser.parse_snippet('doc', '/**\n * $1\n  */'),
       },
     })
   end,
