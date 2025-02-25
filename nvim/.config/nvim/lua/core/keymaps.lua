@@ -147,7 +147,7 @@ vim.keymap.set('n', 's', '<Nop>')
 
 -- Toggle Trouble window
 vim.keymap.set('n', '<leader>tb', '<cmd>Trouble diagnostics toggle focus=true<CR>')
-vim.keymap.set('n', '<leader>td', '<cmd>Trouble todo filter = {tag = {TODO,FIX,FIXME}} focus=true<CR>')
+vim.keymap.set('n', '<leader>td', '<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}} focus=true<CR>')
 
 -- Fold tailwind classes
 vim.keymap.set('n', '<leader>tf', '<cmd>TailwindFoldToggle<CR>')

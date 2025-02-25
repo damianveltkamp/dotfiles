@@ -21,7 +21,7 @@ return {
         },
         winopts = {
           preview = {
-            layout = 'horizontal',
+            layout = 'vertical',
           },
         },
       }
