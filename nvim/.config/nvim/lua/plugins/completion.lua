@@ -24,7 +24,7 @@ return {
         nerd_font_variant = 'mono',
       },
       cmdline = {
-        enabled = false,
+        enabled = true,
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },

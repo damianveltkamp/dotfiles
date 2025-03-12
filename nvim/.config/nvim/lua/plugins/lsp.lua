@@ -243,6 +243,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
     event = 'BufReadPost',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -296,7 +297,6 @@ return {
         },
       },
     },
-    run = ':TSUpdate',
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
