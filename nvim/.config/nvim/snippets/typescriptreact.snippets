@@ -1,0 +1,40 @@
+extends javascript
+ 
+snippet createContext Creates a react context + custom hook
+	const ${1}Context = createContext<${2} | null>(null);
+
+	const use${1}Context = () => {
+		const context = useContext(${1}Context);
+
+		if (!context) {
+			throw 'use${1}Context must be used within a ${1}Context';
+		}
+
+		return context as ${2};
+	};
+
+
+snippet lookuptable Creates a typescript lookuptable
+	const ${1}: Record<${2}, ${3}> = {
+		${4}
+	};
+
+snippet component Creates react component
+	export type ${1} = HTMLAttributes<HTMLElement> { 
+		${2}
+	}
+
+	export const ${3} = ({$4}: ${1}) => {
+		${5}
+	};
+
+snippet tanstackQuery Creates a tanstack query
+	const use${1} = () => {
+		return useQuery({
+			queryKey: ['${1}'],
+			queryFn: () => {
+				${2}
+			},
+		})
+	}
+
