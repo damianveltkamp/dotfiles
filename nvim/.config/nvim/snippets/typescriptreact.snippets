@@ -1,6 +1,6 @@
 extends javascript
  
-snippet createContext Creates a react context + custom hook
+snippet sn:createContext Creates a react context + custom hook
 	const ${1}Context = createContext<${2} | null>(null);
 
 	const use${1}Context = () => {
@@ -14,12 +14,12 @@ snippet createContext Creates a react context + custom hook
 	};
 
 
-snippet lookuptable Creates a typescript lookuptable
+snippet sn:lookuptable Creates a typescript lookuptable
 	const ${1}: Record<${2}, ${3}> = {
 		${4}
 	};
 
-snippet component Creates react component
+snippet sn:component Creates react component
 	export type ${1} = HTMLAttributes<HTMLElement> { 
 		${2}
 	}
@@ -28,7 +28,7 @@ snippet component Creates react component
 		${5}
 	};
 
-snippet tanstackQuery Creates a tanstack query
+snippet sn:tanstackQuery Creates a tanstack query
 	const use${1} = () => {
 		return useQuery({
 			queryKey: ['${1}'],
