@@ -38,3 +38,11 @@ snippet sn:tanstackQuery Creates a tanstack query
 		})
 	}
 
+snippet sn:getServerSideProps Creates a getServerSideProps function
+  type PageProps = {
+    ${1}
+  }
+
+  export const getServerSideProps = (async context => {
+    ${2}
+  }) satisfies GetServerSideProps<PageProps>;
