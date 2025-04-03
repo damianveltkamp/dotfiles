@@ -4,6 +4,6 @@ return {
     event = 'BufReadPost',
     opts = {},
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    ft = { 'html', 'svelte', 'astro', 'vue', 'typescriptreact', 'php', 'blade' },
+    ft = { 'html', 'svelte', 'astro', 'vue', 'javascript', 'typescriptreact', 'php', 'blade' },
   },
 }
