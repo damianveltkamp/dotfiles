@@ -2,6 +2,8 @@ export PATH=./node_modules/.bin:$PATH
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+export JAVA_HOME=$(/usr/libexec/java_home -v11)
+export PATH="$HOME/.jenv/bin:$PATH"
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
@@ -230,3 +232,4 @@ if command -v zoxide &>/dev/null; then
 fi
 
 eval "$(starship init zsh)"
+eval "$(jenv init -)"

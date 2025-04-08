@@ -130,6 +130,13 @@ return {
         html = {},
         cssls = {},
         cssmodules_ls = {},
+        css_variables = {
+          -- settings = {
+          --   cssVariables ={
+          --     blacklistFolders = {}
+          --   }
+          -- }
+        },
         yamlls = {},
         jsonls = {},
         markdownlint = {},
@@ -186,10 +193,11 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        -- 'css-lsp',
         'prettier',
         'prettierd',
         'typescript-language-server',
+        'css-lsp',
+        'css-variables-language-server',
         'yaml-language-server',
         'html-lsp',
         'graphql-language-service-cli',
