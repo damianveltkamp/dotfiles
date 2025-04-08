@@ -1,6 +1,13 @@
 vim.diagnostic.config {
   virtual_text = true,
-  signs = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '',
+    },
+  },
   update_in_insert = true,
   underline = true,
   severity_sort = true,
@@ -13,8 +20,3 @@ vim.diagnostic.config {
     prefix = '',
   },
 }
-
-vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticError' })
-vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticWarning' })
-vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticInformation' })
-vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticHint' })
