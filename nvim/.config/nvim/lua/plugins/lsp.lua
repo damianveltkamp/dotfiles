@@ -77,6 +77,22 @@ return {
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+      local base_on_attach = vim.lsp.config.eslint.on_attach
+
+      -- NOTE: for some reason on_attach on eslint server settings is not firing.
+      -- Therefore I am putting the creation otf the autocmd for BufWritePre outside of the server setup.
+      -- We check if eslint is attached to the current buffer, if not we dont need to format with eslint.
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function()
+          local clients = vim.lsp.get_active_clients { bufnr = vim.api.nvim_get_current_buf() }
+          for _, client in ipairs(clients) do
+            if client.name == 'eslint' then
+              vim.cmd 'LspEslintFixAll'
+              return
+            end
+          end
+        end,
+      })
 
       local servers = {
         lua_ls = {
@@ -91,16 +107,10 @@ return {
         eslint = {
           settings = {
             experimental = {
-              -- useFlatConfig = true,
+              useFlatConfig = true,
             },
             workingDirectories = { mode = 'auto' },
           },
-          on_attach = function(_, bufnr)
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = bufnr,
-              command = 'EslintFixAll',
-            })
-          end,
         },
         tailwindcss = {
           settings = {
@@ -205,6 +215,9 @@ return {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = false,
+        automatic_enable = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
