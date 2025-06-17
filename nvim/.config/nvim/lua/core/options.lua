@@ -6,6 +6,11 @@ vim.g.skip_ts_context_commentstring_module = true
 
 local options = {
   swapfile = false,
+  -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+  -- instead raise a dialog asking if you wish to save the current file(s)
+  -- See `:help 'confirm'`
+  confirm = true,
+  list = true, -- Show <tab> and trailing spaces
   jumpoptions = 'clean', -- Make the jumplist behave like the tagstack
   timeoutlen = 500, -- Time in milliseconds to wait for a mapped sequence to complete.
   encoding = 'utf-8', -- Sets encoding to utf-8 for RPC communication.
@@ -41,7 +46,7 @@ for k, v in pairs(options) do
 end
 
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  vim.o.clipboard = 'unnamedplus'
 end)
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
@@ -66,7 +71,8 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+  desc = 'Highlight when yanking (copying) text',
   callback = function()
-    vim.highlight.on_yank { timeout = 200 }
+    vim.hl.on_yank { timeout = 200 }
   end,
 })
