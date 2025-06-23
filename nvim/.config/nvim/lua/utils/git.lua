@@ -9,8 +9,14 @@ local checkRemoteHost = function()
     local normalizedGitRemoteUrl = string.gsub(gitRemoteUrl, '%s+', '')
 
     if string.find(normalizedGitRemoteUrl, 'github') then
+      local sanitizedRemoteString = string.gsub(normalizedGitRemoteUrl, '%.git', '')
       remoteHost['name'] = 'github'
-      remoteHost['remoteUrl'] = string.gsub(normalizedGitRemoteUrl, '%.git', '')
+      if string.find(normalizedGitRemoteUrl, 'git@') then
+        remoteHost['remoteUrl'] = string.gsub(sanitizedRemoteString, '%git@github.com:', 'https://github.com/')
+        return remoteHost
+      end
+
+      remoteHost['remoteUrl'] = sanitizedRemoteString
       return remoteHost
     end
 
@@ -100,13 +106,7 @@ vim.api.nvim_create_user_command('DVOpenNewPullRequest', function()
 end, {})
 
 vim.api.nvim_create_user_command('DVOpenCurrentRepo', function()
-  local handle = io.popen 'git config --get remote.origin.url'
-  if handle ~= nil then
-    local gitRemoteUrl = handle:read '*a'
-    handle:close()
-    local sanitizedUrl = gitRemoteUrl:gsub('%.git', '')
-
-    local executionString = 'open -a "Google chrome" ' .. sanitizedUrl
-    os.execute(executionString)
-  end
+  local remoteHost = checkRemoteHost()
+  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl']
+  os.execute(executionString)
 end, {})
