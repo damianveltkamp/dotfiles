@@ -11,6 +11,7 @@ local options = {
   -- See `:help 'confirm'`
   confirm = true,
   list = true, -- Show <tab> and trailing spaces
+  listchars = { tab = '> ', multispace = '| ', trail = '·', nbsp = '␣' },
   jumpoptions = 'clean', -- Make the jumplist behave like the tagstack
   timeoutlen = 500, -- Time in milliseconds to wait for a mapped sequence to complete.
   encoding = 'utf-8', -- Sets encoding to utf-8 for RPC communication.
