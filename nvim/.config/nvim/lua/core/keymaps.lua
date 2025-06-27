@@ -28,6 +28,10 @@ vim.keymap.set('n', '<TAB>', '<cmd> bnext <CR>', { desc = 'Focus on the next buf
 vim.keymap.set('n', '<S-TAB>', '<cmd> bprevious <CR>', { desc = 'Focus on the previous buffer' })
 
 -- Search replace word under cursor
+vim.keymap.set('n', '<leader>rl', function()
+  vim.api.nvim_feedkeys('V', 'n', false)
+  vim.api.nvim_feedkeys(':s/', 'n', false)
+end, { desc = '[R]ename inside current [L]ine' })
 vim.keymap.set('n', '<leader>rw', function()
   local word = vim.fn.expand '<cword>'
   vim.api.nvim_feedkeys(':%s/' .. word .. '/', 'n', false)
