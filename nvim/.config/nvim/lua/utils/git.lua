@@ -1,3 +1,6 @@
+--- checkRemoteHost returns you the git remote host sanitized string.
+--- This function performs git config --get remote.origin.url to get
+--- the url to your remote repository.
 local checkRemoteHost = function()
   local remoteHost = {}
   local handle = io.popen 'git config --get remote.origin.url'
@@ -40,6 +43,7 @@ local checkRemoteHost = function()
   end
 end
 
+--- getSourceRef returns you the name of the git branch you are currently on.
 local getSourceRef = function()
   local handle = io.popen 'git branch --show-current'
   if handle ~= nil then
@@ -50,6 +54,9 @@ local getSourceRef = function()
   end
 end
 
+--- getTicketNumber gets the current branch you are on and checks if there are numbers present inside the branch name.
+--- We asume that when numbers are present inside your branch name that those numbers represent a ticket number.
+--- The number will be returned from this function.
 local getTicketNumber = function()
   local handle = io.popen 'git branch --show-current'
 
@@ -68,12 +75,16 @@ vim.api.nvim_create_user_command('DVGetTicketNumber', function()
   os.execute('echo ' .. number .. "| tr -d '\n' | pbcopy")
 end, {})
 
+--- bitbucketNewPullRequest executes a terminal command that opens up Google chrome
+--- and points you towards the path in which you can create a new pull request on bitbucket.
 local bitbucketNewPullRequest = function(remoteHost)
   local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/pull-requests/new'
 
   os.execute(executionString)
 end
 
+--- azureNewPullRequest executes a terminal command that opens up Google chrome
+--- and points you towards the path in which you can create a new pull request on azure.
 local azureNewPullRequest = function(remoteHost, sourceRef)
   local pullRequestString = '"' .. remoteHost['remoteUrl'] .. '/pullrequestcreate?sourceRef=' .. sourceRef .. '&targetRef=develop' .. '"'
   local executionString = 'open -a "Google chrome" ' .. pullRequestString
@@ -81,6 +92,8 @@ local azureNewPullRequest = function(remoteHost, sourceRef)
   os.execute(executionString)
 end
 
+--- githubNewPullRequest executes a terminal command that opens up Google chrome
+--- and points you towards the path in which you can create a new pull request on github.
 local githubNewPullRequest = function(remoteHost)
   local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl'] .. '/compare'
 
