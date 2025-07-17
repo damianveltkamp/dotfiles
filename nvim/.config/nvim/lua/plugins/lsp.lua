@@ -163,23 +163,6 @@ return {
         graphql = {
           filetypes = { 'graphql', 'typescriptreact', 'javascriptreact', 'typescript' },
         },
-        tsserver = {
-          enabled = false,
-          settings = {
-            completions = {
-              completeFunctionCalls = true,
-            },
-            typescript = {
-              inlayHints = inlay_hints_settings,
-            },
-            javascript = {
-              inlayHints = inlay_hints_settings,
-            },
-          },
-          on_attach = function(client)
-            client.server_capabilities.document_formatting = false
-          end,
-        },
         ts_ls = {
           settings = {
             completions = {
