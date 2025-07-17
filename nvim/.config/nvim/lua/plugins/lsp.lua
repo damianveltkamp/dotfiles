@@ -1,3 +1,14 @@
+local inlay_hints_settings = {
+  includeInlayEnumMemberValueHints = true,
+  includeInlayFunctionLikeReturnTypeHints = true,
+  includeInlayFunctionParameterTypeHints = true,
+  includeInlayParameterNameHints = 'literals',
+  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  includeInlayPropertyDeclarationTypeHints = true,
+  includeInlayVariableTypeHints = false,
+  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+}
+
 return {
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -68,6 +79,8 @@ return {
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+            vim.lsp.inlay_hint.enable(true)
+
             vim.keymap.set('n', '<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, { desc = '[T]oggle Inlay [H]ints' })
@@ -112,7 +125,7 @@ return {
         tailwindcss = {
           settings = {
             tailwindCSS = {
-              validate = true,
+              classFunctions = { 'cva', 'cx' },
               classAttributes = {
                 'class',
                 'className',
@@ -150,35 +163,33 @@ return {
         graphql = {
           filetypes = { 'graphql', 'typescriptreact', 'javascriptreact', 'typescript' },
         },
+        tsserver = {
+          enabled = false,
+          settings = {
+            completions = {
+              completeFunctionCalls = true,
+            },
+            typescript = {
+              inlayHints = inlay_hints_settings,
+            },
+            javascript = {
+              inlayHints = inlay_hints_settings,
+            },
+          },
+          on_attach = function(client)
+            client.server_capabilities.document_formatting = false
+          end,
+        },
         ts_ls = {
           settings = {
             completions = {
               completeFunctionCalls = true,
             },
             typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
+              inlayHints = inlay_hints_settings,
             },
             javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayVariableTypeHints = true,
-
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
+              inlayHints = inlay_hints_settings,
             },
           },
           on_attach = function(client)

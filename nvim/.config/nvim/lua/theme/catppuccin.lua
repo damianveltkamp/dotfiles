@@ -59,3 +59,5 @@ vim.api.nvim_set_hl(0, 'MiniTablineHidden', { bg = nil, fg = '#ffffff' })
 
 -- Nvim tree
 vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { bg = nil, fg = nil })
+
+vim.api.nvim_set_hl(0, 'LspInlayHint', { bg = '#ff0000', fg = '#ff0000' })
