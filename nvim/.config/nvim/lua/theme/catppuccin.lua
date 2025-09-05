@@ -49,9 +49,9 @@ vim.api.nvim_set_hl(0, 'FzfLuaLiveSym', { fg = catppuccinColors.peach })
 vim.api.nvim_set_hl(0, 'FzfLuaSearch', { fg = catppuccinColors.yellow })
 
 -- Mini tabline
-vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = nil, fg = catppuccinColors.peach })
+vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = catppuccinColors.peach, fg = catppuccinColors.crust })
 vim.api.nvim_set_hl(0, 'MiniTablineVisible', { fg = catppuccinColors.blue })
-vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { fg = catppuccinColors.red })
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { bg = catppuccinColors.peach, fg = catppuccinColors.crust })
 vim.api.nvim_set_hl(0, 'MiniTablineModifiedVisible', { fg = catppuccinColors.red })
 vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { fg = catppuccinColors.red })
 vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = nil })

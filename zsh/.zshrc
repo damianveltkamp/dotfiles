@@ -2,7 +2,7 @@ export PATH=./node_modules/.bin:$PATH
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
-export JAVA_HOME=$(/usr/libexec/java_home -v11)
+export JAVA_HOME=$(/usr/libexec/java_home -v21)
 export PATH="$HOME/.jenv/bin:$PATH"
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
