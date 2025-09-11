@@ -25,6 +25,9 @@ return {
           },
         },
       }
+
+      fzf.register_ui_select()
+
       vim.keymap.set('n', '<leader>ff', function()
         fzf.files()
       end, { desc = '[F]ind [F]iles' })

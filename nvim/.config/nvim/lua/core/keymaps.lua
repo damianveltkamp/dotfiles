@@ -47,6 +47,10 @@ vim.keymap.set('n', '<leader>cg', function()
   vim.api.nvim_feedkeys(':s/\\(' .. word .. '\\)/', 'n', false)
 end, { desc = 'Find and replace current word with capture group' })
 
+vim.keymap.set('v', '<leader>cg', function()
+  vim.api.nvim_feedkeys(':s/\\(\\)', 'n', false)
+end, { desc = 'Find and replace with capture group' })
+
 -- Closes all buffers except current one
 vim.keymap.set('n', '<leader>cab', '<cmd> %bd|e#|bd# <CR>', { desc = '[C]lose [A]ll other [B]uffers' })
 
