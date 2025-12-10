@@ -6,7 +6,7 @@
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "fidget.nvim": { "branch": "main", "commit": "e32b672d8fd343f9d6a76944fedb8c61d7d8111a" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
-  "fzf-lua": { "branch": "main", "commit": "95dcadd8f4381c8407cb1e532a732397ce2194fe" },
+  "fzf-lua": { "branch": "main", "commit": "de0fd4a21ee29cf6532d0c3bcae08a0b25d99b6a" },
   "gitsigns.nvim": { "branch": "main", "commit": "d7e0bcbe45bd9d5d106a7b2e11dc15917d272c7a" },
   "glyph-palette.vim": { "branch": "master", "commit": "675f0ad64e2c4b823bffc1907d469deefaf6e3bd" },
   "hererocks": { "branch": "master", "commit": "6265dd3bcad7bddce33a36d085b3913687007735" },
