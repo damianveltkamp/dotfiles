@@ -5,8 +5,13 @@ Not advised to blindly copy paste from this repo, this is all for personal use, 
 
 ## Table of contents
 
+- [Prerequisites](#prerequisites)
 - [Installing setup](#%EF%B8%8F-installing-the-setup)
 - [Manual installation steps](#-manual-installation-steps)
+
+## Prerequisites
+
+- Install XCode developer tools
 
 ## ⚙️ Installing the setup
 
@@ -47,4 +52,3 @@ git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc
 - Remove Mac input sources shortcuts.
   - [C-Space overrides by input sources shortcut](https://github.com/tmux/tmux/issues/457)
 - Set raycast to launch with cmd space, remove spotlight to launch with cmd space.
-- Install XCode developer tools
