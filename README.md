@@ -47,6 +47,7 @@ git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc
 
 ## 🔧 Manual installation steps
 
+- Set HOMEBREW_PREFIX to the correct path
 - Set capslock key to escape key.
 - Set keyboard input source to Dutch.
 - Set reduce motion inside of accessibility settings.
