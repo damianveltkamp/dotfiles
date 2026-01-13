@@ -90,7 +90,6 @@ return {
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
-      local base_on_attach = vim.lsp.config.eslint.on_attach
 
       -- NOTE: for some reason on_attach on eslint server settings is not firing.
       -- Therefore I am putting the creation otf the autocmd for BufWritePre outside of the server setup.
@@ -117,11 +116,7 @@ return {
             },
           },
         },
-        eslint = {
-          settings = {
-            workingDirectories = { mode = 'auto' },
-          },
-        },
+        eslint = {},
         tailwindcss = {
           settings = {
             tailwindCSS = {
@@ -176,6 +171,7 @@ return {
             },
           },
           on_attach = function(client)
+            vim.notify('ts_ls on_attach fired', vim.log.levels.INFO)
             client.server_capabilities.document_formatting = false
           end,
         },
@@ -258,9 +254,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = 'BufReadPost',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    -- dependencies = {
+    --   'nvim-treesitter/nvim-treesitter-textobjects',
+    -- },
     opts = {
       highlight = {
         enable = true,
@@ -283,35 +279,35 @@ return {
         'css',
         'graphql',
       },
-      textobjects = {
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            [']k'] = { query = '@block.outer', desc = 'Next block start' },
-            [']f'] = { query = '@function.outer', desc = 'Next function start' },
-            [']a'] = { query = '@parameter.outer', desc = 'Next argument start' },
-          },
-          goto_next_end = {
-            [']K'] = { query = '@block.outer', desc = 'Next block end' },
-            [']F'] = { query = '@function.outer', desc = 'Next function end' },
-            [']A'] = { query = '@parameter.outer', desc = 'Next argument end' },
-          },
-          goto_previous_start = {
-            ['[k'] = { query = '@block.outer', desc = 'Previous block start' },
-            ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
-            ['[a'] = { query = '@parameter.outer', desc = 'Previous argument start' },
-          },
-          goto_previous_end = {
-            ['[K'] = { query = '@block.outer', desc = 'Previous block end' },
-            ['[F'] = { query = '@function.outer', desc = 'Previous function end' },
-            ['[A'] = { query = '@parameter.outer', desc = 'Previous argument end' },
-          },
-        },
-      },
+      -- textobjects = {
+      --   move = {
+      --     enable = true,
+      --     set_jumps = true,
+      --     goto_next_start = {
+      --       [']k'] = { query = '@block.outer', desc = 'Next block start' },
+      --       [']f'] = { query = '@function.outer', desc = 'Next function start' },
+      --       [']a'] = { query = '@parameter.outer', desc = 'Next argument start' },
+      --     },
+      --     goto_next_end = {
+      --       [']K'] = { query = '@block.outer', desc = 'Next block end' },
+      --       [']F'] = { query = '@function.outer', desc = 'Next function end' },
+      --       [']A'] = { query = '@parameter.outer', desc = 'Next argument end' },
+      --     },
+      --     goto_previous_start = {
+      --       ['[k'] = { query = '@block.outer', desc = 'Previous block start' },
+      --       ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
+      --       ['[a'] = { query = '@parameter.outer', desc = 'Previous argument start' },
+      --     },
+      --     goto_previous_end = {
+      --       ['[K'] = { query = '@block.outer', desc = 'Previous block end' },
+      --       ['[F'] = { query = '@function.outer', desc = 'Previous function end' },
+      --       ['[A'] = { query = '@parameter.outer', desc = 'Previous argument end' },
+      --     },
+      --   },
+      -- },
     },
     config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
+      require('nvim-treesitter').setup(opts)
     end,
   },
 }
