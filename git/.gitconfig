@@ -13,6 +13,6 @@
   ammend = commit --amend --no-edit
 [user]
 	name = Damian Veltkamp
-	email = damian.veltkamp@deptagency.com
+	email = d.veltkamp137@gmail.com
 [core]
 	ignoreCase = false
