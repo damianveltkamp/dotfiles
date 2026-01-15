@@ -14,13 +14,15 @@ hash -d notes=~/Documents/development/2nd-brain
 hash -d nvim=~/.config/nvim
 hash -d work=~/Documents/work
 
+# TODO: check if it's worth to migrate over to antidote plugin manager.
 # 2. ZPLUG (Plugin Management)
 export ZPLUG_HOME=$HOMEBREW_PREFIX/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zdharma-continuum/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "jeffreytse/zsh-vi-mode"
+zplug "Aloxaf/fzf-tab"
 
 # 3. COMPLETIONS & ZSH SETTINGS
 fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
@@ -143,8 +145,7 @@ function my_init_widgets() {
 zvm_after_init_commands+=(my_init_widgets)
 
 # 9 LOAD THEME & STARSHIP
-[[ -f ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh ]] && \
-    source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # --- THE SINGLE COMPINIT CALL ---
 autoload -Uz compinit
