@@ -92,7 +92,7 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
       -- NOTE: for some reason on_attach on eslint server settings is not firing.
-      -- Therefore I am putting the creation otf the autocmd for BufWritePre outside of the server setup.
+      -- Therefore I am putting the creation of the autocmd for BufWritePre outside of the server setup.
       -- We check if eslint is attached to the current buffer, if not we dont need to format with eslint.
       vim.api.nvim_create_autocmd('BufWritePre', {
         callback = function()
@@ -254,6 +254,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = 'BufReadPost',
+    -- TODO: Reimplement this when we get our new macbook
     -- dependencies = {
     --   'nvim-treesitter/nvim-treesitter-textobjects',
     -- },
@@ -279,6 +280,7 @@ return {
         'css',
         'graphql',
       },
+      -- TODO: Reimplement this when we get our new macbook
       -- textobjects = {
       --   move = {
       --     enable = true,
