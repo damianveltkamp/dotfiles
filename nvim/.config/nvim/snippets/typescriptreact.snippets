@@ -25,16 +25,16 @@ snippet sn:component Creates react component
 	}
 
 	export const ${3} = ({$4}: ${1}) => {
-		${5}
+		<${5} ${6}>${7}</${5}>
 	};
 
-snippet sn:simpleComponent Creates react component
+snippet sn:simpleComponent Creates simple react component
 	export interface ${1} { 
 		${2}
 	}
 
 	export const ${3} = ({$4}: ${1}) => {
-		${5}
+		<${5} ${6}>${7}</${5}>
 	};
 
 snippet sn:tanstackQuery Creates a tanstack query
@@ -55,3 +55,6 @@ snippet sn:getServerSideProps Creates a getServerSideProps function
   export const getServerSideProps = (async context => {
     ${2}
   }) satisfies GetServerSideProps<PageProps>;
+
+snippet sn:eslint
+  // eslint-disable-next-line

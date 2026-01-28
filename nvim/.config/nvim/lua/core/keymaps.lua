@@ -117,6 +117,7 @@ vim.keymap.set('n', '<leader>qp', '<cmd> cp <CR>', { desc = '[Q]uickfixlist [P]r
 
 -- Opening current folder in finder
 vim.keymap.set('n', '<leader>of', '<cmd> silent !open . <CR>', { desc = '[O]pen project [F]older in finder' })
+vim.keymap.set('n', '<leader>bf', '<cmd>silent !open -R %<CR>', { desc = '[B]uffer [F]ile reveal in Finder' })
 
 -- Moving text
 vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { silent = true, desc = 'Move Selected Down' })

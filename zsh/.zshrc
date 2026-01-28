@@ -85,6 +85,36 @@ rfl() {
     for f in *; do mv "$f" "$f.tmp" && mv "$f.tmp" "${f:l}"; done
 }
 
+# Compare JSON object shapes and find missing keys
+jq-diff-shape() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: jq-diff-shape <file.json>"
+    return 1
+  fi
+
+  jq '
+    # 1. Map each object (directly from the input array)
+    map({
+      id: .id,
+      paths: [path(.. | select(scalars)) | join(".")]
+    }) as $objects
+    | 
+    # 2. Create a master list of all unique paths
+    ([$objects[].paths[]] | unique) as $universal_paths
+    | 
+    # 3. Compare each object to the master list
+    $objects 
+    | map({
+        id: .id,
+        missing_keys: ($universal_paths - .paths)
+      })
+    | 
+    # 4. Only show objects with discrepancies
+    map(select(.missing_keys | length > 0))
+  ' "$1"
+}
+
+
 # 6. TOOL INITIALIZATION & PLUGIN LOADING
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
