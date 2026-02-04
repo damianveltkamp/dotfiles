@@ -22,6 +22,8 @@ vim.keymap.set('n', '<leader>h', '<cmd> wincmd h <CR>', { desc = 'Focus window o
 vim.keymap.set('n', '<leader>j', '<cmd> wincmd j <CR>', { desc = 'Focus window underneath current window' })
 vim.keymap.set('n', '<leader>k', '<cmd> wincmd k <CR>', { desc = 'Focus window above current window' })
 vim.keymap.set('n', '<leader>l', '<cmd> wincmd l <CR>', { desc = 'Focus window on the right of the current window' })
+vim.keymap.set('n', '<leader>nw', '<C-w>w', { desc = 'Cycle to next window' })
+vim.keymap.set('n', '<leader>pw', '<C-w>W', { desc = 'Cycle to previous window' })
 
 -- Buffer hopping
 vim.keymap.set('n', '<TAB>', '<cmd> bnext <CR>', { desc = 'Focus on the next buffer' })
