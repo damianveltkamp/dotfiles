@@ -11,20 +11,6 @@ local inlay_hints_settings = {
 
 return {
   {
-    'folke/trouble.nvim',
-    event = 'BufReadPost',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      modes = {
-        diagnostics = {
-          groups = {
-            { 'filename', format = '{file_icon} {basename:Title} {count}' },
-          },
-        },
-      },
-    },
-  },
-  {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
@@ -51,9 +37,7 @@ return {
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
-          local bufopts = function(desc)
-            return { noremap = true, silent = true, buffer = event.buf, desc = desc }
-          end
+          local bufopts = function(desc) return { noremap = true, silent = true, buffer = event.buf, desc = desc } end
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts '[G]o to [I]mplementation')
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts '[G]o to [R]eference')
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts '[G]o to [D]efinition')
@@ -66,9 +50,12 @@ return {
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
-            vim.keymap.set('n', '<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, { desc = '[T]oggle Inlay [H]ints' })
+            vim.keymap.set(
+              'n',
+              '<leader>th',
+              function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end,
+              { desc = '[T]oggle Inlay [H]ints' }
+            )
           end
         end,
       })
@@ -142,10 +129,7 @@ return {
               inlayHints = inlay_hints_settings,
             },
           },
-          on_attach = function(client)
-            vim.notify('ts_ls on_attach fired', vim.log.levels.INFO)
-            client.server_capabilities.document_formatting = false
-          end,
+          on_attach = function(client) client.server_capabilities.document_formatting = false end,
         },
       }
 
@@ -184,9 +168,7 @@ return {
         on_init = function(client)
           if client.workspace_folders then
             local path = client.workspace_folders[1].name
-            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
-              return
-            end
+            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
           end
 
           client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
@@ -196,9 +178,9 @@ return {
             },
             workspace = {
               checkThirdParty = false,
-              -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-              --  See https://github.com/neovim/nvim-lspconfig/issues/3189
-              library = vim.api.nvim_get_runtime_file('', true),
+              library = {
+                vim.env.VIMRUNTIME,
+              },
             },
           })
         end,
@@ -237,9 +219,7 @@ return {
       },
     },
     event = 'BufReadPost',
-    config = function(_, opts)
-      require('lspkind').init(opts)
-    end,
+    config = function(_, opts) require('lspkind').init(opts) end,
   },
   {
     'nvim-treesitter/nvim-treesitter',
@@ -299,8 +279,6 @@ return {
       --   },
       -- },
     },
-    config = function(_, opts)
-      require('nvim-treesitter').setup(opts)
-    end,
+    config = function(_, opts) require('nvim-treesitter').setup(opts) end,
   },
 }

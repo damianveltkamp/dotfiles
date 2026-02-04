@@ -3,7 +3,7 @@ return {
     'saghen/blink.cmp',
     event = 'InsertEnter',
     dependencies = 'rafamadriz/friendly-snippets',
-    version = 'v0.*',
+    version = '1.*',
     opts = {
       keymap = {
         preset = 'enter',
@@ -19,6 +19,9 @@ return {
           update_delay_ms = 50,
         },
       },
+      fuzzy = {
+        implementation = 'prefer_rust_with_warning',
+      },
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
@@ -31,18 +34,12 @@ return {
         -- This comes from the luasnip extra, if you don't add it, won't be able to
         -- jump forward or backward in luasnip snippets
         -- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
-        expand = function(snippet)
-          require('luasnip').lsp_expand(snippet)
-        end,
+        expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
         active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
-          end
+          if filter and filter.direction then return require('luasnip').jumpable(filter.direction) end
           return require('luasnip').in_snippet()
         end,
-        jump = function(direction)
-          require('luasnip').jump(direction)
-        end,
+        jump = function(direction) require('luasnip').jump(direction) end,
       },
       signature = { enabled = true },
     },

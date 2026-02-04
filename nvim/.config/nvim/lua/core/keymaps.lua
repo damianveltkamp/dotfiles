@@ -49,9 +49,7 @@ vim.keymap.set('n', '<leader>cg', function()
   vim.api.nvim_feedkeys(':s/\\(' .. word .. '\\)/', 'n', false)
 end, { desc = 'Find and replace current word with capture group' })
 
-vim.keymap.set('v', '<leader>cg', function()
-  vim.api.nvim_feedkeys(':s/\\(\\)', 'n', false)
-end, { desc = 'Find and replace with capture group' })
+vim.keymap.set('v', '<leader>cg', function() vim.api.nvim_feedkeys(':s/\\(\\)', 'n', false) end, { desc = 'Find and replace with capture group' })
 
 -- Closes all buffers except current one
 vim.keymap.set('n', '<leader>cab', '<cmd> %bd|e#|bd# <CR>', { desc = '[C]lose [A]ll other [B]uffers' })
@@ -100,17 +98,13 @@ vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle<CR>', { desc = 'Open file tree
 vim.keymap.set('n', '<leader>qo', function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
-    if win['quickfix'] == 1 then
-      qf_exists = true
-    end
+    if win['quickfix'] == 1 then qf_exists = true end
   end
   if qf_exists == true then
     vim.cmd 'cclose'
     return
   end
-  if not vim.tbl_isempty(vim.fn.getqflist()) then
-    vim.cmd 'copen'
-  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd 'copen' end
 end, { desc = '[Q]uickfixlist [O]pen' })
 
 vim.keymap.set('n', '<leader>qc', '<cmd> cexpr []<CR>', { desc = '[Q]uickfixlist [C]lean' })
@@ -156,9 +150,30 @@ vim.keymap.set('n', '<leader>q', '<cmd>q <CR>', { desc = 'Quit Neovim' })
 -- Remove default bindings
 vim.keymap.set('n', 's', '<Nop>')
 
--- Toggle Trouble window
-vim.keymap.set('n', '<leader>tb', '<cmd>Trouble diagnostics toggle focus=true<CR>')
-vim.keymap.set('n', '<leader>td', '<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}} focus=true<CR>')
+vim.keymap.set('n', '<leader>do', function()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win['quickfix'] == 1 then qf_exists = true end
+  end
+  if qf_exists == true then
+    vim.cmd 'cclose'
+    return
+  end
+  vim.diagnostic.setqflist()
+end, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- vim.keymap.set('n', '<leader>td', '<cmd>TodoLocList<CR>')
+vim.keymap.set('n', '<leader>td', function()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win['quickfix'] == 1 then qf_exists = true end
+  end
+  if qf_exists == true then
+    vim.cmd 'cclose'
+    return
+  end
+  vim.cmd 'TodoQuickFix'
+end)
 
 -- Fold tailwind classes
 vim.keymap.set('n', '<leader>tf', '<cmd>TailwindFoldToggle<CR>')
