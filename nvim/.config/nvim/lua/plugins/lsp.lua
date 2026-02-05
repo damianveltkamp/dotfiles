@@ -45,6 +45,9 @@ return {
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
           vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = '[C]ode [A]ction' })
 
+          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts 'Go to previous [D]iagnostic message')
+          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts 'Go to next [D]iagnostic message')
+
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
             vim.keymap.set(
@@ -64,7 +67,7 @@ return {
       -- We check if eslint is attached to the current buffer, if not we dont need to format with eslint.
       vim.api.nvim_create_autocmd('BufWritePre', {
         callback = function()
-          local clients = vim.lsp.get_active_clients { bufnr = vim.api.nvim_get_current_buf() }
+          local clients = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
           for _, client in ipairs(clients) do
             if client.name == 'eslint' then
               vim.cmd 'LspEslintFixAll'
