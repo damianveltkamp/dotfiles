@@ -5,6 +5,14 @@ export EDITOR=nvim
 export NOTES_DIR="$HOME/Documents/development/2nd-brain"
 export NODE_EXTRA_CA_CERTS="/etc/ssl/cert.pem"
 
+# pnpm
+export PNPM_HOME="/Users/damianveltkamp/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 export FZF_DEFAULT_OPTS="--extended"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
