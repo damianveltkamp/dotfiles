@@ -108,8 +108,6 @@ vim.keymap.set('n', '<leader>qo', function()
 end, { desc = '[Q]uickfixlist [O]pen' })
 
 vim.keymap.set('n', '<leader>qc', '<cmd> cexpr []<CR>', { desc = '[Q]uickfixlist [C]lean' })
-vim.keymap.set('n', '<leader>qn', '<cmd> cn <CR>', { desc = '[Q]uickfixlist [N]ext' })
-vim.keymap.set('n', '<leader>qp', '<cmd> cp <CR>', { desc = '[Q]uickfixlist [P]revious' })
 
 -- Opening current folder in finder
 vim.keymap.set('n', '<leader>of', '<cmd> silent !open . <CR>', { desc = '[O]pen project [F]older in finder' })
@@ -150,17 +148,17 @@ vim.keymap.set('n', '<leader>q', '<cmd>q <CR>', { desc = 'Quit Neovim' })
 -- Remove default bindings
 vim.keymap.set('n', 's', '<Nop>')
 
-vim.keymap.set('n', '<leader>do', function()
+vim.keymap.set('n', '<leader>doq', function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
     if win['quickfix'] == 1 then qf_exists = true end
   end
   if qf_exists == true then
-    vim.cmd 'cclose'
+    vim.cmd 'lclose'
     return
   end
-  vim.diagnostic.setqflist()
-end, { desc = 'Open diagnostic [Q]uickfix list' })
+  vim.diagnostic.setloclist()
+end, { desc = '[D]iagnostics [O]pen in window-local [Q]uickfix list' })
 
 -- vim.keymap.set('n', '<leader>td', '<cmd>TodoLocList<CR>')
 vim.keymap.set('n', '<leader>td', function()
