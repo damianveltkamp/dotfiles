@@ -34,7 +34,7 @@ return {
       watch_gitdir = {
         interval = 1000,
       },
-      sign_priority = 1,
+      sign_priority = 10,
       update_debounce = 200,
       status_formatter = nil, -- Use default
     },
