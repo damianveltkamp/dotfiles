@@ -225,7 +225,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = 'BufReadPost',
-    -- TODO: Reimplement this when we get our new macbook
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
