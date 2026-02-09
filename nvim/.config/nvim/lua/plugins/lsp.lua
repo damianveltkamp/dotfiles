@@ -14,10 +14,8 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for neovim
       'williamboman/mason.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      -- LSP Status updater
       {
         'j-hui/fidget.nvim',
         opts = {
@@ -27,7 +25,6 @@ return {
             },
           },
         },
-        -- Completion
       },
       'saghen/blink.cmp',
     },
@@ -44,9 +41,6 @@ return {
           vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]over documentation' })
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
           vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = '[C]ode [A]ction' })
-
-          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts 'Go to previous [D]iagnostic message')
-          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts 'Go to next [D]iagnostic message')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
