@@ -226,9 +226,9 @@ return {
     build = ':TSUpdate',
     event = 'BufReadPost',
     -- TODO: Reimplement this when we get our new macbook
-    -- dependencies = {
-    --   'nvim-treesitter/nvim-treesitter-textobjects',
-    -- },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     opts = {
       highlight = {
         enable = true,
@@ -251,34 +251,21 @@ return {
         'css',
         'graphql',
       },
-      -- TODO: Reimplement this when we get our new macbook
-      -- textobjects = {
-      --   move = {
-      --     enable = true,
-      --     set_jumps = true,
-      --     goto_next_start = {
-      --       [']k'] = { query = '@block.outer', desc = 'Next block start' },
-      --       [']f'] = { query = '@function.outer', desc = 'Next function start' },
-      --       [']a'] = { query = '@parameter.outer', desc = 'Next argument start' },
-      --     },
-      --     goto_next_end = {
-      --       [']K'] = { query = '@block.outer', desc = 'Next block end' },
-      --       [']F'] = { query = '@function.outer', desc = 'Next function end' },
-      --       [']A'] = { query = '@parameter.outer', desc = 'Next argument end' },
-      --     },
-      --     goto_previous_start = {
-      --       ['[k'] = { query = '@block.outer', desc = 'Previous block start' },
-      --       ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
-      --       ['[a'] = { query = '@parameter.outer', desc = 'Previous argument start' },
-      --     },
-      --     goto_previous_end = {
-      --       ['[K'] = { query = '@block.outer', desc = 'Previous block end' },
-      --       ['[F'] = { query = '@function.outer', desc = 'Previous function end' },
-      --       ['[A'] = { query = '@parameter.outer', desc = 'Previous argument end' },
-      --     },
-      --   },
-      -- },
     },
-    config = function(_, opts) require('nvim-treesitter').setup(opts) end,
+    config = function(_, opts)
+      require('nvim-treesitter').setup(opts)
+      local move = require 'nvim-treesitter-textobjects.move'
+
+      vim.keymap.set('n', ']f', function() move.goto_next_start('@function.outer', 'textobjects') end)
+      vim.keymap.set('n', '[f', function() move.goto_previous_start('@function.outer', 'textobjects') end)
+      vim.keymap.set('n', ']F', function() move.goto_next_start('@function.inner', 'textobjects') end)
+      vim.keymap.set('n', '[F', function() move.goto_previous_start('@function.inner', 'textobjects') end)
+
+      vim.keymap.set('n', ']p', function() move.goto_next_start('@parameter.inner', 'textobjects') end)
+      vim.keymap.set('n', '[p', function() move.goto_previous_start('@parameter.inner', 'textobjects') end)
+
+      vim.keymap.set('n', ']r', function() move.goto_next_start('@return.outer', 'textobjects') end)
+      vim.keymap.set('n', '[r', function() move.goto_previous_start('@return.outer', 'textobjects') end)
+    end,
   },
 }
