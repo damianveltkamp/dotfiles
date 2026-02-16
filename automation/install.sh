@@ -29,7 +29,8 @@ packages=(
 "ninja"
 "silicon"
 "koekeishiya/formulae/yabai"
-"koekeishiya/formulae/skhd"
+"koekeishiya/formulae/skhd",
+"jq"
 )
 
 casks=(
