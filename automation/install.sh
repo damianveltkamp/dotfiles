@@ -25,7 +25,6 @@ packages=(
 "zoxide"
 "zplug"
 "starship"
-"yarn"
 "ninja"
 "silicon"
 "koekeishiya/formulae/yabai"

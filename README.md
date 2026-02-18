@@ -54,3 +54,4 @@ git clone https://github.com/citation-style-language/styles.git ~/.config/pandoc
 - Remove Mac input sources shortcuts.
   - [C-Space overrides by input sources shortcut](https://github.com/tmux/tmux/issues/457)
 - Set raycast to launch with cmd space, remove spotlight to launch with cmd space.
+- Install [yarn](https://yarnpkg.com/getting-started/install)

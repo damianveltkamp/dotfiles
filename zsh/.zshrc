@@ -60,10 +60,11 @@ _load_nvm() {
     [ -s "$nvm_path" ] && . "$nvm_path"
 }
 
-nvm()  { unset -f nvm node npm npx; _load_nvm; nvm "$@"; }
-node() { unset -f nvm node npm npx; _load_nvm; node "$@"; }
-npm()  { unset -f nvm node npm npx; _load_nvm; npm "$@"; }
-npx()  { unset -f nvm node npm npx; _load_nvm; npx "$@"; }
+nvm()  { unset -f nvm node npm npx yarn; _load_nvm; nvm "$@"; }
+node() { unset -f nvm node npm npx yarn; _load_nvm; node "$@"; }
+npm()  { unset -f nvm node npm npx yarn; _load_nvm; npm "$@"; }
+npx()  { unset -f nvm node npm npx yarn; _load_nvm; npx "$@"; }
+yarn()  { unset -f nvm node npm npx yarn; _load_nvm; yarn "$@"; }
 
 # FZF Process Kill
 kp() {
