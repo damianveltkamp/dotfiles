@@ -53,6 +53,7 @@ return {
         function()
           fzf.files {
             cwd = '$HOME/documents/development/2nd-brain',
+            no_ignore = true,
           }
         end,
         { desc = '[F]ind [N]otes' }
