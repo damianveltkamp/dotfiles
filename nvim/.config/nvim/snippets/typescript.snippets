@@ -35,10 +35,10 @@ snippet sn:shuffleArray Creates a function that shuffles an array
       amountOfItemsToShuffle--;
 
       itemToBeSwapped = array[amountOfItemsToShuffle];
-      // NOTE: set the randomly selected array item at the front of the
+      // set the randomly selected array item at the front of the
       // already shuffled part of the array.
       array[amountOfItemsToShuffle] = array[randomIndex];
-      // NOTE: set the item we just switched places with to the index
+      // set the item we just switched places with to the index
       // of the item we have but at the start of the already shuffled part
       // of the array.
       array[randomIndex] = itemToBeSwapped;
