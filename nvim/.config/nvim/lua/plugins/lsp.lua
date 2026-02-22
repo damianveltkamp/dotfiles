@@ -55,27 +55,24 @@ return {
       })
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-      -- NOTE: for some reason on_attach on eslint server settings is not firing.
-      -- Therefore I am putting the creation of the autocmd for BufWritePre outside of the server setup.
-      -- We check if eslint is attached to the current buffer, if not we dont need to format with eslint.
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function()
-          local clients = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
-          for _, client in ipairs(clients) do
-            if client.name == 'eslint' then
-              vim.cmd 'LspEslintFixAll'
-              return
-            end
-          end
-        end,
-      })
+      local eslint_base_on_attach = vim.lsp.config.eslint.on_attach
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --  See `:help lsp-config` for information about keys and how to configure
       local servers = {
-        eslint = {},
+        eslint = {
+          on_attach = function(client, bufnr)
+            if not eslint_base_on_attach then return end
+
+            eslint_base_on_attach(client, bufnr)
+
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = bufnr,
+              command = 'LspEslintFixAll',
+            })
+          end,
+        },
         tailwindcss = {
           settings = {
             tailwindCSS = {
@@ -135,13 +132,7 @@ return {
       --  You can press `g?` for help in this menu
       require('mason').setup()
 
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      -- FIXME: we should not extend from the servers variable
-      -- How the servers are called on lspconfig is not the same as
-      -- what Mason expects for server names.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
+      local ensure_installed = {
         'lua_ls',
         'stylua',
         'prettier',
@@ -149,10 +140,16 @@ return {
         'typescript-language-server',
         'css-lsp',
         'css-variables-language-server',
+        'cssmodules-language-server',
         'yaml-language-server',
         'html-lsp',
         'graphql-language-service-cli',
-      })
+        'eslint-lsp',
+        'tailwindcss-language-server',
+        'json-lsp',
+        'markdownlint',
+      }
+
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       for name, server in pairs(servers) do
@@ -240,6 +237,7 @@ return {
         'typescript',
         'tsx',
         'javascript',
+        'jsx',
         'lua',
         'html',
         'json',
