@@ -1,6 +1,7 @@
 # 1. ENVIRONMENT VARIABLES & PATHS
 export HOMEBREW_PREFIX="/usr/local"
 export PATH="./node_modules/.bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export NOTES_DIR="$HOME/Documents/development/2nd-brain"
 export NODE_EXTRA_CA_CERTS="/etc/ssl/cert.pem"

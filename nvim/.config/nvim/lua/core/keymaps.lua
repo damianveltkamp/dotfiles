@@ -141,6 +141,8 @@ vim.keymap.set('n', 'x', '"_x', { desc = 'Cut to blackhole register' })
 
 -- Better paste
 vim.keymap.set('v', 'p', '"_dP', { desc = '[P]aste from blackhole register' })
+vim.keymap.set('n', 'p', ']p', { desc = '[P]aste and adjust indent' })
+vim.keymap.set('n', 'P', '[p', { desc = '[P]aste (above) and adjust indent' })
 
 -- Increment/decrement
 vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment number' })
