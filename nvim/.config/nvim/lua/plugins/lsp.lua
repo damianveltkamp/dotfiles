@@ -133,7 +133,7 @@ return {
       require('mason').setup()
 
       local ensure_installed = {
-        'lua_ls',
+        'lua-language-server',
         'stylua',
         'prettier',
         'prettierd',
