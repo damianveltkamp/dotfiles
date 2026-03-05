@@ -95,18 +95,18 @@ kp() {
 
 # FZF Brew Install/Upgrade
 bip() {
-    local inst=$(brew search | fzf -m --header='[brew:install]')
+    local inst=$(brew search | fzf -m --header='[brew:install]' --reverse)
     [ -n "$inst" ] && for prog in $(echo $inst); do brew install $prog; done
 }
 
 bup() {
-    local upd=$(brew leaves | fzf -m --header='[brew:update]')
+    local upd=$(brew leaves | fzf -m --header='[brew:update]' --reverse)
     [ -n "$upd" ] && for prog in $(echo $upd); do brew upgrade $prog; done
 }
 
 # FZF Git Checkout Branch (Improved)
 gcb() {
-    local branch=$(git branch -a | fzf | awk '{print $1}' | sed "s#remotes/[^/]*/##" | sed "s/\*//")
+    local branch=$(git branch -a | fzf --reverse | awk '{print $1}' | sed "s#remotes/[^/]*/##" | sed "s/\*//")
     [ -n "$branch" ] && git checkout "$branch"
 }
 
