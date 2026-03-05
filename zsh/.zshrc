@@ -69,8 +69,27 @@ yarn()  { unset -f nvm node npm npx yarn; _load_nvm; yarn "$@"; }
 
 # FZF Process Kill
 kp() {
-    local pid=$(ps -ef | sed 1d | fzf -m --header='[kill:process]' | awk '{print $2}')
-    [ -n "$pid" ] && echo $pid | xargs kill -${1:-9}
+  local selected=$(ps -eo pid,pcpu,pmem,comm -r | 
+                   fzf -m --header-lines=1 --header='[kill:process] (TAB to multi-select)' --reverse)
+
+  if [ -n "$selected" ]; then
+    local pids=$(echo "$selected" | awk '{print $1}')
+    
+    echo "--- TERMINATING ---"
+    echo "$selected"
+    echo "-------------------"
+    
+    echo -n "Confirm kill? (y/n): "
+    read -q "choice"
+    echo ""
+
+    if [[ "$choice" == "y" ]]; then
+      echo "$pids" | xargs kill -${1:-9}
+      echo "✅ Process(es) killed."
+    else
+      echo "❌ Aborted."
+    fi
+  fi
 }
 
 # FZF Brew Install/Upgrade

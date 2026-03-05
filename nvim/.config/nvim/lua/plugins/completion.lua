@@ -6,7 +6,7 @@ return {
     version = '1.*',
     opts = {
       keymap = {
-        preset = 'enter',
+        preset = 'default',
         ['<Tab>'] = { 'select_next', 'fallback' },
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<C-K>'] = { 'snippet_forward', 'fallback' },
