@@ -59,7 +59,7 @@ _load_nvm() {
     [ -s "$nvm_path" ] && . "$nvm_path"
 }
 
-NVM_TRIGGERS=(nvm node npm npx yarn pnpm)
+NVM_TRIGGERS=(nvm node npm npx yarn pnpm nvim vi vim)
 
 for cmd in $NVM_TRIGGERS; do
     $cmd() {
