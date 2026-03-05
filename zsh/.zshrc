@@ -54,23 +54,24 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
 # 5. CUSTOM FUNCTIONS
 export NVM_DIR="$HOME/.nvm"
 
-# Define the loader function
 _load_nvm() {
-    # Hardcode the path to avoid $(brew --prefix)
     local nvm_path="$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
     [ -s "$nvm_path" ] && . "$nvm_path"
 }
 
-nvm()  { unset -f nvm node npm npx yarn; _load_nvm; nvm "$@"; }
-node() { unset -f nvm node npm npx yarn; _load_nvm; node "$@"; }
-npm()  { unset -f nvm node npm npx yarn; _load_nvm; npm "$@"; }
-npx()  { unset -f nvm node npm npx yarn; _load_nvm; npx "$@"; }
-yarn()  { unset -f nvm node npm npx yarn; _load_nvm; yarn "$@"; }
+NVM_TRIGGERS=(nvm node npm npx yarn pnpm)
 
-# FZF Process Kill
+for cmd in $NVM_TRIGGERS; do
+    $cmd() {
+        unset -f $NVM_TRIGGERS
+        _load_nvm
+        $0 "$@"
+    }
+done
+
 kp() {
   local selected=$(ps -eo pid,pcpu,pmem,comm -r | 
-                   fzf -m --header-lines=1 --header='[kill:process] (TAB to multi-select)' --reverse)
+    fzf -m --header-lines=1 --header='[kill:process] (TAB to multi-select)' --reverse)
 
   if [ -n "$selected" ]; then
     local pids=$(echo "$selected" | awk '{print $1}')
