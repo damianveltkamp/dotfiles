@@ -28,7 +28,7 @@ packages=(
 "ninja"
 "silicon"
 "koekeishiya/formulae/yabai"
-"koekeishiya/formulae/skhd",
+"koekeishiya/formulae/skhd"
 "jq"
 )
 
@@ -72,7 +72,7 @@ for i in "${tmuxPlugins[@]}"
 do
   mkdir -p ~/.config/tmux/plugins
 
-  if [[$i == "https://github.com/catppuccin/tmux"]]; then
+  if [[ $i == "https://github.com/catppuccin/tmux" ]]; then
     git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin
   elif [[ $i == "https://github.com/tmux-plugins/tmux-sensible" ]]; then
     git clone https://github.com/tmux-plugins/tmux-sensible ~/.config/tmux/plugins/tmux-sensible

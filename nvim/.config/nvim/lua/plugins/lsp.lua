@@ -104,7 +104,6 @@ return {
         css_variables = {},
         yamlls = {},
         jsonls = {},
-        markdownlint = {},
         graphql = {
           filetypes = { 'graphql', 'typescriptreact', 'javascriptreact', 'typescript' },
         },
