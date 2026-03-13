@@ -20,6 +20,8 @@ snippet sn:lookuptable Creates a typescript lookuptable
 	};
 
 snippet sn:component Creates react component
+  import type { HTMLAttributes } from "react";
+
 	export interface ${1} extends HTMLAttributes<HTMLElement> { 
 		${2}
 	}

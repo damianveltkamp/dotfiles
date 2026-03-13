@@ -179,7 +179,6 @@ vim.keymap.set('n', '<leader>doq', function()
   vim.diagnostic.setloclist()
 end, { desc = '[D]iagnostics [O]pen in window-local [Q]uickfix list' })
 
--- vim.keymap.set('n', '<leader>td', '<cmd>TodoLocList<CR>')
 vim.keymap.set('n', '<leader>td', function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -189,7 +188,7 @@ vim.keymap.set('n', '<leader>td', function()
     vim.cmd 'cclose'
     return
   end
-  vim.cmd 'TodoQuickFix'
+  vim.cmd 'TodoQuickFix keywords=TODO,FIX'
 end)
 
 -- Fold tailwind classes
