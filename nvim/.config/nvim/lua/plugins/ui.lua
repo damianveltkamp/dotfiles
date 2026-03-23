@@ -38,7 +38,7 @@ return {
     event = 'VimEnter',
     opts = {
       extra_groups = {
-        'NvimTreeNormal', -- NvimTree
+        'NvimTreeNormal',
         'CursorColumn',
       },
       exclude_groups = {
