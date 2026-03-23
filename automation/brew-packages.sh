@@ -16,6 +16,7 @@ packages=(
 "silicon"
 "koekeishiya/formulae/yabai"
 "koekeishiya/formulae/skhd"
+"jq"
 )
 
 echo "Installing all brew packages"
