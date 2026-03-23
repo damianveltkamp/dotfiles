@@ -3,7 +3,6 @@ return {
     'hoob3rt/lualine.nvim',
     opts = {
       options = {
-        theme = 'catppuccin',
         section_separators = { left = '', right = '' },
         icons_enabled = true,
       },
