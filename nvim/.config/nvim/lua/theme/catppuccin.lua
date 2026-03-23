@@ -1,6 +1,4 @@
-local catppuccinColors = require 'globals/colors'
-
-vim.api.nvim_command 'colorscheme catppuccin'
+local catppuccinColors = require 'globals/colors/catppuccin-colors'
 
 -- Generic
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })

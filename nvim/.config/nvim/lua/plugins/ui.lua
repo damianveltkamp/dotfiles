@@ -33,19 +33,19 @@ return {
   { 'lambdalisue/nerdfont.vim', event = 'VimEnter' },
   { 'lambdalisue/glyph-palette.vim', event = 'VimEnter' },
   { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },
-  -- {
-  --   'xiyaowong/transparent.nvim',
-  --   event = 'VimEnter',
-  --   opts = {
-  --     extra_groups = {
-  --       'NvimTreeNormal', -- NvimTree
-  --       'CursorColumn',
-  --     },
-  --     exclude_groups = {
-  --       'CursorLineNr',
-  --     },
-  --   },
-  -- },
+  {
+    'xiyaowong/transparent.nvim',
+    event = 'VimEnter',
+    opts = {
+      extra_groups = {
+        'NvimTreeNormal', -- NvimTree
+        'CursorColumn',
+      },
+      exclude_groups = {
+        'CursorLineNr',
+      },
+    },
+  },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },

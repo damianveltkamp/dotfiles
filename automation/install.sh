@@ -11,61 +11,11 @@ else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-packages=(
-"stow"
-"git"
-"node"
-"tmux"
-"neovim"
-"zsh"
-"ripgrep"
-"nvm"
-"fzf"
-"fd"
-"zoxide"
-"zplug"
-"starship"
-"ninja"
-"silicon"
-"koekeishiya/formulae/yabai"
-"koekeishiya/formulae/skhd"
-"jq"
-)
-
-casks=(
-"ghostty"
-"slack"
-"spotify"
-"google-chrome"
-"brave-browser"
-"firefox"
-"discord"
-"postman"
-"raycast"
-"whatsapp"
-"basictex"
-"font-hack-nerd-font"
-)
-
 tmuxPlugins=(
 "https://github.com/catppuccin/tmux"
 "https://github.com/tmux-plugins/tmux-sensible"
 "https://github.com/tmux-plugins/tmux-yank"
 )
-
-echo "Installing all brew packages"
-for i in "${packages[@]}"
-do
-  brew install $i
-  echo "---------------------------------------------------------"
-done
-
-echo "Installing all brew casks"
-for i in "${casks[@]}"
-do
-  brew install --cask $i
-  echo "---------------------------------------------------------"
-done
 
 echo "Cloning all tmux plugins"
 for i in "${tmuxPlugins[@]}"
@@ -111,7 +61,7 @@ git clone https://github.com/damianveltkamp/dotfiles.git ~/Documents/development
 echo "---------------------------------------------------------"
 
 echo "Symlinking all config files"
-cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd starship
+cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd starship ghostty
 echo "---------------------------------------------------------"
 
 echo "Changing to zsh"

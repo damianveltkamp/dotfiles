@@ -46,9 +46,7 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
   command = 'clearjumps',
@@ -65,15 +63,11 @@ vim.api.nvim_create_autocmd({ 'WinLeave' }, {
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
   callback = function()
     local lint_status, lint = pcall(require, 'lint')
-    if lint_status then
-      lint.try_lint()
-    end
+    if lint_status then lint.try_lint() end
   end,
 })
 
 vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
   desc = 'Highlight when yanking (copying) text',
-  callback = function()
-    vim.hl.on_yank { timeout = 200 }
-  end,
+  callback = function() vim.hl.on_yank { timeout = 200 } end,
 })

@@ -1,5 +1,5 @@
 # 1. ENVIRONMENT VARIABLES & PATHS
-export HOMEBREW_PREFIX="/usr/local"
+export HOMEBREW_PREFIX="/opt/homebrew"
 export PATH="./node_modules/.bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
@@ -205,7 +205,7 @@ function my_init_widgets() {
 zvm_after_init_commands+=(my_init_widgets)
 
 # 9 LOAD THEME & STARSHIP
-source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plugins/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # --- THE SINGLE COMPINIT CALL ---
 autoload -Uz compinit
