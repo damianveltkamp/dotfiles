@@ -205,7 +205,7 @@ function my_init_widgets() {
 zvm_after_init_commands+=(my_init_widgets)
 
 # 9 LOAD THEME & STARSHIP
-source ~/.config/zsh/plugins/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plugins/themes/rose-pine-syntax-highlighting.zsh
 
 # --- THE SINGLE COMPINIT CALL ---
 autoload -Uz compinit

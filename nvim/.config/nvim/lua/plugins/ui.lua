@@ -1,10 +1,45 @@
+local rosePineColors = require 'globals/colors/rose-pine-colors'
+
 return {
   {
-    'hoob3rt/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     opts = {
       options = {
         section_separators = { left = '', right = '' },
         icons_enabled = true,
+        theme = {
+          normal = {
+            a = { fg = rosePineColors.base, bg = rosePineColors.love, gui = 'bold' },
+            b = { fg = rosePineColors.text, bg = rosePineColors.overlay },
+            c = { fg = rosePineColors.subtle, bg = rosePineColors.base },
+          },
+          insert = {
+            a = { fg = rosePineColors.base, bg = rosePineColors.foam, gui = 'bold' },
+            b = { fg = rosePineColors.text, bg = rosePineColors.overlay },
+          },
+          visual = {
+            a = { fg = rosePineColors.base, bg = rosePineColors.iris, gui = 'bold' },
+            b = { fg = rosePineColors.text, bg = rosePineColors.overlay },
+          },
+          replace = {
+            a = { fg = rosePineColors.base, bg = rosePineColors.pine, gui = 'bold' },
+            b = { fg = rosePineColors.text, bg = rosePineColors.overlay },
+          },
+          command = {
+            a = { fg = rosePineColors.base, bg = rosePineColors.gold, gui = 'bold' },
+            b = { fg = rosePineColors.text, bg = rosePineColors.overlay },
+          },
+          terminal = {
+            a = { fg = rosePineColors.base, bg = rosePineColors.leaf, gui = 'bold' },
+            b = { fg = rosePineColors.text, bg = rosePineColors.overlay },
+            c = { fg = rosePineColors.subtle, bg = rosePineColors.base },
+          },
+          inactive = {
+            a = { fg = rosePineColors.muted, bg = rosePineColors.base, gui = 'bold' },
+            b = { fg = rosePineColors.muted, bg = rosePineColors.base },
+            c = { fg = rosePineColors.muted, bg = rosePineColors.base },
+          },
+        },
       },
       sections = {
         lualine_a = { 'mode' },

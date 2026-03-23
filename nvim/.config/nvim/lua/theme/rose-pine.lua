@@ -1,14 +1,14 @@
 local rosePineColors = require 'globals/colors/rose-pine-colors'
 
--- vim.api.nvim_command 'colorscheme catppuccin'
-
 -- Generic
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 vim.api.nvim_set_hl(0, 'CursorLineNR', { fg = rosePineColors.base, bg = rosePineColors.love })
+vim.api.nvim_set_hl(0, 'Visual', { fg = rosePineColors.base, bg = rosePineColors.love })
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#303347' })
 vim.api.nvim_set_hl(0, 'CursorColumn', { bg = '#303347' })
 vim.api.nvim_set_hl(0, 'LineNr', { fg = rosePineColors.text })
-vim.api.nvim_set_hl(0, 'IncSearch', { bg = rosePineColors.love })
+vim.api.nvim_set_hl(0, 'IncSearch', { fg = rosePineColors.base, bg = rosePineColors.love })
+vim.api.nvim_set_hl(0, 'CurSearch', { fg = rosePineColors.base, bg = rosePineColors.love })
 
 -- Git signs config
 vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = rosePineColors.leaf })
