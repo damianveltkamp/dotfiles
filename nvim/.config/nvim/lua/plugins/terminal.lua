@@ -4,6 +4,12 @@ return {
     keys = { '<c-\\>' },
     cmd = { 'TermExec' },
     version = '*',
-    opts = { size = 20, open_mapping = [[<c-\>]], direction = 'horizontal', shading_factor = 0 },
+    opts = {
+      size = 20,
+      open_mapping = [[<c-\>]],
+      direction = 'float',
+      shading_factor = 0,
+      float_opts = { border = 'curved' },
+    },
   },
 }
