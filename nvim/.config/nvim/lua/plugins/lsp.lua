@@ -232,7 +232,12 @@ return {
         enable = true,
         enable_autocmd = false,
       },
-      ensure_installed = {
+    },
+    config = function(_, opts)
+      local treesitter = require 'nvim-treesitter'
+      treesitter.setup(opts)
+
+      treesitter.install {
         'typescript',
         'tsx',
         'javascript',
@@ -243,10 +248,8 @@ return {
         'scss',
         'css',
         'graphql',
-      },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter').setup(opts)
+      }
+
       local move = require 'nvim-treesitter-textobjects.move'
 
       vim.keymap.set('n', ']f', function() move.goto_next_start('@function.outer', 'textobjects') end)
