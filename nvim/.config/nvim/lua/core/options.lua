@@ -1,4 +1,3 @@
-vim.loader.enable()
 vim.scriptencoding = 'utf-8'
 
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
