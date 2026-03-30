@@ -124,6 +124,26 @@ vim.keymap.set('n', '<leader>qo', function()
   if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd 'copen' end
 end, { desc = '[Q]uickfixlist [O]pen' })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'qf',
+  callback = function()
+    vim.keymap.set('n', 'dd', function()
+      local idx = vim.fn.line '.'
+      local qf = vim.fn.getqflist()
+
+      table.remove(qf, idx)
+
+      vim.fn.setqflist(qf, 'r')
+
+      if #qf == 0 then return end
+
+      if idx > #qf then idx = #qf end
+
+      vim.api.nvim_win_set_cursor(0, { idx, 0 })
+    end, { buffer = true })
+  end,
+})
+
 vim.keymap.set('n', '<leader>qc', '<cmd> cexpr []<CR>', { desc = '[Q]uickfixlist [C]lean' })
 
 -- Opening current folder in finder
