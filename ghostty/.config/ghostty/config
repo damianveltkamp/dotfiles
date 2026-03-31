@@ -11,3 +11,7 @@ font-size = 27
 copy-on-select = true
 
 theme = Rose Pine Moon
+
+macos-window-shadow = false
+mouse-hide-while-typing = true
+quit-after-last-window-closed = true
