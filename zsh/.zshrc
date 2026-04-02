@@ -6,13 +6,11 @@ export EDITOR=nvim
 export NOTES_DIR="$HOME/Documents/development/2nd-brain"
 export NODE_EXTRA_CA_CERTS="/etc/ssl/cert.pem"
 
-# pnpm
 export PNPM_HOME="/Users/damianveltkamp/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
 export FZF_DEFAULT_OPTS="--extended"
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -93,21 +91,41 @@ kp() {
   fi
 }
 
-# FZF Brew Install/Upgrade
+# FZF Brew Install
 bip() {
     local inst=$(brew search | fzf -m --header='[brew:install]' --reverse)
     [ -n "$inst" ] && for prog in $(echo $inst); do brew install $prog; done
 }
 
+# FZF Brew Update
 bup() {
     local upd=$(brew leaves | fzf -m --header='[brew:update]' --reverse)
     [ -n "$upd" ] && for prog in $(echo $upd); do brew upgrade $prog; done
 }
 
-# FZF Git Checkout Branch (Improved)
+# FZF Git Checkout Branch
 gcb() {
     local branch=$(git branch -a | fzf --reverse | awk '{print $1}' | sed "s#remotes/[^/]*/##" | sed "s/\*//")
     [ -n "$branch" ] && git checkout "$branch"
+}
+
+# FZF Delete a local git branch
+gbd() {
+  local branch=$(git branch --format='%(refname:short)' | fzf --reverse --multi --header="Select branch(es) to DELETE")
+
+  if [ -n "$branch" ]; then
+    # Echo the selection and ask for confirmation to be safe
+    echo "Selected: $branch"
+    echo -n "Are you sure you want to delete these? [y/N] "
+    read -r confirm
+
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+      # xargs allows for multiple deletions if you selected more than one in fzf
+      echo "$branch" | xargs git branch -d
+    else
+      echo "Deletion aborted."
+    fi
+  fi
 }
 
 # Rename files to lowercase
@@ -207,7 +225,6 @@ zvm_after_init_commands+=(my_init_widgets)
 # 9 LOAD THEME & STARSHIP
 source ~/.config/zsh/plugins/themes/rose-pine-syntax-highlighting.zsh
 
-# --- THE SINGLE COMPINIT CALL ---
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m-1) ]]; then
   compinit -C
