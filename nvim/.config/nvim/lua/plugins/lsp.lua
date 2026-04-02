@@ -14,7 +14,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      'williamboman/mason.nvim',
+      'mason-org/mason.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       {
         'j-hui/fidget.nvim',
@@ -32,6 +32,10 @@ return {
       inlay_hints = { enabled = true },
     },
     config = function()
+      -- NOTE: Below might get added to the default lsp command. For now it's not
+      -- so I'm making my own command.
+      vim.api.nvim_create_user_command('LspInfo', 'checkhealth vim.lsp', {})
+
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
           local bufopts = function(desc) return { noremap = true, silent = true, buffer = event.buf, desc = desc } end
@@ -57,10 +61,33 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local eslint_base_on_attach = vim.lsp.config.eslint.on_attach
 
-      -- Enable the following language servers
-      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-      --  See `:help lsp-config` for information about keys and how to configure
+      ---@type table<string, vim.lsp.Config>
       local servers = {
+        lua_ls = {
+          on_init = function(client)
+            if client.workspace_folders then
+              local path = client.workspace_folders[1].name
+              if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
+            end
+
+            client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+              runtime = {
+                version = 'LuaJIT',
+                path = { 'lua/?.lua', 'lua/?/init.lua' },
+              },
+              workspace = {
+                checkThirdParty = false,
+                library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
+                  '${3rd}/luv/library',
+                  '${3rd}/busted/library',
+                }),
+              },
+            })
+          end,
+          settings = {
+            Lua = {},
+          },
+        },
         eslint = {
           on_attach = function(client, bufnr)
             if not eslint_base_on_attach then return end
@@ -121,6 +148,7 @@ return {
           },
           on_attach = function(client) client.server_capabilities.document_formatting = false end,
         },
+        bashls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -156,32 +184,6 @@ return {
         vim.lsp.config(name, server)
         vim.lsp.enable(name)
       end
-
-      vim.lsp.config('lua_ls', {
-        on_init = function(client)
-          if client.workspace_folders then
-            local path = client.workspace_folders[1].name
-            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
-          end
-
-          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-              version = 'LuaJIT',
-              path = { 'lua/?.lua', 'lua/?/init.lua' },
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                vim.env.VIMRUNTIME,
-              },
-            },
-          })
-        end,
-        settings = {
-          Lua = {},
-        },
-      })
-      vim.lsp.enable 'lua_ls'
     end,
   },
   {
@@ -231,25 +233,65 @@ return {
       local treesitter = require 'nvim-treesitter'
       treesitter.setup(opts)
 
-      treesitter.install {
+      local parsers = {
+        'bash',
         'typescript',
+        'diff',
         'tsx',
         'javascript',
         'jsx',
         'lua',
+        'luadoc',
         'html',
         'json',
         'scss',
         'css',
         'graphql',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
       }
+
+      treesitter.install(parsers)
+
+      local function treesitter_try_attach(buf, language)
+        if not vim.treesitter.language.add(language) then return end
+        vim.treesitter.start(buf, language)
+
+        -- enables treesitter based folds
+        -- for more info on folds see `:help folds`
+        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        -- vim.wo.foldmethod = 'expr'
+
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+
+      local available_parsers = require('nvim-treesitter').get_available()
 
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('EnableTreesitterHighlighting', { clear = true }),
         desc = 'Try to enable tree-sitter syntax highlighting',
         pattern = '*',
-        callback = function()
-          pcall(function() vim.treesitter.start() end)
+        callback = function(args)
+          local buf, filetype = args.buf, args.match
+
+          local language = vim.treesitter.language.get_lang(filetype)
+          if not language then return end
+
+          local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
+
+          if vim.tbl_contains(installed_parsers, language) then
+            -- enable the parser if it is installed
+            treesitter_try_attach(buf, language)
+          elseif vim.tbl_contains(available_parsers, language) then
+            -- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
+            require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
+          else
+            -- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
+            treesitter_try_attach(buf, language)
+          end
         end,
       })
 
