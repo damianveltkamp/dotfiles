@@ -110,7 +110,7 @@ gcb() {
 }
 
 # FZF Delete a local git branch
-gbd() {
+gdb() {
   local branch=$(git branch --format='%(refname:short)' | fzf --reverse --multi --header="Select branch(es) to DELETE")
 
   if [ -n "$branch" ]; then
