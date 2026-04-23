@@ -30,15 +30,8 @@ return {
       },
       {
         '<leader>ao',
-        function() require('sidekick.cli').toggle { name = 'copilot' } end,
+        function() require('sidekick.cli').toggle { name = 'opencode' } end,
         desc = 'Sidekick Toggle CLI',
-      },
-      {
-        '<leader>as',
-        function() require('sidekick.cli').select { name = 'copilot' } end,
-        -- Or to select only installed tools:
-        -- require("sidekick.cli").select({ filter = { installed = true } })
-        desc = 'Select CLI',
       },
       {
         '<leader>ad',
@@ -47,18 +40,18 @@ return {
       },
       {
         '<leader>at',
-        function() require('sidekick.cli').send { name = 'copilot', msg = '{this}' } end,
+        function() require('sidekick.cli').send { name = 'opencode', msg = '{this}' } end,
         mode = { 'x', 'n' },
         desc = 'Send This',
       },
       {
         '<leader>af',
-        function() require('sidekick.cli').send { name = 'copilot', msg = '{file}' } end,
+        function() require('sidekick.cli').send { name = 'opencode', msg = '{file}' } end,
         desc = 'Send File',
       },
       {
-        '<leader>av',
-        function() require('sidekick.cli').send { name = 'copilot', msg = '{selection}' } end,
+        '<leader>as',
+        function() require('sidekick.cli').send { name = 'opencode', msg = '{selection}' } end,
         mode = { 'x' },
         desc = 'Send Visual Selection',
       },

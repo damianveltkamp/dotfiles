@@ -121,7 +121,7 @@ gdb() {
 
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
       # xargs allows for multiple deletions if you selected more than one in fzf
-      echo "$branch" | xargs git branch -d
+      echo "$branch" | xargs git branch -D
     else
       echo "Deletion aborted."
     fi

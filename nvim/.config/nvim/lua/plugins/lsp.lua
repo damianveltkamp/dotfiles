@@ -37,8 +37,10 @@ return {
       vim.api.nvim_create_user_command('LspInfo', 'checkhealth vim.lsp', {})
 
       vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(event)
-          local bufopts = function(desc) return { noremap = true, silent = true, buffer = event.buf, desc = desc } end
+        callback = function(args)
+          local bufnr = args.buf
+
+          local bufopts = function(desc) return { noremap = true, silent = true, buffer = bufnr, desc = desc } end
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts '[G]o to [I]mplementation')
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts '[G]o to [R]eference')
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts '[G]o to [D]efinition')
@@ -46,14 +48,21 @@ return {
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
           vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = '[C]ode [A]ction' })
 
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client:supports_method('textDocument/inlayHint', event.buf) then
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client and client:supports_method('textDocument/inlayHint', bufnr) then
             vim.keymap.set(
               'n',
               '<leader>th',
-              function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end,
+              function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }) end,
               { desc = '[T]oggle Inlay [H]ints' }
             )
+          end
+
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
+            vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+
+            vim.keymap.set('i', '<C-Y>', vim.lsp.inline_completion.get, { desc = 'LSP: accept inline completion', buffer = bufnr })
+            vim.keymap.set('i', '<C-g>', vim.lsp.inline_completion.select, { desc = 'LSP: switch inline completion', buffer = bufnr })
           end
         end,
       })
