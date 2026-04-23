@@ -149,6 +149,7 @@ return {
           on_attach = function(client) client.server_capabilities.document_formatting = false end,
         },
         bashls = {},
+        copilot = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -175,6 +176,7 @@ return {
         'tailwindcss-language-server',
         'json-lsp',
         'markdownlint',
+        'copilot-language-server',
       }
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
