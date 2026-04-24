@@ -1,3 +1,10 @@
+local function send_with_skill(skill, msg)
+  require('sidekick.cli').send {
+    name = 'opencode',
+    msg = skill .. '\n' .. msg,
+  }
+end
+
 return {
   {
     'folke/sidekick.nvim',
@@ -11,17 +18,6 @@ return {
       },
     },
     keys = {
-      -- {
-      --   '<tab>',
-      --   function()
-      --     -- if there is a next edit, jump to it, otherwise apply it if any
-      --     if not require('sidekick').nes_jump_or_apply() then
-      --       return '<Tab>' -- fallback to normal tab
-      --     end
-      --   end,
-      --   expr = true,
-      --   desc = 'Goto/Apply Next Edit Suggestion',
-      -- },
       {
         '<c-.>',
         function() require('sidekick.cli').focus() end,
@@ -40,18 +36,18 @@ return {
       },
       {
         '<leader>at',
-        function() require('sidekick.cli').send { name = 'opencode', msg = '{this}' } end,
+        function() send_with_skill('/caveman', '{this}') end,
         mode = { 'x', 'n' },
         desc = 'Send This',
       },
       {
         '<leader>af',
-        function() require('sidekick.cli').send { name = 'opencode', msg = '{file}' } end,
+        function() send_with_skill('/caveman', '{file}') end,
         desc = 'Send File',
       },
       {
         '<leader>as',
-        function() require('sidekick.cli').send { name = 'opencode', msg = '{selection}' } end,
+        function() send_with_skill('/caveman', '{selection}') end,
         mode = { 'x' },
         desc = 'Send Visual Selection',
       },
