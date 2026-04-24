@@ -46,7 +46,26 @@ return {
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts '[G]o to [D]efinition')
           vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = '[G]et [H]over documentation' })
           vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = '[R]e[N]ame' })
-          vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = '[C]ode [A]ction' })
+          vim.keymap.set(
+            'n',
+            '<leader>ca',
+            function()
+              vim.lsp.buf.code_action {
+                context = { only = { 'quickfix' } },
+              }
+            end,
+            { desc = '[C]ode [A]ction' }
+          )
+          vim.keymap.set(
+            'n',
+            '<leader>cr',
+            function()
+              vim.lsp.buf.code_action {
+                context = { only = { 'refactor' } },
+              }
+            end,
+            { desc = '[C]ode [R]efactor' }
+          )
 
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client and client:supports_method('textDocument/inlayHint', bufnr) then
@@ -61,7 +80,7 @@ return {
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
             vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
 
-            vim.keymap.set('i', '<C-Y>', vim.lsp.inline_completion.get, { desc = 'LSP: accept inline completion', buffer = bufnr })
+            vim.keymap.set('i', '<C-l>', vim.lsp.inline_completion.get, { desc = 'LSP: accept inline completion', buffer = bufnr })
             vim.keymap.set('i', '<C-g>', vim.lsp.inline_completion.select, { desc = 'LSP: switch inline completion', buffer = bufnr })
           end
         end,
