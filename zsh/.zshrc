@@ -1,6 +1,7 @@
 # 1. ENVIRONMENT VARIABLES & PATHS
 export HOMEBREW_PREFIX="/opt/homebrew"
 export PATH="./node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export NOTES_DIR="$HOME/Documents/development/2nd-brain"

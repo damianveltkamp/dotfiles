@@ -1,6 +1,6 @@
 local function send_with_skill(skill, msg)
   require('sidekick.cli').send {
-    name = 'opencode',
+    name = 'claude',
     msg = skill .. '\n' .. msg,
   }
 end
@@ -26,7 +26,7 @@ return {
       },
       {
         '<leader>ao',
-        function() require('sidekick.cli').toggle { name = 'opencode' } end,
+        function() require('sidekick.cli').toggle { name = 'claude' } end,
         desc = 'Sidekick Toggle CLI',
       },
       {
