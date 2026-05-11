@@ -6,7 +6,7 @@ background-blur-radius = 20
 
 # Typography
 font-family = Hack Nerd Font
-font-size = 27
+font-size = 18
 
 copy-on-select = true
 
