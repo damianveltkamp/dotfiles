@@ -26,6 +26,12 @@ return {
       },
       numhl = false,
       linehl = false,
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+        vim.api.nvim_buf_create_user_command(bufnr, 'GitHunkReset', function()
+          gs.reset_hunk()
+        end, { desc = 'Reset git hunk under cursor' })
+      end,
       keymaps = {
         -- Default keymap options
         noremap = true,
