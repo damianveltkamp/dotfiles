@@ -58,15 +58,17 @@ _load_nvm() {
     [ -s "$nvm_path" ] && . "$nvm_path"
 }
 
-NVM_TRIGGERS=(nvm node npm npx yarn pnpm nvim vi vim)
+if [[ $- == *i* ]]; then
+  NVM_TRIGGERS=(nvm node npm npx yarn pnpm nvim vi vim)
 
-for cmd in $NVM_TRIGGERS; do
-    $cmd() {
-        unset -f $NVM_TRIGGERS
-        _load_nvm
-        $0 "$@"
-    }
-done
+  for cmd in $NVM_TRIGGERS; do
+      $cmd() {
+          unset -f $NVM_TRIGGERS
+          _load_nvm
+          $0 "$@"
+      }
+  done
+fi
 
 kp() {
   local selected=$(ps -eo pid,pcpu,pmem,comm -r | 
