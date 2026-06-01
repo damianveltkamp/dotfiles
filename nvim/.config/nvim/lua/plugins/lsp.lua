@@ -1,14 +1,3 @@
-local inlay_hints_settings = {
-  includeInlayEnumMemberValueHints = true,
-  includeInlayFunctionLikeReturnTypeHints = true,
-  includeInlayFunctionParameterTypeHints = true,
-  includeInlayParameterNameHints = 'literals',
-  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-  includeInlayPropertyDeclarationTypeHints = true,
-  includeInlayVariableTypeHints = false,
-  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-}
-
 return {
   {
     'neovim/nvim-lspconfig',
@@ -168,10 +157,28 @@ return {
               completeFunctionCalls = true,
             },
             typescript = {
-              inlayHints = inlay_hints_settings,
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = 'literals',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+              },
             },
             javascript = {
-              inlayHints = inlay_hints_settings,
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = 'literals',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+              },
             },
           },
           on_attach = function(client) client.server_capabilities.document_formatting = false end,
@@ -180,12 +187,6 @@ return {
         copilot = {},
       }
 
-      -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
-      --
-      --  You can press `g?` for help in this menu
       require('mason').setup()
 
       local ensure_installed = {
@@ -214,129 +215,6 @@ return {
         vim.lsp.config(name, server)
         vim.lsp.enable(name)
       end
-    end,
-  },
-  {
-    'onsails/lspkind-nvim',
-    opts = {
-      mode = 'symbol_text',
-      symbol_map = {
-        Text = '',
-        Method = 'ƒ',
-        Function = '',
-        Constructor = '',
-        Variable = '',
-        Class = '',
-        Interface = 'ﰮ',
-        Module = '',
-        Property = '',
-        Unit = '',
-        Value = '',
-        Enum = '了',
-        Keyword = '',
-        Snippet = '﬌',
-        Color = '',
-        File = '',
-        Folder = '',
-        EnumMember = '',
-        Constant = '',
-        Struct = '',
-      },
-    },
-    event = 'BufReadPost',
-    config = function(_, opts) require('lspkind').init(opts) end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    event = 'BufReadPost',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    opts = {
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
-    },
-    config = function(_, opts)
-      local treesitter = require 'nvim-treesitter'
-      treesitter.setup(opts)
-
-      local parsers = {
-        'bash',
-        'typescript',
-        'diff',
-        'tsx',
-        'javascript',
-        'jsx',
-        'lua',
-        'luadoc',
-        'html',
-        'json',
-        'scss',
-        'css',
-        'graphql',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'vim',
-        'vimdoc',
-      }
-
-      treesitter.install(parsers)
-
-      local function treesitter_try_attach(buf, language)
-        if not vim.treesitter.language.add(language) then return end
-        vim.treesitter.start(buf, language)
-
-        -- enables treesitter based folds
-        -- for more info on folds see `:help folds`
-        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-        -- vim.wo.foldmethod = 'expr'
-
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end
-
-      local available_parsers = require('nvim-treesitter').get_available()
-
-      vim.api.nvim_create_autocmd('FileType', {
-        group = vim.api.nvim_create_augroup('EnableTreesitterHighlighting', { clear = true }),
-        desc = 'Try to enable tree-sitter syntax highlighting',
-        pattern = '*',
-        callback = function(args)
-          local buf, filetype = args.buf, args.match
-
-          local language = vim.treesitter.language.get_lang(filetype)
-          if not language then return end
-
-          local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
-
-          if vim.tbl_contains(installed_parsers, language) then
-            -- enable the parser if it is installed
-            treesitter_try_attach(buf, language)
-          elseif vim.tbl_contains(available_parsers, language) then
-            -- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
-            require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
-          else
-            -- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
-            treesitter_try_attach(buf, language)
-          end
-        end,
-      })
-
-      local move = require 'nvim-treesitter-textobjects.move'
-
-      vim.keymap.set('n', ']f', function() move.goto_next_start('@function.outer', 'textobjects') end)
-      vim.keymap.set('n', '[f', function() move.goto_previous_start('@function.outer', 'textobjects') end)
-      vim.keymap.set('n', ']F', function() move.goto_next_start('@function.inner', 'textobjects') end)
-      vim.keymap.set('n', '[F', function() move.goto_previous_start('@function.inner', 'textobjects') end)
-
-      vim.keymap.set('n', ']p', function() move.goto_next_start('@parameter.inner', 'textobjects') end)
-      vim.keymap.set('n', '[p', function() move.goto_previous_start('@parameter.inner', 'textobjects') end)
-
-      vim.keymap.set('n', ']r', function() move.goto_next_start('@return.outer', 'textobjects') end)
-      vim.keymap.set('n', '[r', function() move.goto_previous_start('@return.outer', 'textobjects') end)
     end,
   },
 }
