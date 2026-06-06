@@ -36,18 +36,18 @@ return {
       },
       {
         '<leader>at',
-        function() send_with_skill('/caveman', '{this}') end,
+        function() send_with_skill('/grill-with-docs', '{this}') end,
         mode = { 'x', 'n' },
         desc = 'Send This',
       },
       {
         '<leader>af',
-        function() send_with_skill('/caveman', '{file}') end,
+        function() send_with_skill('/grill-with-docs', '{file}') end,
         desc = 'Send File',
       },
       {
         '<leader>as',
-        function() send_with_skill('/caveman', '{selection}') end,
+        function() send_with_skill('/grill-with-docs', '{selection}') end,
         mode = { 'x' },
         desc = 'Send Visual Selection',
       },
