@@ -23,6 +23,21 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require('sidekick').setup(opts)
+
+      -- Re-apply the AI split width when the terminal/GUI window is resized
+      -- (e.g. Ghostty tiled to half the screen alongside Chrome).
+      vim.api.nvim_create_autocmd('VimResized', {
+        callback = function()
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            if vim.w[win].sidekick_cli then
+              vim.api.nvim_win_set_width(win, math.floor(vim.o.columns * 0.6))
+            end
+          end
+        end,
+      })
+    end,
     keys = {
       {
         '<c-.>',
