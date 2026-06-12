@@ -18,10 +18,10 @@ vim.keymap.set('c', '<C-k>', '<Up>', { desc = 'Move one line up in command mode'
 vim.keymap.set('c', '<C-l>', '<Right>', { desc = 'Move one character to the right in command mode' })
 
 -- Window hopping
-vim.keymap.set('n', '<leader>h', '<cmd> wincmd h <CR>', { desc = 'Focus window on the left of the current window' })
-vim.keymap.set('n', '<leader>j', '<cmd> wincmd j <CR>', { desc = 'Focus window underneath current window' })
-vim.keymap.set('n', '<leader>k', '<cmd> wincmd k <CR>', { desc = 'Focus window above current window' })
-vim.keymap.set('n', '<leader>l', '<cmd> wincmd l <CR>', { desc = 'Focus window on the right of the current window' })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Focus window on the left of the current window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Focus window underneath current window' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Focus window above current window' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Focus window on the right of the current window' })
 vim.keymap.set('n', '<leader>nw', '<C-w>w', { desc = 'Cycle to next window' })
 vim.keymap.set('n', '<leader>pw', '<C-w>W', { desc = 'Cycle to previous window' })
 
@@ -151,10 +151,10 @@ vim.keymap.set('n', '<leader>of', '<cmd> silent !open . <CR>', { desc = '[O]pen 
 vim.keymap.set('n', '<leader>bf', '<cmd>silent !open -R %<CR>', { desc = '[B]uffer [F]ile reveal in Finder' })
 
 -- Moving text
-vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { silent = true, desc = 'Move Selected Down' })
-vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { silent = true, desc = 'Move Selected Up' })
-vim.keymap.set('n', '<C-j>', '<cmd> :m .+1 <CR> ==', { desc = 'Move current line downwards' })
-vim.keymap.set('n', '<C-k>', '<cmd> :m .-2 <CR> ==', { desc = 'Move current line upwards' })
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { silent = true, desc = 'Move Selected Down' })
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { silent = true, desc = 'Move Selected Up' })
+vim.keymap.set('n', '<A-j>', '<cmd> :m .+1 <CR> ==', { desc = 'Move current line downwards' })
+vim.keymap.set('n', '<A-k>', '<cmd> :m .-2 <CR> ==', { desc = 'Move current line upwards' })
 
 -- Don't yank with x
 vim.keymap.set('n', 'x', '"_x', { desc = 'Cut to blackhole register' })
