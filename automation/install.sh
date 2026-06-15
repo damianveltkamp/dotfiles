@@ -61,7 +61,7 @@ git clone https://github.com/damianveltkamp/dotfiles.git ~/Documents/development
 echo "---------------------------------------------------------"
 
 echo "Symlinking all config files"
-cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd starship ghostty
+cd ~/Documents/development/dotfiles && stow --ignore ".DS_Store" -vt ~/ nvim pandoc bin alacritty git zsh tmux yabai skhd starship ghostty borders
 echo "---------------------------------------------------------"
 
 echo "Changing to zsh"

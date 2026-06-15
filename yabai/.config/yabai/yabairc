@@ -45,4 +45,7 @@ yabai -m config mouse_action2 resize
 # set modifier + left-click drag to resize window (default: move)
 yabai -m config mouse_action1 move
 
+# Highlight the active window with a colored border
+brew services restart borders &>/dev/null &
+
 echo "yabai configuration loaded.."
