@@ -54,27 +54,6 @@ local getSourceRef = function()
   end
 end
 
---- getTicketNumber gets the current branch you are on and checks if there are numbers present inside the branch name.
---- We asume that when numbers are present inside your branch name that those numbers represent a ticket number.
---- The number will be returned from this function.
-local getTicketNumber = function()
-  local handle = io.popen 'git branch --show-current'
-
-  if handle ~= nil then
-    local sourceRef = handle:read '*a'
-    handle:close()
-
-    local number = string.match(sourceRef, '%d+')
-
-    return number
-  end
-end
-
-vim.api.nvim_create_user_command('DVGetTicketNumber', function()
-  local number = getTicketNumber()
-  os.execute('echo ' .. number .. "| tr -d '\n' | pbcopy")
-end, {})
-
 --- bitbucketNewPullRequest executes a terminal command that opens up Google chrome
 --- and points you towards the path in which you can create a new pull request on bitbucket.
 local bitbucketNewPullRequest = function(remoteHost)
@@ -119,7 +98,5 @@ vim.api.nvim_create_user_command('DVOpenNewPullRequest', function()
 end, {})
 
 vim.api.nvim_create_user_command('DVOpenCurrentRepo', function()
-  local remoteHost = checkRemoteHost()
-  local executionString = 'open -a "Google chrome" ' .. remoteHost['remoteUrl']
-  os.execute(executionString)
+  os.execute('gh browse')
 end, {})
