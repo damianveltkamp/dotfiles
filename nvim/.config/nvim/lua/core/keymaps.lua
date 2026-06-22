@@ -17,11 +17,10 @@ vim.keymap.set('c', '<C-j>', '<Down>', { desc = 'Move one line down in command m
 vim.keymap.set('c', '<C-k>', '<Up>', { desc = 'Move one line up in command mode' })
 vim.keymap.set('c', '<C-l>', '<Right>', { desc = 'Move one character to the right in command mode' })
 
--- Window hopping
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Focus window on the left of the current window' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Focus window underneath current window' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Focus window above current window' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Focus window on the right of the current window' })
+-- Open tmux-sessionizer in a new tmux window
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', { desc = 'Open tmux-sessionizer' })
+
+-- Window hopping (handled by vim-tmux-navigator: <C-h/j/k/l>, also forwards to tmux panes)
 vim.keymap.set('n', '<leader>nw', '<C-w>w', { desc = 'Cycle to next window' })
 vim.keymap.set('n', '<leader>pw', '<C-w>W', { desc = 'Cycle to previous window' })
 

@@ -3,6 +3,7 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 export PATH="./node_modules/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
 export EDITOR=nvim
 export NOTES_DIR="$HOME/Documents/development/2nd-brain"
 export NODE_EXTRA_CA_CERTS="/etc/ssl/cert.pem"
@@ -213,13 +214,17 @@ function my_init_widgets() {
     bindkey -M main "^v" _widget_nvim
     bindkey -M main "^h" _widget_home
     bindkey -M main "^k" _widget_up
-    
+
     bindkey -M viins "^p" _widget_dev
     bindkey -M viins "^w" _widget_work
     bindkey -M viins "^n" _widget_notes
     bindkey -M viins "^v" _widget_nvim
     bindkey -M viins "^h" _widget_home
     bindkey -M viins "^k" _widget_up
+
+    # Jump straight into a tmux-sessionizer session
+    bindkey -M main -s "^f" "tmux-sessionizer\n"
+    bindkey -M viins -s "^f" "tmux-sessionizer\n"
 }
 
 # 8 Register widgets with the vi-mode plugin
