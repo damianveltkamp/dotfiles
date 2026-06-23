@@ -1,6 +1,7 @@
 ---
 name: implement-ticket
 description: Pick up a GitHub issue by number and drive it from clarification through implementation, PR, a single automated review pass, and fixing the resulting remarks. Use when the user gives a bare ticket/issue number and asks to implement, pick up, or ship it (e.g. "/implement-ticket 123", "pick up ticket 123", "implement issue #123").
+disable-model-invocation: true
 ---
 # Ship Ticket
 

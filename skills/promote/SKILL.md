@@ -1,27 +1,19 @@
 ---
 name: promote
 description: Promote develop to main — apply any pending migrations, open the develop→main PR with Closes #N references, and after it merges swap awaiting-promotion to promoted on every resolved issue. Use when develop has been verified and is ready to ship to production.
+disable-model-invocation: true
 ---
 # Promote
 
 Drives the full `develop → main` promotion. Five steps, in order.
 
-## 1. Apply pending migrations
+## 1. Check for pre-promotion prerequisites
 
-Check CLAUDE.md for a "Pending production migrations" line. If it lists any migration files:
+Check whether the project has any prerequisites that must be completed before the PR goes live — for example, database migrations, infrastructure changes, or third-party configuration that the code depends on. Apply any that are outstanding before opening the PR.
 
-1. Apply each migration to the production database before opening the PR — the code that depends on them must not go live first.
-2. Once applied, update the line in CLAUDE.md to read:
+If the project tracks these in a documentation file, update that file to reflect they've been applied and commit the change directly to `develop` before continuing.
 
-```
-**Pending production migrations:** none currently.
-```
-
-Do not delete the line — it needs to be there as a prompt for next time.
-
-Commit this CLAUDE.md change directly to `develop` and push before continuing.
-
-If the line already reads "none currently," skip this step.
+If there are no prerequisites, skip to step 2.
 
 ## 2. Identify the issues being promoted
 
