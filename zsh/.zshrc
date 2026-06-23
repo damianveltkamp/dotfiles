@@ -242,3 +242,17 @@ fi
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+
+# Create a PR from the current branch to a target branch (default: develop)
+prcreate() {
+  local base="${1:-develop}"
+  local current_branch
+  current_branch=$(git branch --show-current)
+
+  if [[ -z "$current_branch" ]]; then
+    echo "Not on a branch." >&2
+    return 1
+  fi
+
+  gh pr create --base "$base" --head "$current_branch"
+}
