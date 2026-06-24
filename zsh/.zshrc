@@ -132,6 +132,12 @@ gdb() {
   fi
 }
 
+# FZF cd into directory
+fcd() {
+  local dir
+  dir=$(fd . --type d --hidden --max-depth 6 --exclude .git --exclude node_modules --exclude .cache --exclude Library --exclude Applications ${1:-$HOME} | fzf --reverse --header='[cd:dir]') && builtin cd "$dir"
+}
+
 # Rename files to lowercase
 rfl() {
     for f in *; do mv "$f" "$f.tmp" && mv "$f.tmp" "${f:l}"; done
