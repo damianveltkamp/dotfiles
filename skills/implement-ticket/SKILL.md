@@ -5,7 +5,7 @@ disable-model-invocation: true
 ---
 # Ship Ticket
 
-Drives a GitHub issue from number to a reviewed, fixed-up PR. Five steps, run in order, no step skipped.
+Drives a GitHub issue from number to a reviewed, fixed-up PR, then hands you a manual test plan. Six steps, run in order, no step skipped.
 
 ## 1. Fetch and check clarity
 
@@ -62,6 +62,32 @@ Use the structured summary from step 3 as your index, but pull the actual posted
 ## 5. Push fixes
 
 Push the fix commits once triage is done. This is pre-authorized as part of this skill — no need to ask before pushing.
+
+## 6. Hand off a manual test plan
+
+Some acceptance criteria can't be verified from code alone — they need the user to run the app and check behaviour (device/simulator interactions, App Store/RevenueCat flows, permission prompts, visual results, anything the agent couldn't exercise itself). Close the workflow by handing the user a checklist so they can verify the change meets the issue's acceptance criteria.
+
+Present it as the final message, in this shape:
+
+```
+## Manual testing — issue #<number>
+
+What I already verified automatically: <one line, or "nothing — needs manual testing">
+
+Please verify these yourself, in order:
+
+1. [ ] <step — what to do, then what you should see>
+2. [ ] <step …>
+```
+
+Rules for the checklist:
+
+- Derive each step from the issue's acceptance criteria. Map every criterion to at least one check so nothing is silently dropped.
+- Order the steps as a flow the user walks top to bottom (setup → action → expected result), not a flat unordered dump.
+- Each step states the action **and** the expected outcome, so the user knows whether it passed.
+- Cover edge cases and failure paths the criteria imply (e.g. cancel/restore, empty states, error states), not just the happy path.
+- Be explicit about anything that needs special setup the user controls — a real device, a sandbox account, a paid subscription, a granted permission.
+- Don't list things you already verified automatically as manual steps; note them once under "What I already verified" instead.
 
 ## Notes
 
